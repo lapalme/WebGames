@@ -1,0 +1,57 @@
+#svg_element {
+  border:thin solid black;
+  background-color: white;
+  user-select:none
+}
+input[type="number"] {
+    width: 40px;
+}
+fieldset {
+    display:inline-block;
+}
+#hide-show-explanation {
+    font-size: small;
+}
+
+.container {
+    display: flex;
+    align-items:start;
+    padding: 10px;
+}
+table#commands {
+    border:thin solid black;
+    border-collapse: collapse;
+    display: inline-table;
+    margin-left:10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+table#commands td, table#commands th {
+    border-bottom:thin solid black;
+    vertical-align:top ;
+    margin:0 4px;
+}
+
+#changeLang, #hide-show-explanation{
+  float:right;
+  cursor:pointer;
+  color:blue;
+  border:thin solid blue;
+  padding: 2px;
+  margin: 6px;
+  border-radius: 4px;
+}
+
+#explanation {
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+#parse {
+    vertical-align: top;
+}
+
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

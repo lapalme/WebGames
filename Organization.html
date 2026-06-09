@@ -1,0 +1,830 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; height: auto; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-width: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignObject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: medium !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: medium; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: medium; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-theme_user_css">/* added to get numbered headings: taken from https://gist.github.com/patik/89ee6092c72a9e39950445c01598517a */
+body { counter-reset: h1counter h2counter h3counter h4counter h5counter h6counter; }
+
+h1 { counter-reset: h2counter; break-inside: avoid;}
+h2 { counter-reset: h3counter; break-inside: avoid;}
+h3 { counter-reset: h4counter; break-inside: avoid;}
+h4 { counter-reset: h5counter; break-inside: avoid;}
+h5 { counter-reset: h6counter; break-inside: avoid;}
+h6 {}
+
+h1:before {
+    counter-increment: h1counter;
+    content: counter(h1counter) ".\0000a0\0000a0";
+}
+
+h2:before {
+    counter-increment: h2counter;
+    content: counter(h1counter) "." counter(h2counter) ".\0000a0\0000a0";
+}
+
+h3:before {
+    counter-increment: h3counter;
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
+}
+
+h4:before {
+    counter-increment: h4counter;
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) ".\0000a0\0000a0";
+}
+
+h5:before {
+    counter-increment: h5counter;
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter) ".\0000a0\0000a0";
+}
+
+h6:before {
+    counter-increment: h6counter;
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter) "." counter(h6counter) ".\0000a0\0000a0";
+}
+
+/* taken from: https://support.typora.io/Page-Breaks/ */
+@media print, (overflow-block: paged) or (overflow-block: optional-paged)
+{
+  /* Move top-level headings to a new page on the right-hand side: */
+  h1
+  {
+    page-break-before: right; /* CSS 2 */
+    break-before: recto;      /* CSS 3+, 
+      also works for languages written and paginated right-to-left */
+  }
+  /* Override the previous ruleset for the very first heading: */
+  h1:first-of-type,
+  section > h1:first-child
+  {
+    page-break-before: avoid; /* CSS 2 */
+    break-before: avoid;      /* CSS 3+ */
+  }
+  /* Force second-level headings to begin in a new column or
+     possiblyon a new page if it was in the last of multiple columns otherwise: */
+  h2
+  {
+    break-before: column;
+  }
+  /* Headings should not be the last paragraph on a page: */
+  h1, h2, h3, h4, h5, h6
+  {
+    page-break-after: avoid;
+  }
+  /* Consecutive headings with deepening level should not be split across pages: */
+  h1+h2, h2+h3, h3+h4, h4+h5, h5+h6
+  {
+    page-break-before: avoid;
+  }
+}</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+<style type='text/css'  id="style-mac-print"> @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}</style>
+<meta name="author" content="Guy Lapalme">
+<meta name="description" content="Principles underlying some web versions of single-player board puzzles">
+
+
+<title>Development of web versions of single-player puzzles</title>
+</head>
+<body class='typora-export typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#characteristics-of-these-games">Characteristics of These Games</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#searching-for-a-solution">Searching for a Solution</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#definition-of-a-state">Definition of a State</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#definition-of-configurations">Definition of Configurations</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#conversion-from-a-problem-to-a-starting-state">Conversion from a problem to a starting state</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#possible-jumps-for-each-piece">Possible jumps for each piece</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#exploring-states">Exploring States</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#web-application">Web application</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#graphic-element-representation">Graphic Element Representation</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#board-representation">Board representation</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#piece-and-jump-representation">Piece and Jump Representation </a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#application-organization">Application Organization</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#creating-a-new-game">Creating a New Game</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#steps-for-building-a-new-game">Steps for Building a New Game</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#conclusion">Conclusion</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#appendix">Appendix</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#links-for-playing-games-on-the-web">Links for playing games on the web</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#links-to-the-source-code">Links to the source code</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><center style="font-size:3em; font-family: 'Open Sans'; font-weight: bold"> Development of web versions of single-player puzzles 
+</center><p>&nbsp;</p><center><a href="mailto:lapalme@iro.umontreal.ca">Guy Lapalme</a><br/>RALI-DIRO<br/>Université de Montréal<br/>May 2026</center><p><span>This document explains the underlying principles of web versions of some single-player puzzle games published by </span><a href='https://en.wikipedia.org/wiki/SmartGames'><span>Smart Games</span></a><span> or </span><a href='https://en.wikipedia.org/wiki/ThinkFun'><span>Think Fun</span></a><span>. These games present a situation with pieces that must be placed or slid on a rectangular board in order to achieve a </span><em><span>winning</span></em><span> situation. The starting situations are classified by level of difficulty to reach the final situation.</span></p><p><span>I have always been a fan of this type of game in physical form. For a few of them, I once developed Java versions, some of which have been used for practical exercises in programming courses I taught.</span></p><p><span>These computer versions have the ability to discover a solution using the least possible number of moves or pieces. It does this by systematically exploring all possible game states using a breadth-first search. These solutions are found in a matter of seconds, often milliseconds, even in the most complex scenarios, which can sometimes be a bit </span><em><span>discouraging</span></em><span>, considering that many minutes are often needed to solve it </span><em><span>manually</span></em><span>.</span></p><p><span>I recently decided to rewrite some of these games to be played in a web browser, either on a computer or a phone. The code is written in JavaScript, and the graphics are displayed using SVG, allowing them to adapt automatically to the screen size.</span></p><p><span>These games come in two broad categories : </span></p><ul><li><p><strong><span>Sliding</span></strong><span>: all pieces are initially on the board and the goal is to slide them into a </span><em><span>winning</span></em><span> configuration. Movement constraints must be taken into account, such as no overlap between some pieces and the specific moves allowed by each piece.  In some cases, pieces can disappear or change their appearance and behavior. Jumping over other pieces is sometimes used instead of sliding.</span></p></li><li><p><strong><span>Placing</span></strong><span>: only a few pieces are initially on the board, the rest is kept in a reserve from which other pieces can or must be chosen and placed on the board to form a </span><em><span>winning</span></em><span> situation. </span></p></li></ul><center>Table 1: Nineteen games, each with a typical configuration, link to an <i>official description</i>, and their characteristics</center><figure class='table-figure'><table><thead><tr><th>&nbsp;</th><th><span>Name</span></th><th><span>Goal</span></th><th><span>Type</span></th><th><span>Changing pieces</span></th></tr></thead><tbody><tr><td><img src="./images/FlipIt.jpg" style="zoom:25%;" /></td><td><a href='https://trictrac.net/jeu-de-societe/flip-it'><span>Flip It</span></a></td><td><span>Flip all turtles</span></td><td><span>Sliding Jumping</span></td><td><span>yes</span></td></tr><tr><td><img src="./images/CannibalMonsters.jpg" style="zoom:25%;" /></td><td><a href='https://www.smartgamesandpuzzles.com/cannibal-monsters.html'><span>Cannibal Monsters</span></a></td><td><span>Stack monsters until only one is left</span></td><td><span>Sliding Jumping</span></td><td><span>yes</span></td></tr><tr><td><img src="./images/JumpIn.jpg" style="zoom: 33%;" /></td><td><a href='https://www.smartgames.eu/uk/one-player-games/jump'><span>Jump In</span></a></td><td><span>Make the rabbits find their hole</span></td><td><span>Sliding</span><br /><span>Jumping</span></td><td><span>no</span></td></tr><tr><td><img src="./images/HotSpot.jpg" style="zoom:50%;" /></td><td><a href='https://theplayfulotter.blogspot.com/2018/08/hotspot.html'><span>HotSpot</span></a></td><td><span>Make the red circle jump to the top left spot</span></td><td><span>Jumping</span></td><td><span>no</span></td></tr><tr><td><img src="./images/SnowProblem.jpg" style="zoom:25%;" /></td><td><a href='https://www.smartgames.eu/uk/one-player-games/snow-problem'><span>Snow Problem</span></a></td><td><span>Build snowmen by rolling balls</span></td><td><span>Sliding</span></td><td><span>yes</span></td></tr><tr><td><img src="./images/Titanic.jpg" style="zoom:15%;" /></td><td><a href='https://www.smartgamesandpuzzles.com/titanic.html'><span>Titanic</span></a></td><td><span>Board all shipwrecked people</span></td><td><span>Sliding</span></td><td><span>yes</span></td></tr><tr><td><img src="./images/RushHour.jpg" style="zoom:30%;" /></td><td><a href='https://www.ravensburger.us/en-US/products/games/thinkfun/rush-hour-76582'><span>Rush Hour</span></a></td><td><span>Exit the red car</span></td><td><span>Sliding</span></td><td><span>no</span></td></tr><tr><td><img src="./images/AntiVirus.jpg" style="zoom:30%;" /></td><td><a href='https://www.smartgames.eu/uk/one-player-games/anti-virus'><span>Anti-Virus</span></a></td><td><span>Exit the red </span><em><span>virus</span></em></td><td><span>Sliding</span></td><td><span>no</span></td></tr><tr><td><img src="./images/AsteroidEscape.jpg" style="zoom:45%;" /></td><td><a href='https://www.smartgames.eu/uk/one-player-games/asteroid-escape-0'><span>Asteroid Escape</span></a></td><td><span>Exit the plane avoiding asteroids</span></td><td><span>Sliding</span></td><td><span>no</span></td></tr><tr><td><img src="./images/TempleTrap.jpg" style="zoom:60%;" /></td><td><a href='https://www.smartgames.eu/uk/one-player-games/temple-trap-0'><span>TempleTrap</span></a></td><td><span>Exit the adventurer by sliding labyrinth pieces</span></td><td><span>Sliding Jumping</span></td><td><span>no</span></td></tr><tr><td><img src="./images/Tilt.jpg" style="zoom:18%;" /></td><td><span>Tilt</span></td><td><span>Push green button in the hole by tilting the board</span></td><td><span>Sliding</span></td><td><span>no, but pieces can disappear</span></td></tr><tr><td><img src="./images/SquirrelsGoNuts.jpg" style="zoom:70%" /></td><td><a href='https://www.smartgames.eu/uk/one-player-games/squirrels-go-nuts'><span>Squirrel Go Nuts</span></a></td><td><span>Make all  the squirrels hide their nut</span></td><td><span>Sliding</span></td><td><span>Pieces and the board can change</span></td></tr><tr><td><img src="./images/CityMaze.jpg" style="zoom:15%;" /></td><td><a href='https://www.smartgamesandpuzzles.com/city-maze.html'><span>City Maze</span></a></td><td><span>Build a path to reach all  targets</span></td><td><span>Placing</span></td><td><span>Express_Delivery:no</span><br /><span>On the double:yes</span></td></tr><tr><td><img src="./images/LaserMaze.jpg" style="zoom:65%;" /></td><td><a href='https://www.ravensburger.us/en-US/products/games/thinkfun/laser-maze-44001014#'><span>Laser Maze</span></a></td><td><span>Make the laser touch all pieces and hit all targets</span></td><td><span>Placing</span></td><td><span>no</span></td></tr><tr><td><img src="./images/CatsNBoxes.jpg" style="zoom:25%;" /></td><td><a href='https://www.smartgames.eu/uk/one-player-games/cats-boxes'><span>Cats &amp; Boxes</span></a></td><td><span>Put all the cats in the boxes</span></td><td><span>Removing</span><br /><span>Placing</span></td><td><span>no</span></td></tr><tr><td><img src="./images/RiverCrossing.jpg" style="zoom:20%;" /></td><td><a href='https://www.think-fun.be/fr/products/river-crossing/'><span>River Crossing</span></a></td><td><span>Make a hiker traverse go to the other side of the river</span></td><td><span>Removing</span><br /><span>Placing</span></td><td><span>no</span></td></tr><tr><td><img src="./images/TipOver.jpg" style="zoom:45%;" /></td><td><a href='https://www.fatbraintoys.com/toy_companies/thinkfun/tipover.cfm'><span>TipOver</span></a></td><td><span>Move a tipper across piles of crates</span></td><td><span>Placing</span></td><td><span>yes</span></td></tr><tr><td><img src="./images/GraveYardShift.jpg" style="zoom:45%;" /></td><td><a href='https://www.smartgamesandpuzzles.com/graveyard-shift.html'><span>Graveyard Shift</span></a></td><td><span>Exit the pink piece by sliding pieces.</span></td><td><span>Sliding</span></td><td><span>no</span></td></tr><tr><td><img src="./images/GrizzlyGears.jpg" style="zoom:45%;" /></td><td><a href='https://www.smartgames.eu/uk/one-player-games/grizzly-gears'><span>GrizzlyGears</span></a></td><td><span>Move boats by rotating disks</span></td><td><span>Sliding</span></td><td><span>no</span></td></tr></tbody></table></figure><p><span>Some objects can undergo modifications during the game, depending on the rules. </span></p><ul><li><p><em><span>Flip It</span></em><span> : each piece can be in two states that are flipped when another piece jumps over it.</span></p></li><li><p><em><span>Cannibal Monsters</span></em><span>: monsters can eat others if their base correspond strictly, so pieces evolve over time.</span></p></li><li><p><em><span>Jump In</span></em><span>: in this game, only the position of pieces changes</span></p></li><li><p><em><span>Hot Spot</span></em><span>: in this game, only the position of pieces changes</span></p></li><li><p><em><span>Snow Problem</span></em><span>: some pieces can be put on top of others and thus removed from the board.</span></p></li><li><p><em><span>Titanic</span></em><span>:  the shipwrecked  people (shown as circles) can be put on the boats, so they are removed from the board. The ship is thus modified as are the allowed moves because the boat cannot move when it is </span><em><span>full</span></em><span> which limits the movements of other boats.</span></p></li><li><p><em><span>Rush Hour</span></em><span>: the pieces do not change, but their movements depend on the positions of the others. In certain arrangements, there are two vehicles to leave, so when the first one departs, it is removed from the board.</span></p></li><li><p><em><span>Anti-Virus</span></em><span>: similar to Rush Hour, the red must be exited to win the game.. The tiles are positioned on the intersections of the lines of the grid. The board is tilted, and the pieces are tangled, meaning that moving one piece can also affect others. </span></p></li><li><p><em><span>Asteroid Escape</span></em><span>: the position of pieces can change, but some pieces overlap on other positions, so they can interfere with their movements.</span></p></li><li><p><em><span>Temple Trap:</span></em><span> pieces can slide to a neighboring position, but a piece cannot be moved when the adventurer is on it. The adventurer can only move to pieces that are accessible, i.e., not crossing a wall or on the same floor.</span></p></li><li><p><em><span>Tilt</span></em><span>:  send the green buttons into the central </span><em><span>black hole,</span></em><span> which makes them disappear, while avoiding sliding a blue button in the hole., As pieces are moved by tilting the board,  many pieces can change place in a single jump.</span></p></li><li><p><em><span>Squirrel Go Nuts</span></em><span>: the goal is to slide squirrels with nuts over holes in which the nut will fall. Both the board and some pieces can change their state during the game.</span></p></li><li><p><em><span>City Maze</span></em><span>: the pieces are not all given in the starting configuration. The player must select some pieces and place them on the board with the right orientation in order to form a path from a starting arrow and going to all final crosses. Since the pieces have a red or blue side, a variant of this game allows for paths of different colors. </span></p></li><li><p><em><span>Laser Maze</span></em><span>:  place a laser, mirrors and targets on the board so that the laser reflects on all pieces while hitting a given number of targets. Some selected pieces in a given configuration can be moved or rotated. </span></p></li><li><p><em><span>Cats &amp; Boxes</span></em><span>: a piece must be removed before being placed elsewhere, so in a way it can overlap its previous positions, but not another piece.</span></p></li><li><p><em><span>River Crossing</span></em><span>: a plank can be removed and placed elsewhere on an adjacent plank, so it can overlap its previous position.</span></p></li><li><p><em><span>TipOver</span></em><span> : a piece is a crate of a certain height which, when tripped, lies on the board and it stays as is for the rest of the game.</span></p></li><li><p><em><span>Graveyard Shift</span></em><span>: pieces of different polygonal shapes slide but as other pieces outstretch on the exterior, so they  can block the movement of other pieces. </span></p></li><li><p><em><span>Grizzly Gears</span></em><span> : pieces (boats) are displaced by rotating disks whose positions might interfere with surrounding pieces. Although the movements seem limited, the right moves are often counterintuitive.</span></p></li></ul><p><span>Most of these games are already available in electronic form. They can be downloaded from a website, or from a smartphone app store. Their graphics are usually much more sophisticated than mine. My primary objective in crafting this document is pedagogical, aiming to structure the common functions and classes among these games. I also chose games that have different features for pieces and their movements. Writing this document has been very useful in helping me clarify my thoughts.</span></p><h1 id='characteristics-of-these-games'><span>Characteristics of These Games</span></h1><p><span>In the following we use the following naming conventions:</span></p><ul><li><p><strong><span>board</span></strong><span>: a rectangular </span><em><span>grid</span></em><span> with </span><em><span>M</span></em><span> rows and </span><em><span>N</span></em><span> columns</span><span>.</span><span> In some games, some positions of the board have a special role;</span></p></li><li><p><strong><span>reserve</span></strong><span>: a section of the board in which pieces can be kept before being placed on the board. </span></p></li><li><p><strong><span>display</span></strong><span>: a screen representation of the board;</span></p></li><li><p><strong><span>piece</span></strong><span>: an element of the game that can be placed on the board; it has a </span><strong><span>position</span></strong><span>: </span><em><span>i,j</span></em><span>,  row and column numbers starting from 0.  In some games, a piece can have an </span><strong><span>orientation</span></strong><span> identified either by a cardinal point or an arrow. In some games, pieces have other characteristics, such as being </span><em><span>flipped</span></em><span> or </span><em><span>stacking</span></em><span>  other pieces.</span></p></li><li><p><strong><span>configuration</span></strong><span>: encoding of the position and orientation of the pieces at the start of the game in a form that is easy to input from the game booklet.  </span></p></li><li><p><strong><span>state</span></strong><span>: encoding of the position and orientation of each piece during the game; a state must be able to represent all possible game situations while being efficient to be encoded and decoded during the game. </span></p><ul><li><p><span>The </span><em><span>initial</span></em><span> state is obtained from the configuration. </span></p></li><li><p><span>A </span><em><span>winning</span></em><span> state is a </span><em><span>configuration</span></em><span> identified as the goal of the game. </span></p></li></ul></li><li><p><strong><span>jump</span></strong><span> : an action where a piece changes its position, possibly affecting other pieces on the board. Placing a piece to a position with an orientation can be thought of as a jump from the reserve to the board in the correct position. A jump keeps track of the previous jumps so the jumps leading to a winning state can be shown or to make it possible to undo previous jumps.</span></p></li><li><p><strong><span>move</span></strong><span> : a series of consecutive jumps performed by the same piece.  </span></p></li></ul><p><span>The starting state determines the initial position of pieces on the board. The goal of the game is to determine the jumps of the pieces around on the board according to a set of rules until they form a </span><em><span>winning</span></em><span> state. A </span><em><span>solution</span></em><span> is, therefore, a list of </span><em><span>jumps</span></em><span> that can  go from the initial state to the desired winning state.</span></p><p><span>These games come with a booklet of starting configurations, classified by level of difficulty, to achieve a winning configuration. Often, there are many ways to solve a puzzle. The booklet shows one solution with the fewest number of moves or jumps. </span></p><p><span>Each game presents its own set of challenges, which is all part of the fun. </span></p><p><span>The computer version of these games has several advantages, including the following:</span></p><ul><li><p><span>The constraints of each game are systematically enforced, while it can happen that a player with a physical board sometimes forgets a side effect of a move or performs an illegal move. </span></p></li><li><p><span>For sliding  games, the allowed moves are displayed at each step from which the player chooses one. This is helpful in not forgetting allowed moves, so in a way it simplifies the game because it shows all possibilities while a player might miss a possibility with a physical board.</span></p></li><li><p><span>It is very easy to </span><em><span>undo</span></em><span> the moves and even restart a configuration, while this is error-prone or inconvenient with the physical board.</span></p></li><li><p><span>It is less noisy and annoying for other people in the room who do not play (e.g., my wife)!</span></p></li><li><p><span>The system can compute and display a solution very fast, which can also be a bit intimidating at times.</span></p></li></ul><p><span>The disadvantage is that players do not get physical feedback from the pieces. Also, the game increases screen time on the computer or phone. </span></p><p><span>After developing several of these games, I noticed that they have many commonalities. Therefore, I developed a framework that describes generalizable processes that can be applied across different games. This document uses </span><em><span>Flip It</span></em><span> as an example because it is relatively straightforward, but it also highlights some intriguing challenges. </span></p><p><span>When tackling a new game, I suggest to start by developing an algorithm to determine the jumps from the starting state to a winning state without a graphical user interface. This </span><em><span>compels</span></em><span> to define the notation for the states, the allowed moves, the state changes after a move and the process to find a solution. Once that is done, this algorithm can be embedded into the graphical framework we have established. This process is further explained in section </span><a href='#steps-for-building-a-new-game'><span>4.1</span></a><span>.</span></p><h1 id='searching-for-a-solution'><span>Searching for a Solution</span></h1><p><span>The goal of each game is finding a set of jumps between a starting state to a winning one. This sequence of jumps can be discovered using traditional AI search algorithms. Specifically, these games are single-player with complete information and full transparency. Given that the number of possible jumps  at each stage is limited, a breadth-first search approach ensures finding the shortest possible path to a solution in the minimum number of jumps or proving that no such a path exists.</span></p><p><span>We first describe how this search is implemented using  </span><em><span>Flip It</span></em><span> as an example, as its state description is straightforward. However, the search algorithm remains the same for other games.</span></p><p><em><span>Flip It</span></em><span> is a variation of the classic Solitaire game played on a 4 × 4 grid, as illustrated in the top row of Table 2. Each space is designated by a letter, and the initial setup depicts turtles resting with their orange bellies facing upward (as seen in the first image). The letter associated with each grid cell can be inferred based on its surroundings or by hovering your cursor over the turtle, revealing its position. The goal is to find a series of jumps to turn them all onto their belly.  A turtle flips onto its belly or back when another jumps over it. The jumping turtle is not flipped. A turtle can only jump over one or two other turtles located on the same row, column, or diagonal. </span></p><p><span>The second picture shows when the turtle in A jumped to C, flipping the turtle in B and then to K, flipping G, these consecutive jumps with the same piece are called a move</span><span>.</span><span> The two following jumps flip the turtles in K and F giving rise to a situation where all turtles are belly up, thus forming a winning situation. Note that, in the third picture, a different winning situation could have arisen if K had moved to A.</span></p><table>
+    <tr>
+        <td><img src="./images/Flip-It-4.jpg" style="zoom:40%;" /></td>
+        <td><img src="./images/Flip-It-4-1.jpg" style="zoom:40%;"></td>
+        <td><img src="./images/Flip-It-4-2.jpg" style="zoom:40%;" /></td>
+        <td><img src="./images/Flip-It-4-3.jpg" style="zoom:40%;" /></td>
+    </tr>
+    <tr>
+        <td>Initial state</td>
+        <td>Move A-CK</td>
+        <td>Jump G-O</td>
+        <td>Jump B-J - Win!</td>
+    </tr>
+    <tr>
+        <td>ABFG</td>
+        <td>bFgK</td>
+        <td>bFko</td>
+        <td>bfko</td>
+    </tr>
+    <tr>
+        <td>A-C,A-K,B-J,B-L,F-H,G-E</td>
+        <td>B-J,B-L,F-H,G-E,G-O,K-A</td>
+        <td>B-J,F-P,K-A,O-G</td>
+        <td></td>
+    </tr>
+    <caption>Table 2: Initial state, followed by a move and a jump to get to a <i>winning</i> state  in <i>Flip It</i>. 
+The third line shows the state string that encodes it.
+The last line shows the list of possible jumps at each state.</caption>
+</table><p>&nbsp;</p><h2 id='definition-of-a-state'><span>Definition of a State</span></h2><p><span>In this type of puzzle, a state is defined by the </span><em><span>position</span></em><span> of each piece on the board given by its row and column indices; a piece can also be in a given state such as its orientation or stacking other pieces.  To prevent endless loops, it is crucial to efficiently mark explored states. This can be accomplished by encoding the state in a way that makes it simple and quick to determine whether a position has already been visited or needs to be explored in the future.</span></p><p><span>In JavaScript, one can achieve this using either a </span><code>Set</code><span> or a </span><code>Map</code><span> data structure, with a string as the key. For </span><em><span>Flip It</span></em><span>, we opted for the encoding displayed in the third row of Table 2. Only the positions that have a turtle are specified, using the corresponding letter; when the turtle is on its back, we use the corresponding lowercase character. Certainly, we could have opted for a more compact encoding, where each position has just three states: empty, belly or back. With 2 bits for 16 positions, we could have used 32 bits. However, for development convenience, we chose to use a more descriptive string for each position.</span></p><p><span>For more complex state definitions, we merely </span><em><span>stringify</span></em><span> the JSON encoding of the state and use this string as  a key in the </span><em><span>Set</span></em><span> or </span><em><span>Map</span></em><span>.</span></p><h2 id='definition-of-configurations'><span>Definition of Configurations</span></h2><p><span>Each game comes with a booklet that contains a numbered list of interesting configurations, organized into levels by the game designer. The content of the booklet must be converted into a computer-readable format that serves as an initial state. For </span><em><span>Flip I</span></em><span>t we use only the letter corresponding to a cell with a turtle. Therefore, the problem description is in the same format as the initial state, but this is not always the case. For example, for </span><em><span>Titanic</span></em><span>, the input format was chosen to be easy to enter. Unfortunately, it did not allow for encoding all possible states, including those involving boats carrying passengers, as will be discussed in the next subsection. </span></p><p><span>A JavaScript file contains a list of levels, each with its unique attributes, along with an object that maps problem numbers to their respective initial input states. </span></p><p><span>This file also contains validation code for input states. For </span><em><span>Flip It</span></em><span> this consists of a string containing between three and fifteen uppercase letters from A to P, with no duplicates. Problem strings can also serve as starting states, so the conversion from the input to a starting state is only a name change in the export directive.</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="json"><div class="CodeMirror cm-s-inner cm-s-null-scroll" lang="json"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 44px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 36px; margin-bottom: 0px; border-right-width: 0px; min-width: 663.734375px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -36px; width: 36px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">export</span> {<span class="cm-property">levels</span>, <span class="cm-property">problems</span> <span class="cm-variable">as</span> <span class="cm-variable">startStates</span>}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">const</span> <span class="cm-variable">levels</span> <span class="cm-operator">=</span>[{<span class="cm-string cm-property">"en"</span>:<span class="cm-string">"Beginner"</span>,<span class="cm-string cm-property">"fr"</span>:<span class="cm-string">"Débutant"</span>,<span class="cm-string cm-property">"from"</span>:<span class="cm-number">1</span>,<span class="cm-string cm-property">"to"</span>:<span class="cm-number">10</span>},</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">               {<span class="cm-string cm-property">"en"</span>:<span class="cm-string">"Intermediate"</span>,<span class="cm-string cm-property">"fr"</span>:<span class="cm-string">"Intermédiaire"</span>,<span class="cm-string cm-property">"from"</span>:<span class="cm-number">11</span>,<span class="cm-string cm-property">"to"</span>:<span class="cm-number">20</span>},</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">               {<span class="cm-string cm-property">"en"</span>:<span class="cm-string">"Advanced"</span>,<span class="cm-string cm-property">"fr"</span>:<span class="cm-string">"Avancé"</span>,<span class="cm-string cm-property">"from"</span>:<span class="cm-number">21</span>,<span class="cm-string cm-property">"to"</span>:<span class="cm-number">30</span>},</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">               {<span class="cm-string cm-property">"en"</span>:<span class="cm-string">"Expert"</span>,<span class="cm-string cm-property">"fr"</span>:<span class="cm-string">"Expert"</span>,<span class="cm-string cm-property">"from"</span>:<span class="cm-number">31</span>,<span class="cm-string cm-property">"to"</span>:<span class="cm-number">40</span>}];</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">const</span> <span class="cm-variable">problems</span> <span class="cm-operator">=</span> {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">      <span class="cm-number cm-property">1</span>:<span class="cm-string">"ABH"</span>,</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">      <span class="cm-meta">...</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">      <span class="cm-number">40</span>:<span class="cm-string">"ABCDEFGHIJLMNOP"</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">   }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// validate problems and convert them to start states</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 299px;"></div><div class="CodeMirror-gutters" style="height: 299px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 35px;"></div></div></div></div></pre><h2 id='conversion-from-a-problem-to-a-starting-state'><span>Conversion from a problem to a starting state</span></h2><p><span>For most games, the configuration must be encoded in a state that can be easily parsed, as this operation is done at each step of the solving process. </span></p><p><span>The second column of Table 3 shows the input string corresponding to the problem shown in the </span><em><span>Titanic</span></em><span> booklet as in the first column . The direction of each boat is indicated by an arrow followed by the number of the boat in a template literal enclosed in backticks. The passengers are represented by the corresponding letter, while empty spaces are represented by dashes. This is appropriate for a starting position without any passengers on the boat. However, a comprehensive state must accommodate boats carrying passengers and passengers aware of their current vessel. The third column displays the JSON representation associated with the initial position. We had previously created a simpler, ad hoc encoding  parsed with a regular expression. However, we discovered that the JSON encoding and decoding process is significantly more efficient at run-time. </span></p><center>Table 3: Input  format and the corresponding JSON encoding for <i>Titanic</i></center><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><img src="./images/Titanic-1.jpg" style="zoom:25%;" /></th><th><img src="./images/Titanic-1-input.jpg" style="zoom:150%;" /></th><th><img src="./images/Titanic-1-JSON.jpg" style="zoom:150%;" /></th></tr></thead><tbody></tbody></table></figure><p><span>The game of </span><em><span>Anti-Virus</span></em><span> presents an intriguing example of a transformed state. Due to the inclined board, the lines of the grid have varying lengths, making indexing slightly more complicated. However, for the initial position input, we use the </span><em><span>visible</span></em><span> portion of the grid. </span></p><p><span>The initial cell on the first row of Table 4 displays a board that shows the coordinates of the intersections: a zero-based index for each row and a zero-based index from the left for each row. The adjacent cell shows the corresponding input notation for this problem: each piece is enclosed in square brackets, starting with the piece number, followed by the coordinates as zero-based line and column numbers from the top and left. The position of the </span><em><span>center</span></em><span> is given first, followed by the positions of the other dots. </span></p><p><span>The left cell of the second line of Table 4 shows how the </span><em><span>visible lo</span></em><span>zenge is embedded in a rectangular grid of 8 lines of 7 cells each. Unused positions are shown with a dot and empty positions with an underline. This grid numbering is used to encode states in JSON with embedded lists. The right cell of the second line shows an example. In it, the first sublist of a piece indicates the line and column numbers of its center. Other sublists are relative positions from this center. By using relative positions, moving a piece after a move becomes easier. Only the </span><em><span>center</span></em><span> needs to be translated, since the entire SVG is relocated due to its built-in relative translation capabilities.</span></p><center>Table 4: Input format and internal representation for <i>Anti-Virus</i></center><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><img src="./images/AntiVirus-2-coord.jpg" style="zoom:50%;" /></th><th><img src="./images/AntiVirus-2-input.jpg" style="zoom:150%;" /></th></tr></thead><tbody><tr><td style='text-align:center;' ><img src="./images/AntiVirus-2-coord-abs.jpg" style="zoom:100%;" /></td><td><img src="./images/AntiVirus-2-JSON.jpg" style="zoom:80%;" /></td></tr></tbody></table></figure><p>&nbsp;</p><h2 id='possible-jumps-for-each-piece'><span>Possible jumps for each piece</span></h2><p><span>To begin, the set of all possible jumps for each state must be established. For </span><em><span>Flip It,</span></em><span> each turtle is examined to determine if it is adjacent to another turtle horizontally, vertically, or diagonally, and if it can jump over one or two other turtles. Table 2’s fourth row displays the potential jumps for the first three stages. Of course, in some games, jumps can be more intricate, such as not overlapping another piece or rotating or turning it over. </span></p><p><span>As a breadth first search technique is used, it is usually a good heuristic to select the pieces with the least possible number of moves at each step. In that way, the search tree width is somewhat limited, but this can be counterproductive, in some cases, if the </span><em><span>wrong</span></em><span> piece and orientation are first tried.</span></p><p><span>After each jump, the game’s state must be updated to reflect where the piece has moved, as well as any potential side effects. In </span><em><span>Flip It</span></em><span>, this means </span><em><span>turning over</span></em><span> the turtles that were jumped. In some games, such as </span><em><span>Titanic</span></em><span> and </span><em><span>Squirrels Go Nuts</span></em><span>, a jump can change the piece (boarding people or losing a nut)  and the board (removing people from the sea or filling a hole) . But that effect is only taken into account if this move is chosen, but it should be computed when finding the possible moves.</span></p><p><span>For some games, possible move finding can be more involved. In particular, for placing games, such as </span><em><span>City Maze</span></em><span> or </span><em><span>Laser Maze</span></em><span>, in order to limit the number of possible moves, pieces from the reserve should not be tried everywhere on the board but only on free places along the path of the ray or the laser. Moreover, when there are similar pieces in the reserve, only one of each kind should be tried at a given step. For </span><em><span>Laser Maze</span></em><span>, at each step, we first pick the pieces from the reserve with the least number of orientations. </span></p><p><span>Pieces in </span><em><span>Grizzly Gears</span></em><span> do not move but only rotate 90 degrees clockwise or anticlockwise, so it might be thought that determining the moves would be simple. But it revealed to be quite intricate because the irregular shape of one piece is often hindered by the orientation of its neighbours. </span></p><h2 id='exploring-states'><span>Exploring States</span></h2><p><span>The following algorithm describes a </span><em><span>simili</span></em><span> JavaScript implementation of the systematic state exploration with a breadth-first search. It also tracks the transitions between configurations, starting at the current </span><code>state</code><span> represented as a string. This implementation uses the fact that a JavaScript </span><code>Map</code><span> maintains the insertion order of its elements during traversal, meaning that removing the </span><em><span>first</span></em><span> element is the </span><em><span>old</span></em><span>est’ one.</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="javascript" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 44px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 36px; margin-bottom: 0px; border-right-width: 0px; min-width: 715.59375px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>22</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -36px; width: 36px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">done</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">Set</span>()  <span class="cm-comment">// set of seen configurations</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">to_do</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">Map</span>() <span class="cm-comment">// Map: key: configuration, value: the last jump</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lastJump</span> <span class="cm-operator">=</span> <span class="cm-atom">null</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">to_do</span>.<span class="cm-property">set</span>(<span class="cm-variable">state</span>,<span class="cm-variable">last_jump</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">while</span> (<span class="cm-variable">to_do</span>.<span class="cm-property">size</span><span class="cm-operator">&gt;</span><span class="cm-number">0</span>){</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">   [<span class="cm-variable">state</span>,<span class="cm-variable">last_jump</span>] <span class="cm-operator">=</span> <span class="cm-variable">remove_first</span>(<span class="cm-variable">to_do</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">   <span class="cm-variable">current</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">Board</span>(<span class="cm-variable">config</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">   <span class="cm-variable">allowed_jumps</span> <span class="cm-operator">=</span> <span class="cm-variable">current</span>.<span class="cm-property">allowed_jumps</span>();</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">   <span class="cm-variable">reorder</span>(<span class="cm-variable">allowed_jumps</span>) <span class="cm-comment">// optional</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">   <span class="cm-keyword">for</span> (<span class="cm-variable">jump</span> <span class="cm-keyword">of</span> <span class="cm-variable">allowed_jumps</span>){</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">       <span class="cm-variable">current</span>.<span class="cm-property">play</span>(<span class="cm-variable">jump</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">       <span class="cm-keyword">if</span> (<span class="cm-variable">current</span>.<span class="cm-property">isComplete</span>()) <span class="cm-comment">// exit as soon as a solution is found</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">          <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">return</span> [<span class="cm-variable">current</span>,<span class="cm-variable">jump</span>.<span class="cm-property">extend</span>(<span class="cm-variable">lastJump</span>)] </span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">       <span class="cm-keyword">else</span> { <span class="cm-comment">// save new state if it has not yet been seen or saved</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">            <span class="cm-variable">state_new</span> <span class="cm-operator">=</span> <span class="cm-variable">state</span>.<span class="cm-property">to_config</span>();</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">            <span class="cm-keyword">if</span> (<span class="cm-operator">!</span><span class="cm-variable">done</span>.<span class="cm-property">has</span>(<span class="cm-variable">state_new</span>) <span class="cm-operator">&amp;&amp;</span> <span class="cm-operator">!</span><span class="cm-variable">to_do</span>.<span class="cm-property">has</span>(<span class="cm-variable">state_new</span>))</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">17</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">                <span class="cm-variable">to_do</span>.<span class="cm-property">set</span>(<span class="cm-variable">state_new</span>,<span class="cm-variable">jump</span>.<span class="cm-property">extend</span>(<span class="cm-variable">lastJump</span>))</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">18</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">       }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">19</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">       <span class="cm-variable">current</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">Board</span>(<span class="cm-variable">config</span>) <span class="cm-comment">// recover the initial state for this iteration</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">20</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">   }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">21</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">22</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">return</span> <span class="cm-atom">null</span> <span class="cm-comment">// no solution found after having explored all states</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 506px;"></div><div class="CodeMirror-gutters" style="height: 506px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 35px;"></div></div></div></div></pre><p><span>This algorithm guarantees finding the solution with the fewest jumps, but not necessarily in the fewest steps. It does this by examining all states after n jumps before moving on to those after n+1 jumps, and stopping as soon as it finds a solution.</span></p><p><span>To maximize the number of consecutive jumps on a single piece, the permitted jumps (as outlined in line 9) are rearranged to prioritize exploring jumps that continue the previous jump with the same piece. This strategy is beneficial, but it doesn’t guarantee the fewest possible moves. </span></p><p><span>The sequence of jumps can be inverted by tracing the links between each state. This reversed list is then consolidated, with consecutive jumps involving the same piece combined into single moves (as shown in the second column of the table). This approach displays the path to the solution.</span></p><p><span>This algorithm is very fast for </span><em><span>Flip It</span></em><span> and other games, taking only a few milliseconds on a MacBook Pro for most problems. However, a very difficult problem (the state </span><code>ABCDFGJKMNOP</code><span> with four empty spaces) took almost 10 minutes after more than 2 million iterations, leaving 1.7 million configurations unexplored for a solution in 11 jumps. We thus see that even a seemingly simple game can lead to many different states.</span></p><h1 id='web-application'><span>Web application</span></h1><p><span>Using a computer to solve a puzzle can be intriguing, but nothing beats the excitement of manually manipulating pieces on a digital screen or engaging in hands-on play with a tangible version. </span></p><p><span>On the computer, however, the system can verify that only permitted moves are made, and it displays a message of congratulations upon encountering a winning situation. Sometimes, the system can discern that a solution is unattainable from a specific state. At the moment, it recognizes this scenario when no piece can move from that state. However, a piece may still be able to move, albeit only to a previous state. In theory, one could implement the algorithm from the previous section after each move to identify an insoluble case. We have chosen not to do so.  </span></p><p><span>The computer program’s convenience is that it allows for easy reversal of recent actions or restoration to the initial state. </span></p><figure>
+<figcaption style="text-align:center">Figure 1: Graphical User Interface for <i>Flip It</i></figcaption>
+<img src="./images/FlipIt-GUI.jpg" style="width:780px; border: thin solid black"/>
+</figure><p>&nbsp;</p><p><span>The common screen layout for all games is described once again using </span><em><span>Flip It</span></em><span> (Figure 1). The center is for the board. Turtles are made to jump by dragging them into another position. If a turtle is moved to an unauthorized position, it returns to its initial spot. Additionally, if one turtle jumps over another, the latter is </span><em><span>flipped</span></em><span>.</span></p><p><span>The arrows on the board’s side are used to </span><em><span>undo</span></em><span> the previous jump (to the left) or </span><em><span>restart</span></em><span> the current problem (to the right). These buttons are hidden on a small screen, such as on a smartphone, so that the game display appears at the top.</span></p><p><span>The bottom left part of the board is used to select an initial configuration from a range of levels of difficulty. These correspond to the numbered configurations listed in the manual or physical game cards.</span></p><p><span>The lower right corner serves as a message area, where the system displays either the user’s jump sequences leading to a winning configuration, or a solution found upon clicking the </span><code>Solve</code><span> button. </span></p><p><span>By clicking on the top-right corner, you will find explanations of the game’s rules and how to use the graphic interface. These instructions are available in both English and French.</span></p><p><span>Each game has its own distinctive method of moving pieces on the board, which sets it apart. For instance, in </span><em><span>Snow Problem</span></em><span> players roll a snowball by clicking on it, and when multiple directions are available, directional arrows appear so that the user can select a direction. In </span><em><span>Titanic</span></em><span> players can also navigate boats using the arrow keys on the keyboard. For River Crossing, clicking is used for either moving the hiker or for showing where a plank must be put.</span></p><p><span> The fundamental principles of all games remain the same: a board, pieces, and a way to move them around. This is a classic example of the Model-View-Controller architecture, with the state serving as the model, the display as the view, and the mouse and keyboard as the controller.</span></p><h2 id='graphic-element-representation'><span>Graphic Element Representation</span></h2><p><span>We chose SVG for graphics because SVG elements can be easily moved and rotated to match physical actions. Moreover, overlapping drawings simulate the board in the background with pieces of different shapes over it. Furthermore, these graphics can seamlessly adapt to any screen size, all while using a single internal coordinate system</span><span>.</span><span>  </span></p><p><span>Transforming the screen pixel coordinates of a mouse click into SVG coordinates is more intricate</span><span>.</span><span> It considers the global SVG element’s location on the screen, as well as its width and height, along with the view box’s dimensions</span><span>.</span><span> </span></p><p><span>A listener can be attached to each SVG element that can move</span><span>.</span><span> This allows the specific element to be identified using the </span><code>currentTarget</code><span> field of the event when a mouse click occurs</span><span>.</span><span> Since only valid moves are displayed as choices, there is no need to validate the jumps during the game</span><span>.</span><span> </span></p><p><span>Since several graphics in a game share a similar form, they can be described only once within a </span><code>defs</code><span> tag</span><span>.</span><span> Subsequent </span><code>use</code><span> tags can then reference them in either the </span><code>background</code><span> or </span><code>pieces</code><span> sections</span><span>.</span><span> This setup ensures that the pieces are displayed over the background representing the physical board because the graphic elements are displayed in document order</span><span>.</span><span> </span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="html"><div class="CodeMirror cm-s-inner cm-s-null-scroll" lang="html"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 36px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 28px; margin-bottom: 0px; border-right-width: 0px; min-width: 776.085205px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>5</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -28px; width: 28px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 19px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">svg</span> <span class="cm-attribute">viewBox</span>=<span class="cm-string">"0 0 4 4"</span> <span class="cm-attribute">xmlns</span>=<span class="cm-string">"http://www.w3.org/2000/svg"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"svg_element"</span> <span class="cm-attribute">width</span>=<span class="cm-string">"400px"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 19px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">defs</span> <span class="cm-attribute">id</span>=<span class="cm-string">"defs"</span><span class="cm-tag cm-bracket">&gt;&lt;/</span><span class="cm-tag">defs</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 19px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">g</span> <span class="cm-attribute">id</span>=<span class="cm-string">"background"</span><span class="cm-tag cm-bracket">&gt;&lt;/</span><span class="cm-tag">g</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 19px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">g</span> <span class="cm-attribute">id</span>=<span class="cm-string">"pieces"</span><span class="cm-tag cm-bracket">&gt;&lt;/</span><span class="cm-tag">g</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 19px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">svg</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 115px;"></div><div class="CodeMirror-gutters" style="height: 115px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 27px;"></div></div></div></div></pre><p><span> </span><em><span>Anti-Virus</span></em><span>, shown in the second table of section 2.3, makes use of the power of SVG. It creates the board and pieces using absolute coordinates in an 8 × 7 grid that is rotated 45° within the view</span><span>.</span><span> In addition, a </span><em><span>filter</span></em><span> that softens and shifts the drawings of the pieces creates a drop shadow effect that makes them stand out</span><span>.</span><span> This filter effect is also used in other games</span><span>.</span><span> Unfortunately, it is not compatible with the Safari browser, so it is not applied when the game is running in this browser</span><span>.</span></p><p><span>Creating SVG elements, a natural choice would have been </span><em><span>D3</span><span>.</span><span> Howeve</span></em><span>r this library is geared towards data analysis and animation</span><span>.</span><span>  Instead, we used </span><em><span>jQuery</span></em><span> because it makes it easy to manipulate HTML elements</span><span>.</span><span> As SVG elements are in a specific name space, we used a function to create them with an object whose keys are the attribute names and values are their corresponding values</span><span>.</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="javascript"><div class="CodeMirror cm-s-inner cm-s-null-scroll" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 36px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 28px; margin-bottom: 0px; border-right-width: 0px; min-width: 689.65625px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>8</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -28px; width: 28px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 19px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">function</span> <span class="cm-def">svg</span>(<span class="cm-def">tagName</span>,<span class="cm-def">attrs</span>,<span class="cm-meta">...</span><span class="cm-def">body</span>){</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 19px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">var</span> <span class="cm-def">$e</span> <span class="cm-operator">=</span> <span class="cm-variable">$</span>(<span class="cm-variable">document</span>.<span class="cm-property">createElementNS</span>(<span class="cm-string">'http://www.w3.org/2000/svg'</span>,<span class="cm-variable-2">tagName</span>));</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 19px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">if</span>(<span class="cm-variable-2">arguments</span>.<span class="cm-property">length</span><span class="cm-operator">&gt;</span><span class="cm-number">1</span>){</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 19px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-variable-2">$e</span>.<span class="cm-property">attr</span>(<span class="cm-variable-2">attrs</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 19px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-keyword">if</span>(<span class="cm-variable-2">body</span><span class="cm-operator">!=</span><span class="cm-atom">null</span>)<span class="cm-variable-2">$e</span>.<span class="cm-property">append</span>(<span class="cm-variable-2">body</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 19px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 19px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">return</span> <span class="cm-variable-2">$e</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 19px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 184px;"></div><div class="CodeMirror-gutters" style="height: 184px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 27px;"></div></div></div></div></pre><p><span>The following subsection shows an example of invoking this function</span><span>.</span></p><h3 id='board-representation'><span>Board representation</span></h3><p><span>The playing surface is an MxN grid of identical elements</span><span>.</span><span> To facilitate drawing and position calculation, each position on the board is a square unit</span><span>.</span><span> The </span><code>viewBox</code><span> attribute ensures that the system adjusts the graphics to the precise pixel coordinates</span><span>.</span><span>  </span></p><p><span>The following code defines a single cell on the board that will be </span><em><span>used</span></em><span> 16 times in </span><em><span>Flip It</span></em><span>.</span><span> This cell consists of a rectangle covering the entire 1 by 1 square, and then draws a circle with a radius of 0</span><span>.</span><span>4 and a center at 0</span><span>.</span><span>5, 0</span><span>.</span><span>5</span><span>.</span><span> Because the color of the circle differs slightly from that of the rectangle, it recalls the colors of the original game</span><span>.</span><span>   </span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="swift"><div class="CodeMirror cm-s-inner cm-s-null-scroll" lang="swift"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 36px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: medium;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 28px; margin-bottom: 0px; border-right-width: 0px; min-width: 793.359375px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: medium;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>4</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -28px; width: 28px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 19px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">svg</span><span class="cm-punctuation">(</span><span class="cm-string">"g"</span><span class="cm-punctuation">,{</span><span class="cm-variable">id</span><span class="cm-punctuation">:</span><span class="cm-string">"board-def"</span><span class="cm-punctuation">},</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 19px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">   <span class="cm-variable">svg</span><span class="cm-punctuation">(</span><span class="cm-string">"rect"</span><span class="cm-punctuation">,{</span><span class="cm-variable">width</span><span class="cm-punctuation">:</span><span class="cm-number">1</span><span class="cm-punctuation">,</span><span class="cm-variable">height</span><span class="cm-punctuation">:</span><span class="cm-number">1</span><span class="cm-punctuation">,</span> <span class="cm-variable">fill</span><span class="cm-punctuation">:</span><span class="cm-string">"#AAFF00"</span><span class="cm-punctuation">,</span><span class="cm-variable">stroke</span><span class="cm-punctuation">:</span><span class="cm-string">"#00FF00"</span><span class="cm-punctuation">,</span><span class="cm-string">"stroke-width"</span><span class="cm-punctuation">:</span><span class="cm-number">0.02</span><span class="cm-punctuation">}),</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 19px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">   <span class="cm-variable">svg</span><span class="cm-punctuation">(</span><span class="cm-string">"circle"</span><span class="cm-punctuation">,{</span><span class="cm-variable">cx</span><span class="cm-punctuation">:</span><span class="cm-number">0.5</span><span class="cm-punctuation">,</span><span class="cm-variable">cy</span><span class="cm-punctuation">:</span><span class="cm-number">0.5</span><span class="cm-punctuation">,</span><span class="cm-variable">r</span><span class="cm-punctuation">:</span><span class="cm-number">0.4</span><span class="cm-punctuation">,</span><span class="cm-variable">fill</span><span class="cm-punctuation">:</span><span class="cm-string">"#90EE90"</span><span class="cm-punctuation">,</span> <span class="cm-variable">stroke</span><span class="cm-punctuation">:</span><span class="cm-string">"#00FF00"</span><span class="cm-punctuation">,</span><span class="cm-string">"stroke-width"</span><span class="cm-punctuation">:</span><span class="cm-number">0.05</span><span class="cm-punctuation">})</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 19px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-punctuation">)</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 92px;"></div><div class="CodeMirror-gutters" style="height: 92px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 27px;"></div></div></div></div></pre><h3 id='piece-and-jump-representation'><span>Piece and Jump Representation </span></h3><p><span>Each illustration is created in a square unit for </span><em><span>Flip It</span><span>.</span><span> In this instance</span></em><span>, we opted for a collection of ellipses of varying sizes to depict the turtle</span><span>.</span><span> However, a more skilled graphic designer could undoubtedly create a more realistic version</span><span>.</span><span> There is another very similar drawing for the </span><em><span>belly</span><span>-</span><span>up</span></em><span> turtle</span><span>.</span><span> In other games, a piece can be rotated to get to another state. In </span><em><span>Flip I</span></em><span>t all the pieces are identical and can move, but this is not always the case</span><span>.</span><span> Other games feature different types of pieces, some of which cannot move</span><span>.</span></p><p><span>In some cases, pieces can occupy more than one cell. For example, the underlying grid of </span><em><span>CityMaze</span></em><span> is 18 by 18 and not 6 by 6, as would be expected just by looking at the board. This is necessary to take into account the possible shapes and orientations of arrows that can block the placement of others. For </span><em><span>AsteroidEscape</span></em><span>, each cell is divided in four, and some pieces, notably the plane, can span over the neighboring cells. Big stones can also block the movement of other pieces. </span></p><p><span>Upon being clicked, an object can be moved by drag and drop by monitoring the cursor’s movement and adjusting its  coordinates accordingly</span><span>.</span><span> However, before moving any piece, it must first be relocated to the end of the </span><code>pieces</code><span> array</span><span>.</span><span> This is achieved effortlessly by </span><em><span>appending</span></em><span> this element at the end of the </span><code>pieces</code><span> array, which moves it to the end while removing it from its previous location in the HTML document. Drag and drop of pieces is used for games like </span><em><span>FlipIt</span></em><span>, </span><em><span>Hot Spot</span></em><span>, </span><em><span>City Maze</span></em><span> or </span><em><span>CatsNBoxes</span></em><span>.</span></p><p><span>But in other games, like </span><em><span>Cannibal Monsters</span></em><span>, </span><em><span>Antivirus</span></em><span>, </span><em><span>Rush Hour</span></em><span> or </span><em><span>Snow Problem</span></em><span>, pieces can only be moved horizontally or vertically on neighboring cells. In these cases, after we have computed all the possible moves for each piece, we display arrows only above those pieces that can be moved</span><span>.</span><span> The arrows only indicate the permitted directions</span><span>.</span><span> The user can thus only choose a valid move at each step. This greatly simplifies programming, as there is no need for jump validation. This might be considered as a simplification of the game, because it might show moves that could have been </span><em><span>forgotten</span></em><span> by the player. </span></p><p><span>We explored a different method for </span><em><span>Titanic</span></em><span>: the player taps on a ship to activate it, and then the arrow keys on the keyboard are used to maneuver it. The user interface is more complex to code, but it feels natural when playing on a computer. However, it is not ideal for mobile devices without a keyboard. An alternative solution could be implementing drag-and-drop functionality.</span></p><p><span>In </span><em><span>Asteroid Escape</span></em><span> or </span><em><span>Temple Trap</span></em><span>, only the pieces adjacent to the hole can be moved</span><span>.</span><span> Therefo</span><em><span>re</span></em><span>, there is no need for directional arrows, as clicking on a movable piece causes it to move in a single direction</span><span>.</span><span> This simplifies the user interface but a way must be found to indicate that the user clicked on a piece that cannot be moved, we use </span><em><span>flashing</span></em><span> the piece.</span></p><p><em><span>Tilt</span></em><span> is a very interesting case in which it is the board that is moved (tilted, in fact) which forces all pieces to slide in the tilting direction: it would be interesting to detect tilting on a phone or tablet, but for the moment we show the allowed moves with arrows displayed around the board.</span></p><p><span>The round shapes for the board, the disks and the boats of </span><em><span>Grizzly Gears</span></em><span> are quite different than the usual rectangles for other games. They were implemented using the circle and arcs of the SVG </span><code>path</code><span> commands. The fact that a boat can be </span><em><span>shared</span></em><span> between two disks added a level of complexity when determining the origin of its rotation.</span></p><h2 id='application-organization'><span>Application Organization</span></h2><p><span>The application uses an object</span><span>-</span><span>oriented structure, where each component is a subclass of the </span><code>Piece</code><span> class, which stores its identification, row, and column index on the board</span><span>.</span><span>  The behavior of a piece for each game is given by a subclass, which must implement at least methods to draw itself (in the context of the graphical application), to change its state (e.g., flipping in </span><em><span>Flip It</span></em><span> ) and to compute all possible jumps given a grid configuration.The board is represented by the class </span><code>Board</code><span>. It stores the current state and a link to the associated display (in the context of a graphic application). Subclasses of </span><code>Board</code><span> must define methods for calculating all available moves in the current state, verifying its completion, executing a move, and reversing the previous move</span><span>.</span><span> This method can be invoked multiple times to undo multiple moves</span><span>.</span></p><p><span>Using instances of subclasses of </span><code>Piece</code><span> and </span><code>Board</code><span>, the solver of </span><a href='#exploring-states'><span>Section 2</span><span>.</span><span>4</span></a><span> returns the list of moves and jumps</span><span>.</span><span> The generic </span><code>solveAll</code><span> method calls the solver on a set of starting states, then prints the corresponding list of moves to reach the final state</span><span>.</span></p><p><span>However, it is more </span><em><span>spectacular</span></em><span> to develop a web application</span><span>.</span><span> To do this, we define a class </span><code>Display</code><span> that creates the background content to which the drawings of the pieces will be added</span><span>.</span><span> It also handles user actions, such as tracking mouse movements and choosing problems, and launches undo of moves</span><span>.</span></p><p><span>All applications have a common screen interface for choosing problems, </span><em><span>undo</span></em><span>, </span><em><span>replay</span></em><span>, and language selection</span><span>.</span><span> This part remains the same in all games</span><span>.</span></p><h1 id='creating-a-new-game'><span>Creating a New Game</span></h1><p><span>All these games share the same control graphical interface except for the moves within the game area. These controls are defined in an HTML template, creating the base page, as seen in Figure 2</span><span>.</span><span> This page is then modified to suit the needs of each game, such as loading problems or undoing and restarting</span><span>.</span></p><figure>
+<figcaption style="text-align:center">Figure 2 : HTML template common to all Games</figcaption>
+<img src="./images/template-html.jpg" style="width:780px; border: thin solid black" />
+</figure><p><span>Template stub files are provided for game </span><em><span>Pieces</span></em><span>, </span><em><span>Boards</span></em><span>, </span><em><span>Displays</span></em><span> and the necessary JavaScript code for changing the user interface language between French and English and for showing and hiding the explanations</span><span>.</span><span> Of course, these templates can be changed, but they help in keeping uniformity between the games.</span></p><h2 id='steps-for-building-a-new-game'><span>Steps for Building a New Game</span></h2><p><span>We now describe the steps we have found useful in order to adapt a game to this framework.</span></p><ol start='' ><li><p><span>As these types of games come with a set of cards categorized by their level of difficulty, we must first find a way to encode the initial configuration in a machine</span><span>-</span><span>readable format, as we discussed in </span><a href='#definition-of-configurations'><span>Section 2.2</span></a><span>. This format is designed to be similar to the content of the game card and thus faster and easier to input. This input process is relatively cumbersome, explaining why many of our games still do not show initial configurations for all cards. </span></p></li><li><p><span>As the input chosen for the input does not necessarily capture all possible states, especially when pieces can change during the game, e.g., in </span><em><span>Titanic</span></em><span>, boats can board shipwrecked people, in </span><em><span>Squirrel Go Nuts</span></em><span>, pieces can lose their nuts</span><span>.</span><span> In </span><em><span>TipOver</span></em><span> a piece changes its form once it is tipped. The initial configuration must be transformed into a format for both the initial state and the possible transformations of the piece. This process was described in some detail in </span><a href='#conversion-from-a-problem-to-a-starting-state'><span>Section 2.3</span></a><span>. </span></p></li><li><p><span>It also proved to be very convenient to already develop a </span><code>toString()</code><span> for the </span><code>Board</code><span> class that outputs a human readable representation of the grid corresponding to the current state. This is very useful for checking the effects of board modifications after the play of a jump.</span></p></li><li><p><span>Given a state, develop a method to determine if it is a </span><em><span>winning</span></em><span> state.</span></p></li><li><p><span>Find a representation for jumps and compute the allowed ones at a given state, see </span><a href='#possible-jumps-for-each-piece'><span>Section 2.4</span></a></p></li><li><p><span>Implement the state changes according to a jump.</span></p></li><li><p><span>Test solving from starting states using the solver describes in </span><a href='#exploring-states'><span>Section 2.5</span></a><span> in batch mode.</span></p></li><li><p><span>Embed this algorithm in the Graphical User Interface: first develop SVG representations for the board and the pieces. Move representation must be developed: this often correspond to the positioning of arrows to the pieces that can move. In </span><em><span>placing</span></em><span> games such as </span><em><span>Flip It</span></em><span>, </span><em><span>City Maze</span></em><span> or </span><em><span>Hot Spot</span></em><span>, a drag-and-drop of pieces must be implemented.</span></p></li><li><p><span>Implement </span><em><span>undo</span></em><span> of a jump: in some cases it is only a matter of playing the jump inverting the source and target, but when pieces can change the form, this process is more involved because the original form must be restored.</span></p></li></ol><h1 id='conclusion'><span>Conclusion</span></h1><p><span>This document describes how to program a unified user interface for single</span><span>-</span><span>player piece placement and sliding games in some detail</span><span>.</span><span> Although all games share many characteristics, each presents its own challenges regarding the board display and modification of the game state based on moves</span><span>.</span></p><p><span>The current screen layout was designed with a computer screen and mouse in mind</span><span>.</span><span> While it can be used on a phone or tablet, the display is less user</span><span>-</span><span>friendly</span><span>.</span><span> Further development is needed in this area</span><span>.</span></p><h1 id='appendix'><span>Appendix</span></h1><h2 id='links-for-playing-games-on-the-web'><span>Links for playing games on the web</span></h2><ol start='' ><li><p><a href='AntiVirus/AntiVirus.html'><span>Anti-Virus</span></a></p></li><li><p><a href='AsteroidEscape/AsteroidEscape.html'><span>Asteroid Escape</span></a></p></li><li><p><a href='CannibalMonsters/CannibalMonsters.html'><span>Cannibal Monsters</span></a></p></li><li><p><a href='CatsNBoxes/CatsNBoxes.html'><span>Cats &amp; Boxes</span></a></p></li><li><p><span>CityMaze : </span><a href='CityMaze/CityMaze_Express_Delivery.html'><span>Express Delivery</span></a><span>, </span><a href='CityMaze/CityMaze_On_the_Double.html'><span>On the Double</span></a></p></li><li><p><a href='FlipIt/FlipIt.html'><span>Flip It</span></a></p></li><li><p><a href='GraveYardShift/GraveYardShift.html'><span>Graveyard Shift</span></a></p></li><li><p><a href='GrizzlyGears/GrizzlyGears.html'><span>Grizzly Gears</span></a></p></li><li><p><a href='HotSpot/HotSpot.html'><span>Hot Spot</span></a></p></li><li><p><a href='JumpIn/JumpIn.html'><span>Jump In</span></a></p></li><li><p><a href='laserMaze/LaserMaze.html'><span>Laser Maze</span></a></p></li><li><p><a href='RiverCrossing/RiverCrossing.html'><span>River Crossing</span></a></p></li><li><p><a href='RushHour/RushHour.html'><span>Rush Hour</span></a></p></li><li><p><a href='SnowProblem/SnowProblem.html'><span>Snow Problem</span></a></p></li><li><p><a href='SquirrelGoNuts/SquirrelGoNuts.html'><span>Squirrel Go Nuts</span></a></p></li><li><p><a href='TempleTrap/Temple Trap.html'><span>Temple Trap</span></a></p></li><li><p><a href='Tilt/Tilt.html'><span>Tilt</span></a></p></li><li><p><a href='TipOver/TipOver.html'><span>Tip over</span></a></p></li><li><p><a href='Titanic/Titanic.html'><span>Titanic</span></a></p></li></ol><h2 id='links-to-the-source-code'><span>Links to the source code</span></h2><ol start='' ><li><p><a href='./Template'><span>Template</span></a></p></li><li><p><a href='./AntiVirus'><span>Anti-Virus</span></a></p></li><li><p><a href='./AsteroidEscape'><span>Asteroid Escape</span></a></p></li><li><p><a href='./CannibalMonsters'><span>Cannibal Monsters</span></a></p></li><li><p><a href='./CatsNBoxes'><span>CatsNBoxes</span></a></p></li><li><p><a href='./CityMaze'><span>City Maze</span></a></p></li><li><p><a href='./FlipIt'><span>Flip It</span></a></p></li><li><p><a href='./GraveYardShift'><span>Graveyard Shift</span></a></p></li><li><p><a href='./GrizzlyGears'><span>Grizzly Gears</span></a></p></li><li><p><a href='./HotSpot'><span>Hot Spot</span></a></p></li><li><p><a href='./JUmpIn'><span>Jump in</span></a></p></li><li><p><a href='./LaserMaze'><span>Laser Maze</span></a></p></li><li><p><a href='./RiverCrossing'><span>River Crossing</span></a></p></li><li><p><a href='./RushHour'><span>Rush Hour</span></a></p></li><li><p><a href='./SnowProblem'><span>Snow Problem</span></a></p></li><li><p><a href='./SquirrelsGoNuts'><span>Squirrels Go Nuts</span></a></p></li><li><p><a href='./TempleTrap'><span>Temple Trap</span></a></p></li><li><p><a href='./Tilt'><span>Tilt</span></a></p></li><li><p><a href='./TilpOver'><span>TiipOver</span></a></p></li><li><p><a href='./Titanic'><span>Titanic</span></a></p></li></ol></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash=t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script><style>
+@media print {
+    html {
+        font-size: 14px;
+        margin:10px;
+    }
+}
+@media screen and (max-width: 1200px) { 
+  .typora-export-sidebar { display: none; }
+}
+</style></body>
+</html>

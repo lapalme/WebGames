@@ -1,0 +1,342 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "name": "Launch current HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/${relativeFile}"
+        },
+        {
+            "name": "Launch current js",
+            "program": "${file}",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "name": "AntiVirus batch",
+            "program": "${workspaceFolder}/AntiVirus/AntiVirus_batch",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "AntiVirus HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/AntiVirus/AntiVirus.html"
+        },
+        {
+            "name": "AsteroidEscape batch",
+            "program": "${workspaceFolder}/AsteroidEscape/AsteroidEscape_batch",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "AsteroidEscape HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/AsteroidEscape/AsteroidEscape.html"
+        },
+        {
+            "name": "CannibalMonsters batch",
+            "program": "${workspaceFolder}/CannibalMonsters/CannibalMonsters_batch",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "CannibalMonsters HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/CannibalMonsters/CannibalMonsters.html"
+        },
+        {
+            "name": "CatsNBoxes batch",
+            "program": "${workspaceFolder}/CatsNBoxes/CatsNBoxes_batch",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "CatsNBoxes HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/CatsNBoxes/CatsNBoxes.html"
+        },
+        {
+            "name": "CityMaze: batch",
+            "program": "${workspaceFolder}/CityMaze/CityMaze_batch",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "CityMaze: Express HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/CityMaze/CityMaze_Express_Delivery.html"
+        },
+        {
+            "type": "chrome",
+            "name": "CityMaze: On the Double HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/CityMaze/CityMaze_On_the_Double.html"
+        },
+        {
+            "name": "FlipIt batch",
+            "program": "${workspaceFolder}/FlipIt/FlipIt_batch.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "FlipIt HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/FlipIt/FlipIt.html"
+        },
+        {
+            "name": "GraveYardShift batch",
+            "program": "${workspaceFolder}/GraveYardShift/GraveYardShift_batch.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "GraveYardShift HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/GraveYardShift/GraveYardShift.html"
+        },
+        {
+            "name": "GrizzlyGears batch",
+            "program": "${workspaceFolder}/GrizzlyGears/GrizzlyGears_batch.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "GrizzlyGears HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/GrizzlyGears/GrizzlyGears.html"
+        },
+        {
+            "name": "HotSpot batch",
+            "program": "${workspaceFolder}/HotSpot/HotSpot_batch.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "HotSpot HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/HotSpot/HotSpot.html"
+        },
+        {
+            "name": "JumpIn batch",
+            "program": "${workspaceFolder}/JumpIn/JumpIn_batch",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "JumpIn HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/JumpIn/JumpIn.html"
+        },
+        {
+            "name": "LaserMaze batch",
+            "program": "${workspaceFolder}/LaserMaze/LaserMaze_batch",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "RiverCrossing HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/RiverCrossing/RiverCrossing.html"
+        },
+        {
+            "name": "RiverCrossing batch",
+            "program": "${workspaceFolder}/RiverCrossing/RiverCrossing_batch",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "LaserMaze HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/LaserMaze/LaserMaze.html"
+        },
+        {
+            "name": "RushHour batch",
+            "program": "${workspaceFolder}/RushHour/RushHour_batch.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "RushHour HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/RushHour/RushHour.html"
+        },
+        {
+            "name": "SnowProblem batch",
+            "program": "${workspaceFolder}/SnowProblem/SnowProblem_batch.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "SnowProblem HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/SnowProblem/SnowProblem.html"
+        },
+        {
+            "name": "SquirrelsGoNuts batch",
+            "program": "${workspaceFolder}/SquirrelsGoNuts/SquirrelsGoNuts_batch",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "SquirrelsGoNuts HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/SquirrelsGoNuts/SquirrelsGoNuts.html"
+        },
+        {
+            "name": "TempleTrap batch",
+            "program": "${workspaceFolder}/TempleTrap/TempleTrap_batch",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "TempleTrap HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/TempleTrap/TempleTrap.html"
+        },
+        {
+            "name": "Tilt batch",
+            "program": "${workspaceFolder}/Tilt/Tilt_batch",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "Tilt HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/Tilt/Tilt.html"
+        },
+        {
+            "name": "TipOver batch",
+            "program": "${workspaceFolder}/TipOver/TipOver_batch.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "TipOver HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/TipOver/TipOver.html"
+        },
+        {
+            "name": "Titanic batch",
+            "program": "${workspaceFolder}/Titanic/Titanic_batch.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "Titanic HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/Titanic/Titanic.html"
+        },
+        {
+            "type": "chrome",
+            "name": "SVG_Playground HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/SVG_Path_Playground/SVG_PP.html"
+        },
+    ]
+}

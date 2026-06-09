@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
+    <title>SVG Path Playground</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script charset="utf-8" src="SVG_PP.js" type="module"></script>
+    <link href="SVG_PP.css" rel="stylesheet" />
+</head>
+<body>
+    <h1><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorials/SVG_from_scratch/Paths" target="_blank">SVG Path</a> Playground 
+    <span id="hide-show-explanation">
+        <span lang="en" id="show-en-expl">Show explanations</span>
+        <span lang="en" id="hide-en-expl" style="display: none;">Hide explanations</span>           
+    </span></h1>
+    <div id="explanation">  
+    <ul>
+        <li>This page can be used to help develop SVG path definitions, associated with the <code>d</code> attribute of the <code>path</code> element, by default in a unit square. 
+        The resulting expression is shown at the bottom, which can then copy-pasted into a SVG element. </li>
+        <li>
+            These explanations take for granted that the user is familiar with the SVG path commands.
+            To better understand these commands, visit this <a href="https://www.joshwcomeau.com/svg/interactive-guide-to-paths/" target="blank_">excellent tutorial for Paths</a>.
+        </li>
+        <li>Shapes are created by first identifying points and then choosing a command, it is thus a postfix notation.</li>
+        <li>Clicking on the drawing surface adds a new point that can be used in a subsequent command.</li>
+        <li>Clicking on a command button at the top adds a command using the last <i>n</i> points. <i>n</i> depends on the command as shown in the button. Spurious points between the last command and the current one are removed.</li>
+        <li>The first command should be an <code>M</code> to define the first point of the path; otherwise no line will be drawn with the following commands.</li>
+        <li>The command is added to a list at the right of the drawing area. It is a letter followed by one or more text boxes containing the value of a point as two numbers separated by a comma.</li>
+        <li>Dragging an existing point moves it, and the command that uses it is modified accordingly. This might change more than one line.</li>
+        <li>Editing a point in a text box also changes the point and the drawing is updated when the user types a carriage return. If the content of the text box does not correspond to two numbers, the original value is put back in the text box. The input values are rounded according to the specified number of decimals.</li>
+        <li>The <code>A</code> command is different to match its parameters: the first text box corresponds to the <i>rx</i> and <i>ry</i>, the second to the three <i>flags</i> and the third text box to the final point. </li>
+        <li><code>undo</code>: removes the last command and its points. </li>
+        <li><code>clear</code>: removes all commands and points.</li>
+        <li>The text area below the drawing area shows the complete list of path commands in a form that can be used as the value of the <code>d</code> parameter for the <code>path</code> element.</li>
+        <li>An existing <code>d</code> command can be parsed and displayed. Only a subset of commands is <i></i>mplemented, in particular relative coordinates are not implemented. Parsing ignores everything that is not a command (e single letter) or a number.</li>
+        <li>The <code>viewbox</code> parameters and the number of grid lines can be adjusted at the bottom, but the surface must be a square. <code>reset</code> must be clicked so that these new values take effect. This clears the commands and the points.</li>
+        <li>The number of decimals shown in the path can be set for rounding values in the command. This also affects the possible values that can be clicked on the drawing area.</li>
+    </ul>
+    </div>
+    <fieldset>
+        <legend>Line</legend>
+        <input type="button" value="M pt" id="M"/>
+        <input type="button" value="L pt" id="L"/>
+    </fieldset>
+    <fieldset>
+        <legend>Quadratic Curve</legend>
+        <input type="button" value="Q pt,pt" id="Q"/>
+        <input type="button" value="T pt" id="T"/>
+    </fieldset>
+    <fieldset>
+        <legend>Bézier Curve</legend>
+        <input type="button" value="C pt,pt,pt" id="C"/>
+        <input type="button" value="S pt,pt" id="S"/>
+    </fieldset>
+    <fieldset>
+        <legend>Arc</legend>
+        rx:<input type="text" id="rx" value="0.1" size="5"/>
+        ry:<input type="text" id="ry" value="0.1" size="5"/>
+        x-axis-rotation:<input type="number" id="x-axis-rot" min="-360",max="360" value="0" /> 
+        large-arc-flag:<input type="number" id="large-arc" min="0" max="1" value="0"/> 
+        sweep-flag:<input type="number" id="sweep" min="0" max="1" value="1"/>
+         <input type="button" value="A pt" id="A"/>
+    </fieldset>
+    <input type="button" value="undo" id="undo"/>
+    <input type="button" value="clear" id="clear"/>
+    <br/>
+    <div class="container">
+    <svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg" id="svg_element" width="600px">
+        <defs id="defs"></defs>
+        <g id="grid" stroke="lightgray" stroke-width="0.1%"></g>
+        <g id="points" fill="red"></g>
+        <path id="path" d="" stroke-width="0.5%" stroke="black" fill="none"/>
+    </svg>
+    <table id="commands"></table>
+    </div>
+    <textarea id="trace" cols="80" lines="2"></textarea>
+    <input type="button" value="parse" id="parse"/>
+
+    <p>
+        <fieldset id="vb-fs">
+            <legend>viewBox</legend>
+            min-x:<input type="text" id="min-x" value="0" size="5"/>
+            min-y:<input type="text" id="min-y" value="0" size="5"/>
+            width-height:<input type="text" id="dimension" value="1" size="5"/>
+            # lines of grid: <input type="number" id="lines" value="10"/>
+            <input type="button" id="reset-vb" value="reset" />
+        </fieldset>
+        # digits:<input type="number" id="nbDecimals" min="1" max="4" value="2"/>
+    </p>
+</body>
+</html>

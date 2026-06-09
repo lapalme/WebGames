@@ -1,0 +1,272 @@
+export {levels,problems as startStates}
+// fix levels names and numbers
+const levels =[{"en":"Starter","fr":"Débutant","from":1,"to":10},
+               {"en":"Junior","fr":"Junior","from":11,"to":20},
+               {"en":"Expert","fr":"Expert","from":21,"to":30},
+               {"en":"Master","fr":"Maître","from":31,"to":40}];
+
+//  explain the notation
+const problems = {
+1:
+`GX...
+.....
+..O..
+.....
+..X..`,
+2:
+`XGB..
+.....
+..O..
+.....
+.....`,
+3:
+`BGX..
+.....
+..O..
+.....
+BG...`,
+4:
+`X...G
+.....
+..O..
+.....
+B...G`,
+5:
+`BGB..
+BXG..
+..O..
+.....
+.....`,
+6:
+`.XB.G
+.X...
+XXO..
+.....
+....G`,
+7:
+`X.XX.
+.....
+..O..
+G....
+B....`,
+8:
+`G.X..
+GXX..
+BXO..
+B....
+B....`,
+9:
+`..XBB
+.....
+..O..
+.....
+GB...`,
+10:
+`.....
+.....
+..OBB
+..XXX
+...BG`,
+11:
+`BX...
+GGX.X
+..O..
+.....
+.....`,
+12:
+`.X...
+.GXG.
+..OX.
+.....
+.X...`,
+13:
+`XXX..
+.XX..
+..O..
+.....
+GG..B`,
+14:
+`.....
+.....
+..O..
+..XX.
+..BGX`,
+15:
+`XB..B
+....G
+..O.X
+.....
+.....`,
+16:
+`X..X.
+G.B..
+B.O..
+.....
+.....`,
+17:
+`.....
+.....
+.XO..
+.....
+XGB..`,
+18:
+`BX...
+B..X.
+XXOX.
+G....
+.....`,
+19:
+`..XGG
+..BBB
+..O..
+.X...
+.....`,
+20:
+`XB...
+G.X..
+B.O..
+..X..
+..X..`,
+21:
+`X.X.X
+.....
+.XO..
+..X.G
+..X.B`,
+22:
+`..XGB
+.X..G
+..O..
+.....
+....B`,
+23:
+`..X..
+G....
+X.O..
+.....
+XB..X`,
+24:
+`X....
+..XGG
+..OXX
+...BB
+.....`,
+25:
+`X....
+....X
+..OXG
+..XBG
+...BB`,
+26:
+`X.X..
+.....
+..O..
+..BBB
+..XGB`,
+27:
+`XX...
+..X..
+B.O..
+XX...
+BG...`,
+28:
+`.XB.B
+.XB.G
+..OXB
+.XXX.
+.....`,
+29:
+`XBGBX
+.XX..
+..O..
+.....
+.BX..`,
+30:
+`.XX..
+.....
+.XO..
+XBX..
+BGB.X`,
+31:
+`.XX..
+.....
+..O..
+.GXB.
+.XBG.`,
+32:
+`XX..X
+GG...
+B.O..
+.....
+..X..`,
+33:
+`.....
+.....
+..OX.
+..XGB
+X.XXG`,
+34:
+`.X.X.
+.....
+.XO..
+.GBX.
+.GBX.`,
+35:
+`.GXB.
+GBX..
+X.O..
+B....
+.....`,
+36:
+`.X.BG
+.X.GB
+..OXB
+.....
+...X.`,
+37:
+`..XBG
+.X.BG
+.XO..
+..X..
+.....`,
+38:
+`XBX..
+G....
+G.O.X
+....X
+..X..`,
+39:
+`X.XGG
+...BX
+..OX.
+..X..
+.....`,
+40:
+`X...G
+G.X.B
+B.OX.
+..X..
+.X...`,    
+    
+}
+
+//  Validate
+const validRE=/[.XGBO]{5}/
+const valideRE3=/[.XGBO]{5}/
+
+for (const no in problems){
+    const problem = problems[no];
+    const lines = problem.split("\n")
+    if (lines.length!=5)
+        console.log("*** Problem %d: bad number of lines: %d instead of 5",no,lines.length)
+    else {
+        for (let i=1;i<=5;i++){
+            const re = i==3 ? valideRE3 : validRE;
+            if (!re.test(lines[i-1]))
+                console.log("*** Problem %d: bad char at line",no,i)
+            else if (i==3 && lines[i-1].charAt(2)!="O"){
+                console.log("*** Problem %d: the Hole should be in the middle",no)  
+            }
+        }
+    }    
+}

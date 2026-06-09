@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Jeux de réflexions</title>
+  <link href="Common.css" rel="stylesheet">
+</head>
+<body style="font-size:larger">
+    <h1>Versions Web de quelques <em>Jeux de réflexion</em></h1>
+    <p>Cette page donne accès à des versions web de jeux de réflexion pour une personne publiés par <a href="https://en.wikipedia.org/wiki/SmartGames">Smart Games</a> ou <a href="https://en.wikipedia.org/wiki/ThinkFun" title="ThinkFun - Wikipedia">Think Fun</a>. Ces jeux présentent une situation avec des pièces qu'il faut placer ou glisser sur le plateau afin d'atteindre une situation <em>gagnante</em>. Les situations de départ sont classées par niveau de difficulté pour atteindre la situation finale.</p> 
+    <p>J'ai toujours été un amateur de ce type de jeu sous forme physique. Pour quelques-uns d'entre eux, j'en avais développé des versions Java, dont certaines ont servi pour des travaux pratiques dans des cours de programmation que je donnais.</p>
+    <p>Dans toutes ces versions informatiques, le programme permet de trouver une solution utilisant le nombre minimum de coups. Cette solution est obtenue par une exploration systématique <em>en largeur</em> (breadth-first search) de toutes les situations possibles. Ces solutions sont obtenues en quelques secondes, même pour les situations les plus difficiles. Ceci pourrait être vu comme un peu <em>décourageant</em>, mais le but est de s'amuser.</p>
+    <p>J'ai décidé de reprogrammer certains de ces jeux pour pouvoir les jouer dans un navigateur internet sur ordinateur ou téléphone. La programmation est en Javascript et l'affichage utilise SVG, l'affichage s'adapte donc à l'écran. Ces jeux partagent un ensemble de fonctions et classes afin d'uniformiser leur utilisation et leur programmation.</p>
+    <p>Voici les jeux actuellement disponibles: </p>
+    <table>
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th><span>Lien pour jouer</span></th>
+          <th><span>But du jeu</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="./images/FlipIt.jpg" width="125px" /></td>
+          <td><a href="./FlipIt/FlipIt.html" target="blank_">Flip It</a></td>
+          <td><span>Tourner toutes les tortues</span></td>
+        </tr>
+        <tr>
+          <td><img src="./images/CannibalMonsters.jpg" width="125px" /></td>
+          <td><a href="./CannibalMonsters/CannibalMonsters.html" target="blank_">Cannibal Monsters</a></td>
+          <td><span>Empiler tous les monstres</span></td>
+        </tr>
+        <tr>
+          <td><img src="./images/SnowProblem.jpg" width="125px" /></td>
+          <td><a href="./SnowProblem/SnowProblem.html" target="blank_">Je voudrais un bonhomme de neige</a></td>
+          <td><span>Monter des bonhommes de neige en faisant rouler des boules</span></td>
+        </tr>
+        <tr>
+          <td><img src="./images/Titanic.jpg" width="125px" /></td>
+          <td><a href="./Titanic/Titanic.html" target="blank_">Titanic</a></td>
+          <td><span>Embarquer les naufragés dans les bateaux</span></td>
+        </tr>
+        <tr>
+          <td><img src="./images/RushHour.jpg" width="125px" /></td>
+          <td><a href="./RushHour/RushHour.html" target="blank_">Rush Hour</a></td>
+          <td><span>Faire sortir la voiture rouge</span></td>
+        </tr>
+        <tr>
+          <td><img src="./images/AntiVirus.jpg" width="125px" /></td>
+          <td><a href="./AntiVirus/AntiVirus.html" target="blank_">Anti-Virus</a></td>
+          <td><span>Faire sortir le </span><span>virus</span> rouge</td>
+        </tr>
+        <tr>
+          <td><img src="./images/CityMaze.jpg" width="125px" /></td>
+          <td><span>City Maze</span><br/>
+              <a href="./CityMaze/CityMaze_Express_Delivery.html" target="blank_">Express Delivery</a><br />
+              <a href="./CityMaze/CityMaze_On_the_Double.html" target="blank_">On the Double</a></td></td>
+          <td><span>Construire un chemin pour atteindre toutes les cibles</span>
+        </tr>
+        <tr>
+          <td><img src="./images/Tilt.jpg" width="125px" /></td>
+          <td><a href="./Tilt/Tilt.html" target="blank_">Tilt</a></td>
+          <td><span>Faire entrer les boutons verts dans le trou du milieu en <i>penchant</i> le jeu</span></td>
+        </tr>
+        <tr>
+          <td><img src="./images/SquirrelsGoNuts.jpg" width="125px" /></td>
+          <td><a href="./SquirrelsGoNuts/SquirrelsGoNuts.html" target="blank_">Cache Noisettes</a></td>
+          <td>Déplacer les écureuils pour qu'ils cachent leur noisette dans un des trous.</td>
+        </tr>
+        <tr>
+          <td><img src="./images/LaserMaze.jpg" width="125px" /></td>
+          <td><a href="./LaserMaze/LaserMaze.html" target="blank_">Laser Maze</a></td>
+          <td><span>Tourner toutes les tortues</span></td>
+        </tr>
+        <tr>
+          <td><img src="./images/JumpIn.jpg" width="125px" /></td>
+          <td><a href="./JumpIn/JumpIn.html" target="blank_">Jump In</a></td>
+          <td><span>Faire sauter les lapins dans les terriers</span></td>
+        </tr>
+        <tr>
+          <td><img src="./images/CatsNBoxes.jpg" width="125px" /></td>
+          <td><a href="./CatsNBoxes/CatsNBoxes.html" target="blank_">Chats tournent en rond</a></td>
+          <td><span>Placer les chats dans les boites</span></td>
+        </tr>
+        <tr>
+          <td><img src="./images/AsteroidEscape.jpg" width="125px" /></td>
+          <td><a href="./AsteroidEscape/AsteroidEscape.html" target="blank_">Alerte Astéroïdes</a></td>
+          <td><span>Sortir le vaisseau sans frapper d'astéroïde</span></td>
+        </tr>
+        <tr>
+          <td><img src="./images/HotSpot.jpg" width="125px" /></td>
+          <td><a href="./HotSpot/HotSpot.html" target="blank_">Hot Spot</a></td>
+          <td><span>Amener le jeton rouge en haut à gauche</span></td>
+        </tr>
+        <tr>
+          <td><img src="./images/RiverCrossing.jpg" width="125px" /></td>
+          <td><a href="./RiverCrossing/RiverCrossing.html" target="blank_">River Crossing</a></td>
+          <td><span>Faire traverser la rivière au randonneur</span></td>
+        </tr>
+        <tr>
+          <td><img src="./images/TipOver.jpg" width="125px" /></td>
+          <td><a href="./TipOver/TipOver.html" target="blank_">Tipover</a></td>
+          <td><span>Amener le <i>culbuteur</i> sur la caisse rouge</span></td>
+        </tr>
+        <tr>
+          <td><img src="./images/GraveYardShift.jpg" width="125px" /></td>
+          <td><a href="./GraveYardShift/GraveYardShift.html" target="blank_">Tombe Frayeur</a></td>
+          <td><span>Sortir la pièce rose en n'accrochant pas les autres</span></td>
+        </tr>
+
+        <tr>
+          <td><img src="./images/GrizzlyGears.jpg" width="125px" /></td>
+          <td><a href="./GrizzlyGears/GrizzlyGears.html" target="blank_">Parc'ours en forêt</a></td>
+          <td><span>Amener chaque pièce devant sa cible en tournant des disques</span></td>
+        </tr>
+
+
+
+      </tbody>
+    </table>
+    <p><b>Attention</b>: Ces jeux ont surtout été testés sur un écran d'ordinateur, leur comportement n'est pas garanti sur un téléphone ou une tablette lorsqu'il faut <i>glisser</i> des pièces pour les déplacer plutôt que d'appuyer sur une flèche.</p>
+    <p><a href="./Organization.html">Document de travail (en anglais) expliquant l'organisation des programmes</a> (encore en rédaction)</p>
+<p><a href="mailto:lapalme@iro.umontreal.ca">Guy Lapalme</a></p> 
+
+<!-- autres jeux que j'ai en réserve dans le répertoire [Eclipse-]workspace
+  - Bendit
+ -->
+</body>
+</html>

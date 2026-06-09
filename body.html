@@ -1,0 +1,38 @@
+    <h1><span class="title" lang="fr">xxx</span><span class="title" lang="en">xxx</span>
+    <div style="float:right; font-size:medium">
+    <span
+        <label for="lang-fr">fr</label><input name="lang" type="radio" value="fr" id="lang-fr" checked="checked">
+        <label for="lang-en">en</label><input name="lang" type="radio" value="en" id="lang-en"> 
+    </span>
+    <span id="hide-show-explanation">
+        <span lang="fr" id="show-fr-expl">Afficher les explications</span>
+        <span lang="en" id="show-en-expl">Show explanations</span>
+        <span lang="fr" id="hide-fr-expl" style="display: none;">Cacher les explications</span>
+        <span lang="en" id="hide-en-expl" style="display: none;">Hide explanations</span>           
+    </span>
+    </div>
+    </h1>
+        <div id="explanation"  style="display: none;">
+    </div>
+    <div  id="game-area" style="text-align:center">
+        <svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg" id="undo" width="100px">
+            <title>Undo</title>
+        </svg>
+        <svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg" id="svg_element" width="100px">
+            <defs id="defs"></defs>
+            <g id="background"></g>
+            <g id="pieces"></g>
+        </svg>
+        <svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg" id="reset" width="100px">
+            <title>Reset</title>
+        </svg>
+    </div>
+    <fieldset>
+        <legend>
+            <span lang="fr">Problèmes</span><span lang="en">Problems</span>
+        </legend>
+        <table id="levels">
+        </table>
+        <button id="solve"><span lang="fr">Résoudre</span><span lang="en">Solve</span></button>
+        <textarea id="message" cols="50" rows="10" style="font-size:12pt"></textarea>
+    </fieldset>

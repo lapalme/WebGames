@@ -1,7 +1,7 @@
 # Web versions of single-player board puzzles 
 [En français](./LISEZMOI.md)
 
-This directory provides the source files of web versions of single-player puzzle games published by [Smart Games](https://en.wikipedia.org/wiki/SmartGames) or [Think Fun](https://en.wikipedia.org/wiki/ThinkFun “ThinkFun - Wikipedia”). These games present a situation with pieces that must be placed or slid onto the board to reach a “winning” position. The starting positions are categorized by difficulty level for reaching the final position.
+This directory provides the source files of web versions of single-player puzzle games published by [Smart Games](https://en.wikipedia.org/wiki/SmartGames) or [Think Fun](https://en.wikipedia.org/wiki/ThinkFun). These games present a situation with pieces that must be placed or slid onto the board to reach a “winning” position. The starting positions are categorized by difficulty level for reaching the final position.
 
 I have always been a fan of this type of game in its physical form. For some of them, I developed Java versions, some of which were used for practical exercises in the programming courses I taught.
 

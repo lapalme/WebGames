@@ -1,7 +1,7 @@
 # Versions Web de quelques _Jeux de réflexion_
-[In English](.README.md)
+[In English](./README.md)
 
-Cette page donne accès aux fichiers sources de versions web de jeux de réflexion pour une personne publiés par [Smart Games](https://en.wikipedia.org/wiki/SmartGames) ou [Think Fun](https://en.wikipedia.org/wiki/ThinkFun "ThinkFun - Wikipedia"). Ces jeux présentent une situation avec des pièces qu'il faut placer ou glisser sur le plateau afin d'atteindre une situation _gagnante_. Les situations de départ sont classées par niveau de difficulté pour atteindre la situation finale.
+Cette page donne accès aux fichiers sources de versions web de jeux de réflexion pour une personne publiés par [Smart Games](https://en.wikipedia.org/wiki/SmartGames) ou [Think Fun](https://en.wikipedia.org/wiki/ThinkFun). Ces jeux présentent une situation avec des pièces qu'il faut placer ou glisser sur le plateau afin d'atteindre une situation _gagnante_. Les situations de départ sont classées par niveau de difficulté pour atteindre la situation finale.
 
 J'ai toujours été un amateur de ce type de jeu sous forme physique. Pour quelques-uns d'entre eux, j'en avais développé des versions Java, dont certaines ont servi pour des travaux pratiques dans des cours de programmation que je donnais.
 

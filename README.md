@@ -1,5 +1,5 @@
 # Web versions of single-player board puzzles 
-[En français](./LISEZMOI.md)
+[En français](./LISEZMOI.html)
 
 This directory provides the source files of web versions of single-player puzzle games published by [Smart Games](https://en.wikipedia.org/wiki/SmartGames) or [Think Fun](https://en.wikipedia.org/wiki/ThinkFun). These games present a situation with pieces that must be placed or slid onto the board to reach a “winning” position. The starting positions are categorized by difficulty level for reaching the final position.
 
@@ -53,7 +53,7 @@ Here are the games currently available (in alphabetical order):
     * [Board management](./Board.js)
     * [Game display](./Display.js)
     * [Grid information about the game](./Grid.js)
-    * [Jump information][./Jumps.js]
+    * [Jump information](./Jumps.js)
     * [Piece information](./Piece.js)
 * Auxiliary files
   * [Web page global organization](./body.html)

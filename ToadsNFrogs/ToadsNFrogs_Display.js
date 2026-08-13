@@ -18,8 +18,8 @@ class ToadsNFrogs_Display extends Display {
         $defs.append(
             svg("rect",{id:"case",x:0,y:0,width:1,height:1,fill:"white",
                         stroke:"black","stroke-width":0.005}),
-            svg("image",{id:"toad",href:"toad.jpg",x:0.1,y:0.1,width:0.8,height:0.8}),
-            svg("image",{id:"frog",href:"frog.jpg",x:0.1,y:0.1,width:0.8,height:0.8}),
+            svg("image",{id:"toad",href:"Toad.jpg",x:0.1,y:0.1,width:0.8,height:0.8}),
+            svg("image",{id:"frog",href:"Frog.jpg",x:0.1,y:0.1,width:0.8,height:0.8}),
         )
     }
     

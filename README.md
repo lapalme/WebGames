@@ -19,6 +19,7 @@ Here are the games currently available (in alphabetical order):
 | --- | --- | --- |
 | <img src="./images/AntiVirus.jpg" width="125px" /> | [Anti-Virus](./AntiVirus/AntiVirus.html) | Exit the red *virus* |
 | <img src="./images/AsteroidEscape.jpg" width="125px" /> | [Asteroid Escape](./AsteroidEscape/AsteroidEscape.html) | Exit the plane avoiding asteroids |
+| <img src="./images/BendIt.jpg" width="125px" /> | [Bend It](./BendIt/BendIt.html) | Fold and place pieces to match the goal |
 | <img src="./images/CannibalMonsters.jpg" width="125px" /> | [Cannibal Monsters](./CannibalMonsters/CannibalMonsters.html) | Stack monsters until only one is left |
 | <img src="./images/CatsNBoxes.jpg" width="125px" /> | [CatsNBoxes](./CatsNBoxes/CatsNBoxes.html) | Put all the cats in the boxes |
 | <img src="./images/CityMaze.jpg" width="125px" /> | City Maze  <br>[Express Delivery](./CityMaze/CityMaze_Express_Delivery.html)  <br>[On the Double](./CityMaze/CityMaze_On_the_Double.html) | Build a path to reach all targets of the same color |
@@ -36,6 +37,7 @@ Here are the games currently available (in alphabetical order):
 | <img src="./images/Tilt.jpg" width="125px" /> | [Tilt](./Tilt/Tilt.html) | Push green button in the hole by *tilting* the board |
 | <img src="./images/TipOver.jpg" width="125px" /> | [Tipover](./TipOver/TipOver.html) | Move a tipper across piles of crates |
 | <img src="./images/Titanic.jpg" width="125px" /> | [Titanic](./Titanic/Titanic.html) | Board all shipwrecked people |
+| <img src="./images/ToadsNFrogs.jpg" width="125px" /> | [Toads and Frogs](./ToadsNFrogs/ToadsNFrogs.html) | Swap places of frogs and toads by jumping |
 
 # Other documents
 

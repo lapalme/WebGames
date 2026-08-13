@@ -18,6 +18,7 @@ Voici les jeux actuellement disponibles en ordre alphabétique de leur nom en an
 | --- | --- | --- |
 | <img src="./images/AntiVirus.jpg" width="125px" /> | [Anti-Virus](./AntiVirus/AntiVirus.html) | Faire sortir le virus rouge |
 | <img src="./images/AsteroidEscape.jpg" width="125px" /> | [Alerte Astéroïdes](./AsteroidEscape/AsteroidEscape.html) | Sortir le vaisseau sans frapper d'astéroïde |
+| <img src="./images/BendIt.jpg" width="125px" /> | [Bend It](./BendIt/BendIt.html) | Plier et placer les pièces  |
 | <img src="./images/CannibalMonsters.jpg" width="125px" /> | [Cannibal Monsters](./CannibalMonsters/CannibalMonsters.html) | Empiler tous les monstres |
 | <img src="./images/CatsNBoxes.jpg" width="125px" /> | [Chats tournent en rond](./CatsNBoxes/CatsNBoxes.html) | Placer les chats dans les boites |
 | <img src="./images/CityMaze.jpg" width="125px" /> | City Maze  <br>[Express Delivery](./CityMaze/CityMaze_Express_Delivery.html)  <br>[On the Double](./CityMaze/CityMaze_On_the_Double.html) | Construire un chemin pour atteindre toutes les cibles |
@@ -35,9 +36,10 @@ Voici les jeux actuellement disponibles en ordre alphabétique de leur nom en an
 | <img src="./images/Tilt.jpg" width="125px" /> | [Tilt](./Tilt/Tilt.html) | Faire entrer les boutons verts dans le trou du milieu en _penchant_ le jeu |
 | <img src="./images/TipOver.jpg" width="125px" /> | [Tipover](./TipOver/TipOver.html) | Amener le _culbuteur_ sur la caisse rouge |
 | <img src="./images/Titanic.jpg" width="125px" /> | [Titanic](./Titanic/Titanic.html) | Embarquer les naufragés dans les bateaux |
+| <img src="./images/ToadsNFrogs.jpg" width="125px" /> | [Toads and Frogs](./ToadsNFrogs.html) | Interchanger les grenouilles et les crapauds |
 
 # Autres documents
-* [Explication (en anglais) de l'organisation des programmes](./Organization.html) (encore en rédaction)
+* [Explication (en anglais) de l'organisation des programmes](./Organization.html)
 * [Page web pour aider à la mise au point d'expression `path` de SVG.](./SVG_Path_Playground/SVG_PP.html) 
 * [Script d'initialisation pour initialiser un nouveau jeu](./buildFromTemplate.js)
   * [Répertoire de modèles pour initialiser un nouveau jeu](./Template)

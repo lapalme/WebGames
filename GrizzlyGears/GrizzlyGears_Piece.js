@@ -7,7 +7,12 @@ import { ori2arrow } from "./GrizzlyGears_Board.js"
 
 export {Disk,Boat}
 
-const animateDiskTurning=true;
+// the disk animation does not work correctly with Firefox, 
+//   The disk does not stay at its end position
+// but it does work with Safari and Chrome
+const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
+
+const animateDiskTurning=!isFirefox;
 
 const colors = {
     "A": "pink",  // girl
@@ -146,9 +151,7 @@ class Disk extends Piece {
             }
         }
         if (animateDiskTurning){
-            //// with animation but the text in the boat does not change
-            //   I never managed to find a formula to make the letter always stay up
-            //   because it depends on the relative position of the disk 
+            //// with animation, the text in the boat is updated at the end of turn
             const oldOri = this.ori;
             const disk = this
             this.ori = nextOri(this.ori,delta)

@@ -186,13 +186,13 @@ function cText(text,x,y,fill="black",fsize="0.2"){
 // get a sizes and position of svg element, relative browser viewport (page piece, showed on a screen, which we can see)
 let svg_position, svg_sizes_factor,svg_baseval ; // set in setSVGFactors which should be called at the start or on resizing the window
 
-function getCoord({x,y}){ // transformer des coordonnées d'écran en unités svg
+function getCoord(x,y){ // convert screen coordinate into svg units
     return [(x - svg_position.x) * svg_sizes_factor.x + svg_baseval.x,
             (y - svg_position.y) * svg_sizes_factor.y + svg_baseval.y]
 }
 
 function getPos(e){
-    return getCoord({x:e.clientX,y:e.clientY})
+    return getCoord(e.clientX,e.clientY)
 }
 
 function setSVGfactors(){
@@ -208,25 +208,36 @@ function setSVGfactors(){
     };
 }
 
-////   exploratory abstraction to try to simplify the dragging of objects....
+////  abstraction to simplify the dragging of objects....
 // drag a drawing of an object within an SVG_element
 // with the mouse at from [x,y] 
 // If the release is at one of the possibleIJ (the one with index idx)
 //   then perform action(idx,newI,newJ)
 //   else reset the object to its original place
 // When possibleIJ is null then call action(x,y) without any rounding or truncation
+/*    example of call within pointerdown of HotSpot_Display.js
+    svg_drag($current,piece,$svg_element,getPos(e),
+             possibleJumps.map(jmp=>[jmp.to.i,jmp.to.j]),
+             (idx,newI,newJ)=>{
+                board.play(possibleJumps[idx]); 
+                allJumps = possibleJumps[idx].extend(allJumps);
+                if (board.isComplete()){
+                    display.showBravo(allJumps,showMoves,4,4)
+                }
+             })
+*/
+
 function svg_drag(drawing,object,svg_element,from,possibleIJ,action){
     if (drawing == null)return;
     let [xPrev,yPrev] = from;
-    
-    // déplacer l'élément à la fin pour qu'il apparaisse sur le dessus quand on le bouge
+    // console.log("startDrag:%d,%d",xPrev,yPrev)
+    // move element at the end so that it appears on top when it moves
     drawing.parent().append(drawing);
     svg_element.on("pointermove",pointermove);
     svg_element.on("pointerup",pointerup);
     
-    // gérer le drag en calculant le décalage par rapport à la valeur précédente
-    // HACK: le déplacement relatif est important pour ne pas à avoir à tenir compte 
-    //        du décalage par rapport à la souris....
+    // deal with drag by computing delta from the preceding value
+    // HACK: relative shift is important to avoid having to deal with the shift from the mouse position 
     function pointermove(e){
         if (drawing == null)return;
         const [x,y]=getPos(e);

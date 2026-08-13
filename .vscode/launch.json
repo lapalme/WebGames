@@ -52,9 +52,25 @@
             "webRoot": "${workspaceFolder}",
             "url": "http://127.0.0.1:8080/AsteroidEscape/AsteroidEscape.html"
         },
+       {
+            "name": "AsteroidEscape batch",
+            "program": "${workspaceFolder}/AsteroidEscape/AsteroidEscape_batch",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
         {
-            "name": "CannibalMonsters batch",
-            "program": "${workspaceFolder}/CannibalMonsters/CannibalMonsters_batch",
+            "type": "chrome",
+            "name": "BendIt HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/BendIt/BendIt.html"
+        },
+        {
+            "name": "BendIt batch",
+            "program": "${workspaceFolder}/BendIt/BendIt_batch",
             "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
@@ -330,6 +346,22 @@
             "request": "launch",
             "webRoot": "${workspaceFolder}",
             "url": "http://127.0.0.1:8080/Titanic/Titanic.html"
+        },
+        {
+            "name": "ToadsNFrogs batch",
+            "program": "${workspaceFolder}/ToadsNFrogs/ToadsNFrogs_batch.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "ToadsNFrogs HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/ToadsNFrogs/ToadsNFrogs.html"
         },
         {
             "type": "chrome",

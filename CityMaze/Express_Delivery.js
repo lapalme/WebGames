@@ -11,7 +11,7 @@ const levels =[{"en":"Starter","fr":"Débutant","from":1,"to":12},
 //  * : start
 //  S : Elbow
 //  F : right-arrow
-//  U : u-turn-rigth
+//  U : u-turn-right
 //  W : u-turn-left
 // color : B(blue) | R (red) if red piece must be inverted
 // direction: N|S|E|O

@@ -8,7 +8,7 @@ description: Principles underlying some web versions of single-player board puzz
 </center>
 
 
-<center><a href="mailto:lapalme@iro.umontreal.ca">Guy Lapalme</a><br/>RALI-DIRO<br/>Université de Montréal<br/>May 2026</center>
+<center><a href="mailto:lapalme@iro.umontreal.ca">Guy Lapalme</a><br/>RALI-DIRO<br/>Université de Montréal<br/>August 2026</center>
 
 This document explains the underlying principles of web versions of some single-player puzzle games published by [Smart Games](https://en.wikipedia.org/wiki/SmartGames) or [Think Fun](https://en.wikipedia.org/wiki/ThinkFun). These games present a situation with pieces that must be placed or slid on a rectangular board in order to achieve a *winning* situation. The starting situations are classified by level of difficulty to reach the final situation.
 
@@ -18,57 +18,83 @@ These computer versions have the ability to discover a solution using the least 
 
 I recently decided to rewrite some of these games to be played in a web browser, either on a computer or a phone. The code is written in JavaScript, and the graphics are displayed using SVG, allowing them to adapt automatically to the screen size.
 
-These games come in two broad categories : 
+Games can be categorized according to the fact that:
 
-- **Sliding**: all pieces are initially on the board and the goal is to slide them into a *winning* configuration. Movement constraints must be taken into account, such as no overlap between some pieces and the specific moves allowed by each piece.  In some cases, pieces can disappear or change their appearance and behavior. Jumping over other pieces is sometimes used instead of sliding.
-- **Placing**: only a few pieces are initially on the board, the rest is kept in a reserve from which other pieces can or must be chosen and placed on the board to form a *winning* situation. 
+- All pieces are initially on the board, the moves being either or both
 
-<center>Table 1: Nineteen games, each with a typical configuration, link to an <i>official description</i>, and their characteristics</center>
+  - **Jumping** : a piece can jump over one for more other pieces   
 
-|                                                              | Name                                                         | Goal                                                | Type                  | Changing pieces                            |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------------------- | --------------------- | ------------------------------------------ |
-| <img src="./images/FlipIt.jpg" style="zoom:25%;" />          | [Flip It](https://trictrac.net/jeu-de-societe/flip-it)       | Flip all turtles                                    | Sliding Jumping       | yes                                        |
-| <img src="./images/CannibalMonsters.jpg" style="zoom:25%;" /> | [Cannibal Monsters](https://www.smartgamesandpuzzles.com/cannibal-monsters.html) | Stack monsters until only one is left               | Sliding Jumping       | yes                                        |
-| <img src="./images/JumpIn.jpg" style="zoom: 33%;" /> | [Jump In](https://www.smartgames.eu/uk/one-player-games/jump) | Make the rabbits find their hole                    | Sliding<br />Jumping  | no                                         |
-| <img src="./images/HotSpot.jpg" style="zoom:50%;" /> | [HotSpot](https://theplayfulotter.blogspot.com/2018/08/hotspot.html) | Make the red circle jump to the top left spot | Jumping | no |
-| <img src="./images/SnowProblem.jpg" style="zoom:25%;" />     | [Snow Problem](https://www.smartgames.eu/uk/one-player-games/snow-problem) | Build snowmen by rolling balls                      | Sliding               | yes                                        |
-| <img src="./images/Titanic.jpg" style="zoom:15%;" />         | [Titanic](https://www.smartgamesandpuzzles.com/titanic.html) | Board all shipwrecked people                        | Sliding               | yes                                        |
-| <img src="./images/RushHour.jpg" style="zoom:30%;" />        | [Rush Hour](https://www.ravensburger.us/en-US/products/games/thinkfun/rush-hour-76582) | Exit the red car                                    | Sliding               | no                                         |
-| <img src="./images/AntiVirus.jpg" style="zoom:30%;" />       | [Anti-Virus](https://www.smartgames.eu/uk/one-player-games/anti-virus) | Exit the red *virus*                                | Sliding               | no|
-| <img src="./images/AsteroidEscape.jpg" style="zoom:45%;" /> | [Asteroid Escape](https://www.smartgames.eu/uk/one-player-games/asteroid-escape-0) | Exit the plane avoiding asteroids | Sliding | no                                          |
-| <img src="./images/TempleTrap.jpg" style="zoom:60%;" /> | [TempleTrap](https://www.smartgames.eu/uk/one-player-games/temple-trap-0) | Exit the adventurer by sliding labyrinth pieces | Sliding Jumping | no |
-| <img src="./images/Tilt.jpg" style="zoom:18%;" />            | Tilt                                                         | Push green button in the hole by tilting the board  | Sliding               | no, but pieces can disappear               |
-| <img src="./images/SquirrelsGoNuts.jpg" style="zoom:70%" />  | [Squirrel Go Nuts](https://www.smartgames.eu/uk/one-player-games/squirrels-go-nuts) | Make all  the squirrels hide their nut              | Sliding               | Pieces and the board can change            |
-| <img src="./images/CityMaze.jpg" style="zoom:15%;" />        | [City Maze](https://www.smartgamesandpuzzles.com/city-maze.html) | Build a path to reach all  targets                  | Placing               | Express_Delivery:no<br />On the double:yes |
-| <img src="./images/LaserMaze.jpg" style="zoom:65%;" />       | [Laser Maze](https://www.ravensburger.us/en-US/products/games/thinkfun/laser-maze-44001014#) | Make the laser touch all pieces and hit all targets | Placing               | no                                         |
-| <img src="./images/CatsNBoxes.jpg" style="zoom:25%;" /> | [Cats & Boxes](https://www.smartgames.eu/uk/one-player-games/cats-boxes) | Put all the cats in the boxes                       | Removing<br />Placing | no                                         |
-| <img src="./images/RiverCrossing.jpg" style="zoom:20%;" /> | [River Crossing](https://www.think-fun.be/fr/products/river-crossing/) | Make a hiker traverse go to the other side of the river | Removing<br />Placing | no                                         |
-| <img src="./images/TipOver.jpg" style="zoom:45%;" /> | [TipOver](https://www.fatbraintoys.com/toy_companies/thinkfun/tipover.cfm) | Move a tipper across piles of crates | Placing | yes                                       |
-| <img src="./images/GraveYardShift.jpg" style="zoom:45%;" /> | [Graveyard Shift](https://www.smartgamesandpuzzles.com/graveyard-shift.html) | Exit the pink piece by sliding pieces. | Sliding | no |
-| <img src="./images/GrizzlyGears.jpg" style="zoom:45%;" /> | [GrizzlyGears](https://www.smartgames.eu/uk/one-player-games/grizzly-gears) | Move boats by rotating disks | Sliding | no |
+  - **Sliding**:  slide them into a *winning* configuration. 
 
+  Movement constraints must be taken into account, such as no overlap between pieces and the specific moves allowed by each piece.  In some games, pieces can disappear or change their appearance and behaviour.
 
-Some objects can undergo modifications during the game, depending on the rules. 
+- None or only a few pieces are initially on the board, the others being in a reserve 
 
-- *Flip It* : each piece can be in two states that are flipped when another piece jumps over it.
-- *Cannibal Monsters*: monsters can eat others if their base correspond strictly, so pieces evolve over time.
-- *Jump In*: in this game, only the position of pieces changes
-- *Hot Spot*: in this game, only the position of pieces changes
-- *Snow Problem*: some pieces can be put on top of others and thus removed from the board.
-- *Titanic*:  the shipwrecked  people (shown as circles) can be put on the boats, so they are removed from the board. The ship is thus modified as are the allowed moves because the boat cannot move when it is *full* which limits the movements of other boats.
-- *Rush Hour*: the pieces do not change, but their movements depend on the positions of the others. In certain arrangements, there are two vehicles to leave, so when the first one departs, it is removed from the board.
-- *Anti-Virus*: similar to Rush Hour, the red must be exited to win the game.. The tiles are positioned on the intersections of the lines of the grid. The board is tilted, and the pieces are tangled, meaning that moving one piece can also affect others. 
-- *Asteroid Escape*: the position of pieces can change, but some pieces overlap on other positions, so they can interfere with their movements.
-- *Temple Trap:* pieces can slide to a neighboring position, but a piece cannot be moved when the adventurer is on it. The adventurer can only move to pieces that are accessible, i.e., not crossing a wall or on the same floor.
-- *Tilt*:  send the green buttons into the central *black hole,* which makes them disappear, while avoiding sliding a blue button in the hole., As pieces are moved by tilting the board,  many pieces can change place in a single jump.
-- *Squirrel Go Nuts*: the goal is to slide squirrels with nuts over holes in which the nut will fall. Both the board and some pieces can change their state during the game.
-- *City Maze*: the pieces are not all given in the starting configuration. The player must select some pieces and place them on the board with the right orientation in order to form a path from a starting arrow and going to all final crosses. Since the pieces have a red or blue side, a variant of this game allows for paths of different colors. 
-- *Laser Maze*:  place a laser, mirrors and targets on the board so that the laser reflects on all pieces while hitting a given number of targets. Some selected pieces in a given configuration can be moved or rotated. 
-- *Cats & Boxes*: a piece must be removed before being placed elsewhere, so in a way it can overlap its previous positions, but not another piece.
-- *River Crossing*: a plank can be removed and placed elsewhere on an adjacent plank, so it can overlap its previous position.
-- *TipOver* : a piece is a crate of a certain height which, when tripped, lies on the board and it stays as is for the rest of the game.
-- *Graveyard Shift*: pieces of different polygonal shapes slide but as other pieces outstretch on the exterior, so they  can block the movement of other pieces. 
-- *Grizzly Gears* : pieces (boats) are displaced by rotating disks whose positions might interfere with surrounding pieces. Although the movements seem limited, the right moves are often counterintuitive.
+  - **Placing**: find the place and orientation of pieces on the board 
+
+In some games, **pieces can change** during the game, either by stacking over others or by flipping. The allowed movements can then change.
+
+<center>Table 1: Twenty-one games that are available in this directory: typical configuration, link to an <i>official description</i>,  goal and characteristics.<br/> 
+  <b>J</b>: jumping, <b>S</b>:sliding, <b>P</b>:placing, <b>CP</b>: changing pieces</center>
+
+|                                                              | Name                                                         | Goal                                                      | J | S | P | CP |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------------------------- | - | - | - | -- |
+| <img src="./images/HotSpot.jpg" style="zoom:50%;" /> | [HotSpot](https://theplayfulotter.blogspot.com/2018/08/hotspot.html) | Make the red circle jump to the top left spot             | ✓ |   |   |    |
+| <img src="./images/RushHour.jpg" style="zoom:30%;" />        | [Rush Hour](https://www.ravensburger.us/en-US/products/games/thinkfun/rush-hour-76582) | Exit the red car                |   | ✓ |   |    |
+| <img src="./images/AntiVirus.jpg" style="zoom:30%;" />       | [Anti-Virus](https://www.smartgames.eu/uk/one-player-games/anti-virus) | Exit the red *virus*                            |   | ✓ |   |    |
+| <img src="./images/AsteroidEscape.jpg" style="zoom:45%;" /> | [Asteroid Escape](https://www.smartgames.eu/uk/one-player-games/asteroid-escape-0) | Exit the plane avoiding asteroids    |   | ✓ |   |    |
+| <img src="./images/GraveYardShift.jpg" style="zoom:45%;" /> | [Graveyard Shift](https://www.smartgamesandpuzzles.com/graveyard-shift.html) | Exit the pink piece by sliding pieces.     |   | ✓ |   |    |
+| <img src="./images/GrizzlyGears.jpg" style="zoom:45%;" /> | [GrizzlyGears](https://www.smartgames.eu/uk/one-player-games/grizzly-gears) | Move boats by rotating disks                  |   | ✓ |   |    |
+| <img src="./images/JumpIn.jpg" style="zoom: 33%;" /> | [Jump In](https://www.smartgames.eu/uk/one-player-games/jump) | Make the rabbits find their hole                                 | ✓ | ✓ |   |    |
+| <img src="./images/ToadsNFrogs.jpg" style="zoom:45%;" /> | [Toads and Frogs](https://en.wikipedia.org/wiki/Toads_and_Frogs) | Exchange positions of toads and frogs                     | ✓ | ✓ |   |    |
+| <img src="./images/TempleTrap.jpg" style="zoom:60%;" /> | [TempleTrap](https://www.smartgames.eu/uk/one-player-games/temple-trap-0) | Exit the adventurer by sliding labyrinth pieces   | ✓ | ✓ |   |    |
+| <img src="./images/RiverCrossing.jpg" style="zoom:20%;" /> | [River Crossing](https://www.think-fun.be/fr/products/river-crossing/) | Make a hiker traverse the river                   |   | ✓ | ✓ |    |
+| <img src="./images/FlipIt.jpg" style="zoom:25%;" />          | [Flip It](https://trictrac.net/jeu-de-societe/flip-it)       | Flip all turtles                                          | ✓ |   |   | ✓  |
+| <img src="./images/SnowProblem.jpg" style="zoom:25%;" />     | [Snow Problem](https://www.smartgames.eu/uk/one-player-games/snow-problem) | Build snowmen by rolling balls              |   | ✓ |   | ✓  |
+| <img src="./images/Titanic.jpg" style="zoom:15%;" />         | [Titanic](https://www.smartgamesandpuzzles.com/titanic.html) | Board all shipwrecked people                              |   | ✓ |   | ✓  |
+| <img src="./images/Tilt.jpg" style="zoom:18%;" />            | Tilt                                                         | Push green button in the hole by tilting the board        |   | ✓ |   | ✓  |
+| <img src="./images/SquirrelsGoNuts.jpg" style="zoom:70%" />  | [Squirrel Go Nuts](https://www.smartgames.eu/uk/one-player-games/squirrels-go-nuts) | Make all squirrels hide their nut  |   | ✓ |   | ✓  |
+| <img src="./images/LaserMaze.jpg" style="zoom:65%;"/>| [Laser Maze](https://www.ravensburger.us/en-US/products/games/thinkfun/laser-maze-44001014#) |Laser touch pieces and hit targets |   |   | ✓ | ✓  |
+| <img src="./images/CityMaze.jpg" style="zoom:15%;" />        | [City Maze](https://www.smartgamesandpuzzles.com/city-maze.html) | Build a path to reach all  targets                    |   |   | ✓ | ✓  |
+| <img src="./images/CatsNBoxes.jpg" style="zoom:25%;" /> | [Cats & Boxes](https://www.smartgames.eu/uk/one-player-games/cats-boxes) | Put all the cats in the boxes                      |   |   | ✓ | ✓  |
+| <img src="./images/BendIt.jpg" style="zoom:35%;" /> | [BendIt](https://www.smartgamesandpuzzles.com/bend-it.html) | Bend pieces so that they can all be placed on the board             |   |   | ✓ | ✓  |
+| <img src="./images/CannibalMonsters.jpg" style="zoom:25%;" /> | [Cannibal Monsters](https://www.smartgamesandpuzzles.com/cannibal-monsters.html) | Stack monsters until only one is left| ✓ | ✓ |   | ✓  |
+| <img src="./images/TipOver.jpg" style="zoom:45%;" /> | [TipOver](https://www.fatbraintoys.com/toy_companies/thinkfun/tipover.cfm) | Move a tipper across piles of crates                |   | ✓ | ✓ | ✓  |
+
+Some détails about these games:
+
+- **Jumping**:
+  - *Hot Spot*: pieces must jump over other but bigger pieces cannot land one besides another
+- **Sliding**:
+  - *Rush Hour*: the movements of pieces depend on the positions of others. In certain arrangements, there are two vehicles to leave, so when the first one departs, it is removed from the board.
+  - *Anti-Virus*: pieces are positioned on the intersections of the lines of the grid. The board is tilted, and the pieces are tangled, meaning that moving one piece can also affect others. 
+  - *Asteroid Escape*:  as some pieces overlap on positions of other pieces, they can interfere with their movements.
+  - *Graveyard Shift*: pieces of different polygonal shapes slide but as other pieces outstretch on the exterior, so they  can block the movement of other pieces. 
+  - *Grizzly Gears* : pieces (boats) are displaced by rotating disks whose positions might interfere with surrounding pieces. Although the movements seem limited, the right moves are often counterintuitive. The movements in this game are quite different from the usual sliding or placing, because pieces slide when other pieces are rotated. It was quite challenging to cast this game in the framework we had defined, but we finally found a way. The display for this game was also more difficult to develop because of the rotating pieces.
+- **Jumping, Sliding**:
+  - *Jump In*: in this game, only the position of pieces changes
+  - *Toads and Frogs:*  pieces can slide one space or jump over another one
+  - *Temple Trap:* pieces can slide to a neighboring position, but a piece cannot be moved when the adventurer is on it. The adventurer can only move to pieces that are accessible, i.e., not crossing a wall or on the same floor.
+- **Sliding,Placing** :
+  - *River Crossing*: a plank can be removed and placed elsewhere on an adjacent plank, so it can overlap its previous position.
+- **Jumping, Changing pieces**:
+  - *Flip It* : each piece can be in two states that are flipped when another piece jumps over it.
+- **Sliding, Changing pieces:**
+  - *Snow Problem*: some pieces can be put on top of others and thus removed from the board.
+  - *Titanic*:  the shipwrecked  people (shown as circles) can be put on the boats, so they are removed from the board. The ship is thus modified as are the allowed moves because the boat cannot move when it is *full* which limits the movements of other boats.
+  - *Tilt*:  send the green buttons into the central *black hole,* which makes them disappear, while avoiding sliding a blue button in the hole., As pieces are moved by tilting the board,  many pieces can change place in a single jump.
+  - *Squirrel Go Nuts*: the goal is to slide squirrels with nuts over holes in which the nut will fall. Both the board and some pieces can change their state during the game.
+- **Placing, Changing pieces**:
+  - *Laser Maze*:  place a laser, mirrors and targets on the board so that the laser reflects on all pieces while hitting a given number of targets. Some selected pieces in a given configuration can be moved or rotated. 
+  - *City Maze*: the pieces are not all given in the starting configuration. The player must select some pieces and place them on the board with the right orientation in order to form a path from a starting arrow and going to all final crosses. Since the pieces have a red or blue side, a variant of this game allows for paths of different colors. 
+  - *Cats & Boxes*: a piece must be removed before being placed elsewhere, so in a way it can overlap its previous positions, but not another piece.
+  - *Bend It*:  piece can change their orientation and form by rotating some parts, possibly by rotating in 3D.
+
+- **Jumping, Sliding, Changing pieces**:
+  - *Cannibal Monsters*: monsters can eat others if their base correspond strictly, so pieces evolve over time.
+
+- **Sliding, Placing, Changing pieces:**
+  - *TipOver* : a piece is a crate of a certain height which, when tripped, lies on the board and it stays as is for the rest of the game.
 
 Most of these games are already available in electronic form. They can be downloaded from a website, or from a smartphone app store. Their graphics are usually much more sophisticated than mine. My primary objective in crafting this document is pedagogical, aiming to structure the common functions and classes among these games. I also chose games that have different features for pieces and their movements. Writing this document has been very useful in helping me clarify my thoughts.
 
@@ -76,18 +102,16 @@ Most of these games are already available in electronic form. They can be downlo
 
 In the following we use the following naming conventions:
 
-- **board**: a rectangular *grid* with *M* rows and *N* columns\. In some games, some positions of the board have a special role;
+- **board**: a rectangular *grid* with *M* rows and *N* columns\. In some games, some positions of the board have a special role. For example, in Tilt, Anti-Virus or Rsh Hour, reaching a certain position indicates a winning situation.
+- **piece**: an element of the game that can be placed on the board; it has a **position**: *i,j*,  row and column numbers starting from 0.  In some games, a piece can have an **orientation** identified either by a cardinal point or an arrow. In some games, pieces have other characteristics, such as being *flipped* or *stacked*  over other pieces.
 - **reserve**: a section of the board in which pieces can be kept before being placed on the board. 
 - **display**: a screen representation of the board;
-- **piece**: an element of the game that can be placed on the board; it has a **position**: *i,j*,  row and column numbers starting from 0.  In some games, a piece can have an **orientation** identified either by a cardinal point or an arrow. In some games, pieces have other characteristics, such as being *flipped* or *stacking*  other pieces.
 - **configuration**: encoding of the position and orientation of the pieces at the start of the game in a form that is easy to input from the game booklet.  
 - **state**: encoding of the position and orientation of each piece during the game; a state must be able to represent all possible game situations while being efficient to be encoded and decoded during the game. 
   - The *initial* state is obtained from the configuration. 
 
   - A *winning* state is a *configuration* identified as the goal of the game. 
-
 - **jump** : an action where a piece changes its position, possibly affecting other pieces on the board. Placing a piece to a position with an orientation can be thought of as a jump from the reserve to the board in the correct position. A jump keeps track of the previous jumps so the jumps leading to a winning state can be shown or to make it possible to undo previous jumps.
-
 - **move** : a series of consecutive jumps performed by the same piece.  
 
 The starting state determines the initial position of pieces on the board. The goal of the game is to determine the jumps of the pieces around on the board according to a set of rules until they form a *winning* state. A *solution* is, therefore, a list of *jumps* that can  go from the initial state to the desired winning state.
@@ -106,7 +130,7 @@ The computer version of these games has several advantages, including the follow
 
 The disadvantage is that players do not get physical feedback from the pieces. Also, the game increases screen time on the computer or phone. 
 
-After developing several of these games, I noticed that they have many commonalities. Therefore, I developed a framework that describes generalizable processes that can be applied across different games. This document uses *Flip It* as an example because it is relatively straightforward, but it also highlights some intriguing challenges. 
+After developing several of these games, I noticed that they have many commonalities. Therefore, I developed a framework that describes generalizable processes that were applied across different games. This document uses *Flip It* as an example because it is relatively straightforward, but it also highlights some intriguing challenges. 
 
 When tackling a new game, I suggest to start by developing an algorithm to determine the jumps from the starting state to a winning state without a graphical user interface. This *compels* to define the notation for the states, the allowed moves, the state changes after a move and the process to find a solution. Once that is done, this algorithm can be embedded into the graphical framework we have established. This process is further explained in section [4.1](#steps-for-building-a-new-game).
 
@@ -218,7 +242,9 @@ After each jump, the game’s state must be updated to reflect where the piece h
 
 For some games, possible move finding can be more involved. In particular, for placing games, such as *City Maze* or *Laser Maze*, in order to limit the number of possible moves, pieces from the reserve should not be tried everywhere on the board but only on free places along the path of the ray or the laser. Moreover, when there are similar pieces in the reserve, only one of each kind should be tried at a given step. For *Laser Maze*, at each step, we first pick the pieces from the reserve with the least number of orientations. 
 
-Pieces in *Grizzly Gears* do not move but only rotate 90 degrees clockwise or anticlockwise, so it might be thought that determining the moves would be simple. But it revealed to be quite intricate because the irregular shape of one piece is often hindered by the orientation of its neighbours. 
+Pieces in *Grizzly Gears* do not move but only rotate 90 degrees clockwise or anticlockwise, so it might be thought that determining the moves would be simple. But it revealed to be quite intricate because the irregular shape of one piece is often hindered by the orientation of its neighbours. The fact that the moving boat are shared between two rotating disks added a level of complexity.
+
+For *Bend It*, pieces in the reserve can be bent in three ways at each end, rotated at four angles and turned to obtain a mirror images, before being placed on the board. In principle, when piece is placed on the board, there should always be a multiple of 6 places free in each closed region by other pieces. But for the moment, we ignore this constraint that we thought would be hard to implement. Exploring systematically all positions is fast enough anyway,
 
 ##  Exploring States
 
@@ -249,9 +275,9 @@ while (to_do.size>0){
 return null // no solution found after having explored all states
 ```
 
-This algorithm guarantees finding the solution with the fewest jumps, but not necessarily in the fewest steps. It does this by examining all states after n jumps before moving on to those after n+1 jumps, and stopping as soon as it finds a solution.
+This algorithm guarantees finding the solution with the fewest jumps, but not necessarily in the fewest moves. It does this by examining all states after n jumps before moving on to those after n+1 jumps, and stopping as soon as it finds a solution.
 
-To maximize the number of consecutive jumps on a single piece, the permitted jumps (as outlined in line 9) are rearranged to prioritize exploring jumps that continue the previous jump with the same piece. This strategy is beneficial, but it doesn’t guarantee the fewest possible moves. 
+To maximize the number of consecutive jumps on a single piece, the permitted jumps (as outlined in line 9) are rearranged to prioritize exploring jumps that continue the previous jump with the same piece. This strategy is beneficial, but it still does not guarantee the fewest possible moves. 
 
 The sequence of jumps can be inverted by tracing the links between each state. This reversed list is then consolidated, with consecutive jumps involving the same piece combined into single moves (as shown in the second column of the table). This approach displays the path to the solution.
 
@@ -352,6 +378,8 @@ In *Asteroid Escape* or *Temple Trap*, only the pieces adjacent to the hole can 
 
 The round shapes for the board, the disks and the boats of *Grizzly Gears* are quite different than the usual rectangles for other games. They were implemented using the circle and arcs of the SVG `path` commands. The fact that a boat can be *shared* between two disks added a level of complexity when determining the origin of its rotation.
 
+For *Bend It*, pieces can change form and orientation but they can also be flipped horizontally or vertically. So a piece in the reserve must first be put in a  folding area where it can be manipulated before being places on the board, The user interface for these manipulation proved to be somewhat intricate.
+
 ## Application Organization
 
 The application uses an object\-oriented structure, where each component is a subclass of the `Piece` class, which stores its identification, row, and column index on the board\.  The behavior of a piece for each game is given by a subclass, which must implement at least methods to draw itself (in the context of the graphical application), to change its state (e.g., flipping in *Flip It* ) and to compute all possible jumps given a grid configuration.The board is represented by the class `Board`. It stores the current state and a link to the associated display (in the context of a graphic application). Subclasses of `Board` must define methods for calculating all available moves in the current state, verifying its completion, executing a move, and reversing the previous move\. This method can be invoked multiple times to undo multiple moves\.
@@ -378,7 +406,7 @@ Template stub files are provided for game *Pieces*, *Boards*, *Displays* and the
 We now describe the steps we have found useful in order to adapt a game to this framework.
 
 1. As these types of games come with a set of cards categorized by their level of difficulty, we must first find a way to encode the initial configuration in a machine\-readable format, as we discussed in [Section 2.2](#definition-of-configurations). This format is designed to be similar to the content of the game card and thus faster and easier to input. This input process is relatively cumbersome, explaining why many of our games still do not show initial configurations for all cards. 
-2. As the input chosen for the input does not necessarily capture all possible states, especially when pieces can change during the game, e.g., in *Titanic*, boats can board shipwrecked people, in *Squirrel Go Nuts*, pieces can lose their nuts\. In *TipOver* a piece changes its form once it is tipped. The initial configuration must be transformed into a format for both the initial state and the possible transformations of the piece. This process was described in some detail in [Section 2.3](#conversion-from-a-problem-to-a-starting-state). 
+2. As the input chosen for the input does not necessarily capture all possible states, especially when pieces can change during the game, e.g., in *Titanic*, boats can board shipwrecked people, in *Squirrel Go Nuts*, pieces can lose their nuts\. In *TipOver* a piece changes its form once it is tipped. The initial configuration must be transformed into a format for both the initial state and the possible transformations of the piece. This process was described in [Section 2.3](#conversion-from-a-problem-to-a-starting-state). 
 3. It also proved to be very convenient to already develop a `toString()` for the `Board` class that outputs a human readable representation of the grid corresponding to the current state. This is very useful for checking the effects of board modifications after the play of a jump.
 4. Given a state, develop a method to determine if it is a *winning* state.
 5. Find a representation for jumps and compute the allowed ones at a given state, see [Section 2.4](#possible-jumps-for-each-piece)
@@ -389,53 +417,34 @@ We now describe the steps we have found useful in order to adapt a game to this 
 
 # Conclusion
 
-This document describes how to program a unified user interface for single\-player piece placement and sliding games in some detail\. Although all games share many characteristics, each presents its own challenges regarding the board display and modification of the game state based on moves\.
+This document described how to program a unified user interface for single\-player piece placement and sliding games in some detail\. Although all games share many characteristics, each presents its own challenges regarding the board display and modification of the game state based on moves\.
 
 The current screen layout was designed with a computer screen and mouse in mind\. While it can be used on a phone or tablet, the display is less user\-friendly\. Further development is needed in this area\.
 
-# Appendix
+# Links for playing on the web and to the source code
 
-## Links for playing games on the web
+|                                                              | Play                                                         | Source code                             |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------- |
+|                                                              |                                                              | [Template](./Template)                  |
+| <img src="./images/AntiVirus.jpg" style="width:50px;" />     | [Anti-Virus](AntiVirus/AntiVirus.html)                       | [Anti-Virus](./AntiVirus)               |
+| <img src="./images/AsteroidEscape.jpg" style="width:50px;" /> | [Asteroid Escape](AsteroidEscape/AsteroidEscape.html)        | [Asteroid Escape](./AsteroidEscape)     |
+| <img src="./images/BendIt.jpg" style="width:50px;" />        | [Bend it](BendIt/BendIt.html)                                | [Bend It](./BendIt)                     |
+| <img src="./images/CannibalMonsters.jpg" style="width:50px;" /> | [Cannibal Monsters](CannibalMonsters/CannibalMonsters.html)  | [Cannibal Monsters](./CannibalMonsters) |
+| <img src="./images/CatsNBoxes.jpg" style="width:50px;" />    | [Cats & Boxes](CatsNBoxes/CatsNBoxes.html)                   | [CatsNBoxes](./CatsNBoxes)              |
+| <img src="./images/CityMaze.jpg" style="width:50px;" />      | CityMaze : [Express Delivery](CityMaze/CityMaze_Express_Delivery.html), [On the Double](CityMaze/CityMaze_On_the_Double.html) | [City Maze](./CityMaze)                 |
+| <img src="./images/FlipIt.jpg" style="width:50px;" />        | [Flip It](FlipIt/FlipIt.html)                                | [Flip It](./FlipIt)                     |
+| <img src="./images/GraveyardShift.jpg" style="width:50px;" /> | [Graveyard Shift](GraveYardShift/GraveYardShift.html)        | [Graveyard Shift](./GraveYardShift)     |
+| <img src="./images/GrizzlyGears.jpg" style="width:50px;" />  | [Grizzly Gears](GrizzlyGears/GrizzlyGears.html)              | [Grizzly Gears](./GrizzlyGears)         |
+| <img src="./images/HotSpot.jpg" style="width:50px;" />       | [Hot Spot](HotSpot/HotSpot.html)                             | [Hot Spot](./HotSpot)                   |
+| <img src="./images/JumpIn.jpg" style="width:50px;" />        | [Jump In](JumpIn/JumpIn.html)                                | [Jump in](./JUmpIn)                     |
+| <img src="./images/LaserMaze.jpg" style="width:50px;" />     | [Laser Maze](laserMaze/LaserMaze.html)                       | [Laser Maze](./LaserMaze)               |
+| <img src="./images/RiverCrossing.jpg" style="width:50px;" /> | [River Crossing](RiverCrossing/RiverCrossing.html)           | [River Crossing](./RiverCrossing)       |
+| <img src="./images/RushHour.jpg" style="width:50px;" />      | [Rush Hour](RushHour/RushHour.html)                          | [Rush Hour](./RushHour)                 |
+| <img src="./images/SnowProblem.jpg" style="width:50px;" />   | [Snow Problem](SnowProblem/SnowProblem.html)                 | [Snow Problem](./SnowProblem)           |
+| <img src="./images/SquirrelsGoNuts.jpg" style="width:50px;" /> | [Squirrels Go Nuts](SquirrelsGoNuts/SquirrelsGoNuts.html)    | [Squirrels Go Nuts](./SquirrelsGoNuts)  |
+| <img src="./images/TempleTrap.jpg" style="width:50px;" />    | [Temple Trap](TempleTrap/Temple Trap.html)                   | [Temple Trap](./TempleTrap)             |
+| <img src="./images/Tilt.jpg" style="width:50px;" />          | [Tilt](Tilt/Tilt.html)                                       | [Tilt](./Tilt)                          |
+| <img src="./images/TipOver.jpg" style="width:50px;" />       | [Tip over](TipOver/TipOver.html)                             | [TiipOver](./TilpOver)                  |
+| <img src="./images/Titanic.jpg" style="width:50px;" />       | [Titanic](Titanic/Titanic.html)                              | [Titanic](./Titanic)                    |
+| <img src="./images/ToadsNFrogs.jpg" style="width:100px;" />  | [Toads and Frogs](ToadsNFrogs/ToadsNFrogs.html)              | [Toads and Frogs](./ToadsNFrogs)        |
 
-1. [Anti-Virus](AntiVirus/AntiVirus.html)
-2. [Asteroid Escape](AsteroidEscape/AsteroidEscape.html)
-3. [Cannibal Monsters](CannibalMonsters/CannibalMonsters.html)
-4. [Cats & Boxes](CatsNBoxes/CatsNBoxes.html)
-5. CityMaze : [Express Delivery](CityMaze/CityMaze_Express_Delivery.html), [On the Double](CityMaze/CityMaze_On_the_Double.html)
-6. [Flip It](FlipIt/FlipIt.html)
-7. [Graveyard Shift](GraveYardShift/GraveYardShift.html)
-8. [Grizzly Gears](GrizzlyGears/GrizzlyGears.html)
-9. [Hot Spot](HotSpot/HotSpot.html)
-10. [Jump In](JumpIn/JumpIn.html)
-11. [Laser Maze](laserMaze/LaserMaze.html)
-12. [River Crossing](RiverCrossing/RiverCrossing.html)
-13. [Rush Hour](RushHour/RushHour.html)
-14. [Snow Problem](SnowProblem/SnowProblem.html)
-15. [Squirrel Go Nuts](SquirrelGoNuts/SquirrelGoNuts.html)
-16. [Temple Trap](TempleTrap/Temple Trap.html)
-17. [Tilt](Tilt/Tilt.html)
-18. [Tip over](TipOver/TipOver.html)
-19. [Titanic](Titanic/Titanic.html)
-
-## Links to the source code
-
-1. [Template](./Template)
-2. [Anti-Virus](./AntiVirus)
-3. [Asteroid Escape](./AsteroidEscape)
-4. [Cannibal Monsters](./CannibalMonsters)
-5. [CatsNBoxes](./CatsNBoxes)
-6. [City Maze](./CityMaze)
-7. [Flip It](./FlipIt)
-8. [Graveyard Shift](./GraveYardShift)
-9. [Grizzly Gears](./GrizzlyGears)
-10. [Hot Spot](./HotSpot)
-11. [Jump in](./JUmpIn)
-12. [Laser Maze](./LaserMaze)
-13. [River Crossing](./RiverCrossing)
-14. [Rush Hour](./RushHour)
-15. [Snow Problem](./SnowProblem)
-16. [Squirrels Go Nuts](./SquirrelsGoNuts)
-17. [Temple Trap](./TempleTrap)
-18. [Tilt](./Tilt)
-19. [TiipOver](./TilpOver)
-20. [Titanic](./Titanic)

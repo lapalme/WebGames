@@ -1,7 +1,7 @@
 // create a new directory from the Template replacing XXX by NEW
 import {readFileSync,writeFileSync,mkdirSync} from "fs";
 
-const NEW = "GrizzlyGears"
+const NEW = "ToadsNFrogs"
 const fileNames = ["Explanation.html","Problems.js","XXX_batch.js","XXX_Board.js","XXX_Display.js",
                    "XXX_Jump.js","XXX_main.js","XXX_Piece.js","XXX.html"]
 

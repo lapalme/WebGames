@@ -22,7 +22,9 @@ games=(\
        Titanic \
        )
 
-## open all games in default browser on macOS
+## open all games in default browser on macOS with Safari 
+## for which the same origin checking has been disabled...
+## This should not be used in production, but is useful for checking "obvious" errors
 for game in $games ; do
     open ${game}/${game}.html
 done

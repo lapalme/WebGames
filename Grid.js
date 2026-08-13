@@ -31,15 +31,17 @@ class Grid {
     
     // Show the grid elements on width chars, if null display null_val
     show(width=1,null_val="."){
-        let lines= [" ".repeat(width-1)+":"+
+        const w0=this.M.toString().length // width of row numbers at the left
+        let lines= [" ".repeat(w0)+":"+
                     Array.from({length:this.N},(_,k)=>k).map(v=>centerPad(String(v),width)).join("")]
         for (let i=0;i<this.M;i++){
-            let line = [i+":"]
+            let line = [];
             for (let j=0;j<this.N;j++){
                 const v = this.elems[i][j]
                 line.push(v==null ? null_val : v.toString())
             }
-            lines.push(line.map(v=>String(v).padStart(width)).join(""))
+            lines.push([i.toString().padStart(w0)+":"]+
+                       line.map(v=>String(v).padStart(width)).join(""))
         }
         return lines.join("\n")        
     } 
@@ -91,14 +93,28 @@ class Grid {
                 if (action(this.elems[i][j])) return [i,j]
         return null
     }
+    
+    // check that another grid has the same values at the same indices
+    isSameAs(that){
+        if (this.M != that.M || this.N != that.N){
+            console.log("*** Grid.isSameAs applied to grids of different dimensions")
+            debugger;
+        }
+        for (let i=0;i<this.M;i++)
+            for (let j=0;j<this.N;j++)
+                if (this.elems[i][j]!=that.elems[i][j])return false
+        return true        
+    }
 }
 
 //// a few unit tests
 // const g1 = new Grid(2,3);
 // g1.forEach((i,j)=>g1.set(i,j,i+j))
-// console.log(g1.show(3))
+// console.log("g1\n"+g1.show(3))
 // const g2=g1.map((i,j,v)=>v*2);
-// console.log(g2.show(3))
+// console.log("g2\n"+g2.show(3))
 // const g3 = g2.copy()
-// console.log(g3.show(4))
-// console.log(g3.findIndex(v=>v!=0))
+// console.log("g3\n"+g3.show())
+// console.log(`${g3.findIndex(v=>v!=0)}`)
+// console.log(g1.isSameAs(g2))
+// console.log(g2.isSameAs(g3))

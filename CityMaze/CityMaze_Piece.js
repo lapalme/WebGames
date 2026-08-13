@@ -19,7 +19,7 @@ const pdir2rot = {"↑":0,"→":90,"↓":180,"←":270}
 //  * : start
 //  S : Elbow
 //  F : right-arrow
-//  U : u-turn-rigth
+//  U : u-turn-right
 //  W : u-turn-left
 // color : B(blue) | R (red) if red piece must be inverted
 // direction: arrow

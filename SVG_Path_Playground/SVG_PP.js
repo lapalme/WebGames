@@ -179,7 +179,7 @@ function doCommand(e){
     // clear unused points
     let k=the_points.length-nb-1;
     while(k>=nbUsed){
-        console.log("removing",k,the_points[k].toPath())
+        // console.log("removing",k,the_points[k].toPath())
         the_points[k].drawing.remove();
         the_points.splice(k,1);
         k--;

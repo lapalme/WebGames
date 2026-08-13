@@ -66,7 +66,7 @@ function solveAll(problems,Board,showMoves,TRACE=false){
     for (const key in problems){
         console.log("**",key,"**");
         const state = problems[key]
-        const board = new Board(0,state); 
+        const board = new Board(key,state); 
         console.log(board.toString()); // only for the display...
         const startTime = performance.now()
         const solution = solve(key,board.toState(),Board,showMoves,TRACE)

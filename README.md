@@ -1,3 +1,11 @@
+---
+​---
+title: Web games
+description: Web version of single-player board puzzles
+author: Guy Lapalme
+​---
+---
+
 # Web versions of single-player board puzzles 
 [En français](./LISEZMOI.html)
 
@@ -23,6 +31,7 @@ Here are the games currently available (in alphabetical order):
 | <img src="./images/CannibalMonsters.jpg" width="125px" /> | [Cannibal Monsters](./CannibalMonsters/CannibalMonsters.html) | Stack monsters until only one is left |
 | <img src="./images/CatsNBoxes.jpg" width="125px" /> | [CatsNBoxes](./CatsNBoxes/CatsNBoxes.html) | Put all the cats in the boxes |
 | <img src="./images/CityMaze.jpg" width="125px" /> | City Maze  <br>[Express Delivery](./CityMaze/CityMaze_Express_Delivery.html)  <br>[On the Double](./CityMaze/CityMaze_On_the_Double.html) | Build a path to reach all targets of the same color |
+| <img src="./images/ExpressCourier.jpg" width="125px" /> | [Express Courier](./ExpressCourier/ExpressCourier.html) | Exit all cargo crates |
 | <img src="./images/FlipIt.jpg" width="125px" /> | [Flip It](./FlipIt/FlipIt.html) | Flip all turtles |
 | <img src="./images/GraveYardShift.jpg" width="125px" /> | [Graveyard Shift](./GraveYardShift/GraveYardShift.html) | Exit the pink piece by sliding pieces. |
 | <img src="./images/GrizzlyGears.jpg" width="125px" /> | [Grizzly Gears](./GrizzlyGears/GrizzlyGears.html) | Move boats by rotating disks |

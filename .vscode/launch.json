@@ -124,6 +124,22 @@
             "url": "http://127.0.0.1:8080/CityMaze/CityMaze_On_the_Double.html"
         },
         {
+            "name": "ExpressCourier batch",
+            "program": "${workspaceFolder}/ExpressCourier/ExpressCourier_batch.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "ExpressCourier HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/ExpressCourier/ExpressCourier.html"
+        },
+        {
             "name": "FlipIt batch",
             "program": "${workspaceFolder}/FlipIt/FlipIt_batch.js",
             "request": "launch",

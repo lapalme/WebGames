@@ -1,7 +1,7 @@
 import {svg,setSVGfactors} from "../SVGtools.js";
-import {FlipIt_Board,showMoves} from "./FlipIt_Board.js";
+import {FlipIt_Board} from "./FlipIt_Board.js";
 import {FlipIt_Display} from "./FlipIt_Display.js";
-import {solveWeb} from "../Solver.js"
+import {solveWeb} from "../Solver.js";
 import { buildProblemSelection,setLang,initLanguageHandlers } from "../Main.js";
 
 import {startStates, levels} from "./Problems.js"
@@ -23,7 +23,7 @@ function initEventHandlers() {
             play(problemNo,startStates[problemNo]) 
         })
         $("#solve").on("mousedown",()=>
-            solveWeb(problemNo,startStates[problemNo],FlipIt_Board,display,showMoves));
+            solveWeb(problemNo,startStates[problemNo],FlipIt_Board,display));
         $("#reset").append(
             svg("use",{href:"#reset-def"})
         ).on("mousedown",()=>play(problemNo,startStates[problemNo]));

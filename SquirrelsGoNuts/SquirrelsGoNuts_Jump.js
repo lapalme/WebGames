@@ -12,4 +12,8 @@ class SquirrelsGoNuts_Jump extends Jump{
     toString(){
         return this.id+this.arrow()+(this.nutInHole?"🌰":"")
     }
+    
+    moveToString(){
+        return this.arrow()+(this.nutInHole?"🌰":"")
+    }
 }

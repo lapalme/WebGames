@@ -37,6 +37,7 @@ Voici la liste alphabétique des jeux actuellement disponibles, correspondant à
 | <img src="./images/HotSpot.jpg" width="125px" /> | [Hot Spot](./HotSpot/HotSpot.html) | Amener le jeton rouge en haut à gauche |
 | <img src="./images/JumpIn.jpg" width="125px" /> | [Jump In](./JumpIn/JumpIn.html) | Faire sauter les lapins dans les terriers |
 | <img src="./images/LaserMaze.jpg" width="125px" /> | [Laser Maze](./LaserMaze/LaserMaze.html) | Tourner toutes les tortues |
+| <img src="./images/LunarLockout.jpg" width="125px" /> | [Lunar Lockout](./LunarLockout/LaserMaze.html) | Amener la tuile rouge au centre du jeu |
 | <img src="./images/RiverCrossing.jpg" width="125px" /> | [River Crossing](./RiverCrossing/RiverCrossing.html) | Faire traverser la rivière au randonneur |
 | <img src="./images/RushHour.jpg" width="125px" /> | [Rush Hour](./RushHour/RushHour.html) | Faire sortir la voiture rouge |
 | <img src="./images/SnowProblem.jpg" width="125px" /> | [Je voudrais un bonhomme de neige](./SnowProblem/SnowProblem.html) | Monter des bonhommes de neige en faisant rouler des boules |
@@ -65,7 +66,6 @@ Voici la liste alphabétique des jeux actuellement disponibles, correspondant à
 * Fichiers auxiliaires
   * [Organisation globale de la page web](./body.html)
   * [Feuille de style](./Common.css)
-  * [Coordonnée i,j](./C.js)
   * [Lancer toutes les résolutions en lot](./Test_batch_all.zsh)
   * [Lancer toutes les exécutions dans un navigateur](./test_html_all.zsh)
 

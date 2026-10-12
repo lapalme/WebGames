@@ -1,11 +1,14 @@
-import {C} from "./C.js"
-export {dir2rot,dirInv,allDirs,nextDir,rotateXY,Jump,jumps2moves,jumpList}
+import { svg, translate, rotate } from "./SVGtools.js"
+export {dir2rot,dirInv,allDirs,nextDir,rotateXY,Jump,jumps2moves,jumpList,showMoves}
 
 // some utility constants and functions
 // rotation from the "down" orientation
 const dir2rot = {"↑":[180,1,0],"→":[270,0,-1],"↓":[0,-1,0],"←":[90,0,1]}
+const dir2rotDiag = {...dir2rot,
+                     "↖︎":[135,1,1],"↘":[315,-1,-1],"↙︎":[225,1,-1],"↗︎":[45,-1,1]}
 const dirInv = {"↑":"↓", "→":"←", "↓":"↑", "←":"→"}
 const allDirs = Object.keys(dir2rot)
+const allDirsDiag = Object.values(dir2rotDiag)
 
 function nextDir(dir,delta=1){
     if (delta==0) return dir;
@@ -26,14 +29,18 @@ function rotateXY(dir,x,y){
 }
 
 class Jump {
-    constructor(from,to){  // from,to are of type C or an array of two integers
-        this.from = from instanceof C ? from : new C(from[0],from[1]),
-        this.to   = to instanceof C ? to : new C(to[0],to[1]);
+    constructor(from,to){  // from,to are arrays of two integers
+        this.from = {i:from[0],j:from[1]}
+        this.to   = {i:to[0],  j:to[1]}
         this.precedent = null; 
     }
     
     toString(){
-        return this.from+"=>"+this.to;
+        return `${this.from.i}@${this.from.j}=>${this.to.i}@${this.to.j}`
+    }
+    
+    moveToString(){
+        return `=>${this.to.i}@${this.to.j}`
     }
     
     follows(pred){
@@ -49,8 +56,8 @@ class Jump {
         return this.from.i == this.to.i && this.from.j == this.to.j;
     }
     
-    extend(coups){
-        this.precedent = coups;
+    extend(previousJump){
+        this.precedent = previousJump;
         return this;
     }
     
@@ -67,11 +74,23 @@ class Jump {
     
     //  rotation from the North that corresponds to this jump
     rotation(){
-        const [di,dj] = this.direction();
-        if (di==0)
-            return dj<0 ? 270 : 90;
-        return di<0 ? 0 : 180;       
+        let [di,dj] = this.direction();
+        di = Math.sign(di)
+        dj = Math.sign(dj)
+        return allDirsDiag.find(([_,i,j])=>i==di && j==dj)[0]
+        // if (di==0)
+        //     return dj<0 ? 270 : 90;
+        // return di<0 ? 0 : 180;       
     }
+    
+    // show default arrow 
+    showArrow(stroke="black"){
+        return svg("use",{href:"#arrow-def",class:"arrow",stroke:stroke,
+            transform:translate(this.from.j,this.from.i)+
+            rotate(this.rotation(),0.5,0.5)})
+            .data({jump:this})
+    }
+
 }
 
 // combine jumps to moves
@@ -94,4 +113,12 @@ function jumpList(lastJump,coups){
     if (lastJump==null) return coups;
     coups.push(lastJump);
     return jumpList(lastJump.precedent,coups); 
+}
+
+function showMoves(jumpsList){    
+    let moves = []
+    for (const jumps of jumpsList){
+        moves.push(""+jumps[0]+jumps.slice(1).map(j=>j.moveToString()).join(""))
+    }    
+    return moves.join(", ");
 }

@@ -2,7 +2,6 @@ import {svg,makePoints,translate,translateSVG,rotateSVG,getPos} from "../SVGtool
 import {Board} from "../Board.js"
 import {Grid} from "../Grid.js"
 import {CM_Jump} from "./CM_Jump.js"
-import {C} from "../C.js"
 import { nextDir } from "../Jump.js"
 import {CityMaze_Piece, infosPiece, Path,SimpleTurn,DoubleTurn,deltas} from "./CityMaze_Piece.js"
 
@@ -411,7 +410,7 @@ class CityMaze_Board extends Board {
                 } 
                 for (const [i,j,dir] of paths){
                     if (piece.legalPositions(this.grid,i,j,occupied[dir])){
-                        const jump = new CM_Jump(new C(piece.i,piece.j),new C(i,j),piece.kind,color,dir);
+                        const jump = new CM_Jump([piece.i,piece.j],[i,j],piece.kind,color,dir);
                         const idx = jumps.findIndex(j=>j.isSameAs(jump))
                         if (idx<0)jumps.push(jump)
                     }
@@ -431,7 +430,7 @@ class CityMaze_Board extends Board {
     }
         
     undo(jump){
-        throw new Error("CityMaxe_Board.undo should not be used...")
+        throw new Error("CityMaze_Board.undo should not be used...")
     }
     
 }

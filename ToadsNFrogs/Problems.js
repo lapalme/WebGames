@@ -18,7 +18,7 @@ const levels =[{"en":"Starter","fr":"Débutant","from":1,"to":2},
 const problems = {}
 for (let k=1;k<=6;k++){
     problems[k]=JSON.stringify(Array.from({length:k},_ => "T").concat([null],Array.from({length:k},_ => "F")))
-    console.log(k,problems[k])
+    // console.log(k,problems[k])
 }
 
 export {levels,problems as startStates}

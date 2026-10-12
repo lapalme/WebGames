@@ -9,6 +9,10 @@ class AsteroidEscape_Jump extends Jump{
     }
     
     toString(){
-        return this.pid+this.arrow()+super.toString()
+        return this.pid+this.arrow()
+    }
+    
+    moveToString(){
+        return this.arrow()
     }
 }

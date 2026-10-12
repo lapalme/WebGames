@@ -5,18 +5,7 @@ import {Grid} from "../Grid.js"
 import {JumpIn_Piece} from "./JumpIn_Piece.js"
 import { JumpIn_Jump } from "./JumpIn_Jump.js"
 
-export {JumpIn_Board,showMoves,isHole,M,N}
-
-function showMoves(jumpsList){
-    let moves = []
-    for (const jumps of jumpsList){
-        let move = jumps[0]
-        for (const jump of jumps.slice(1))
-            move+=jump.arrow()
-        moves.push(move)
-    }   
-    return moves.join(" ");
-}
+export {JumpIn_Board,isHole,M,N}
 
 const M=5,N=5;
 function isHole(i,j){
@@ -66,7 +55,6 @@ class JumpIn_Board extends Board {
     
     possibleJumps(){
         const jumps = this.movable.flatMap(p=>p.possibleJumps(this.grid));
-        if (this.display){this.display.showPossible(jumps)}
         return jumps
     }
     
@@ -92,13 +80,13 @@ class JumpIn_Board extends Board {
         }
         piece.i=i1;
         piece.j=j1;
-        if (this.display){
+        if (this.display != null){
             translateSVG(piece.drawing,piece.j,piece.i)
         }
     }
     
     undo(jump){
-        this.play(new JumpIn_Jump(jump.to,jump.from,jump.kind))        
+        this.play(new JumpIn_Jump([jump.to.i,jump.to.j],[jump.from.i,jump.from.j],jump.kind))        
     }
     
 }

@@ -1,5 +1,5 @@
 import {svg,setSVGfactors} from "../SVGtools.js";
-import {SnowProblem_Board,showMoves} from "./SnowProblem_Board.js";
+import {SnowProblem_Board} from "./SnowProblem_Board.js";
 import {SnowProblem_Display} from "./SnowProblem_Display.js";
 import {solveWeb} from "../Solver.js"
 import { buildProblemSelection,setLang,initLanguageHandlers } from "../Main.js";

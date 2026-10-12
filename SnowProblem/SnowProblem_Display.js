@@ -1,8 +1,5 @@
-import {svg,makePoints,translate,rotate,M,L,Q,scaleAt,cText,translateSVG} from "../SVGtools.js"
-import {Display,message,d} from "../Display.js"
-import {M as nbLines,N as nbCols,showMoves} from "./SnowProblem_Board.js"
-import { jumps2moves,jumpList } from "../Jump.js";
-
+import {svg,makePoints,translate,M,L,Q,scaleAt} from "../SVGtools.js"
+import {Display} from "../Display.js"
 export {SnowProblem_Display}
 
 const W=1.0,W_2=W/2,W_3=W/3,W_4=W/4,W_5=W/5;
@@ -91,84 +88,9 @@ class SnowProblem_Display extends Display {
         $background.append(svg("use",{href:"#reset-def",id:"reset",transform:translate(6,4)}))  
     }
     
-    setBoard(board){
-        this.makeBackground($("#background"),board.grid)
-        $("#pieces").empty();
-        $("#bravo,#impasse,#x,.arrow").remove();
-        allJumps=null;
-        this.board = board;
-        this.$svg_element.data({board:board,display:this});
-        for (const piece of board.pieces){
-            const drawing = piece.draw();
-            if (piece.kind!="t"){
-                drawing.on("mousedown",mousedown);
-            }
-            $("#pieces").append(drawing) 
-        }
-    }
-    
-    undo(){
-        $("#bravo,#impasse,#x,.arrow").remove();
-        if (allJumps == null) return;
-        const jump = allJumps;
-        allJumps = allJumps.precedent;
-        // console.log("allJumps",jumpList(allJumps,[]).toString())
-        const newPiece = this.board.undo(jump);
-        // check if the undo did unstack and created a new piece
-        if (newPiece!=null) 
-            newPiece.drawing.on("mousedown",mousedown)
-    }
-
-}
-
-function mousedown(e){
-    $("#x,.arrow").remove();
-    const $current = $(e.currentTarget);
-    const piece = $current.data("piece");
-    const $svg_element = $("#svg_element");
-    const {board,display} = $svg_element.data();
-        
-    $current.on("mouseup",mouseup);
- 
-    function mouseup(e){
-        const possibleJumps = piece.possibleJumps(board.grid);
-        switch (possibleJumps.length) {
-            case 0:
-                $("#pieces").append(
-                    svg("use",{href:"#badMove",id:"x",transform:translate(piece.j,piece.i)})
-                )
-                break;
-            case 1:
-                const jump=possibleJumps[0];
-                board.play(jump);
-                allJumps = jump.extend(allJumps);
-                break;
-            default:
-                for (const jump of possibleJumps){
-                    $svg_element.append(
-                        svg("use",{href:"#arrow",
-                                    transform:translate(piece.j,piece.i)+rotate(jump.rotation(),0.5,0.5),
-                                    class:"arrow"}).data({piece:piece,jump:jump})
-                        .on("mousedown",suivrefleche))
-                    }
-                break;
-        }
-        if (board.isComplete()){
-            display.showBravo(allJumps,showMoves,nbLines,nbCols)
-        } else if (board.isBlocked()){
-                $svg_element.append(
-                    svg("use",{href:"#deadEnd-def",id:"impasse"})
-                )
-        }
-        $current.off("mouseup");
-    }
-    
-    function suivrefleche(e){
-        const $current = $(e.currentTarget);
-        const jump=$current.data("jump");
-        board.play(jump);
-        allJumps = jump.extend(allJumps);
-        $(".arrow").remove();
+    showPossibles(){
+        $("#impasse").remove()
+        if (super.showPossibles().length==0)
+             $("#svg_element").append(svg("use",{href:"#deadEnd-def",id:"impasse"}))
     }
 }
-

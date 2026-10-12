@@ -1,15 +1,9 @@
 import {svg,makePoints,translate,rotate,cText,translateSVG_rel,translateSVG,getPos,svg_drag} from "../SVGtools.js"
 import {Display,message,d} from "../Display.js"
 import {M,N,ij2letter} from "./FlipIt_Board.js";
-import {showMoves} from "./FlipIt_Board.js"
 export {FlipIt_Display}
 
-let allJumps;
-
 class FlipIt_Display extends Display {
-    constructor(){
-        super();
-    }
     
     makeDefs($defs){
         function ellipse(rx,ry,cx,cy,fill="#40826D"){
@@ -54,50 +48,4 @@ class FlipIt_Display extends Display {
             )
         })
     }
-    
-    setBoard(board){
-        this.makeBackground($("#background"),board.grid)
-        $("#pieces").empty();
-        allJumps = null;
-        this.board = board;
-        this.$svg_element.data({board:board,display:this});
-        for (const turtle of board.pieces){
-            turtle.draw()
-            turtle.drawing.data({piece:turtle})
-            turtle.drawing.on("pointerdown",pointerdown);
-            $("#pieces").append(turtle.drawing)
-        }
-    }
-    
-    undo(){
-        $("#bravo").remove();
-        if (allJumps == null) return;
-        const jump = allJumps;
-        const i = jump.from.i, j=jump.from.j;
-        allJumps = allJumps.precedent;
-        this.board.undo(jump);
-        const $drawing = this.board.grid.get(i,j).drawing
-        translateSVG($drawing,j,i);
-        $("title",$drawing).text(ij2letter[i][j])
-    }    
-
-}
-
-function pointerdown(e){
-   $("#bravo").remove();
-    const current = $(e.currentTarget);
-    const turtle = current.data("piece");
-    const $svg_element= $("#svg_element");
-    let {board,display} = $svg_element.data();
-    const possibleJumps = turtle.possibleJumps(board.grid);
-    svg_drag(current,turtle,$svg_element,getPos(e),
-             possibleJumps.map(jmp=>[jmp.to.i,jmp.to.j]),
-        (idx,newI,newJ)=>{
-            $("title",current).text(ij2letter[newI][newJ]);
-            board.play(possibleJumps[idx]); 
-            allJumps = possibleJumps[idx].extend(allJumps);
-            if (board.isComplete()){
-                display.showBravo(allJumps,showMoves,4,4)
-            }
-        })
 }

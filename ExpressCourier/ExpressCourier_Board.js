@@ -4,14 +4,10 @@ import {ExpressCourier_Jump} from "./ExpressCourier_Jump.js"
 import {ExpressCourier_Piece} from "./ExpressCourier_Piece.js"
 import { translate,translateSVG } from "../SVGtools.js"
 
-export {ExpressCourier_Board,showMoves,isExit,exitsH,exitsV}
+export {ExpressCourier_Board,isExit,exitsH,exitsV}
 
 const letter2arrow = {"s":"↓", "w":"←", "n":"↑", "e":"→"}
 const arrow2letter = {"↓":"s", "←":"w", "↑":"n", "→":"e"}
-
-function showMoves(jumpsList){    
-    return jumpsList.join();// TODO: change if needed
-}
 
 const exitsV = [[-1,2],[4,0],[4,3]]
 const exitsH = [[1,5],[3,-1]]

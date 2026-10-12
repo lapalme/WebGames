@@ -1,5 +1,5 @@
-import {svg,makePoints,M,L,A,Q,translate,rotate,scale,scaleAt,cText} from "./SVGtools.js"
-import {jumps2moves} from "./Jump.js"
+import {svg,M,L,A,cText} from "./SVGtools.js"
+import {jumps2moves, showMoves} from "./Jump.js"
 
 export {message,d,Display}
 
@@ -15,12 +15,12 @@ function d(val,w,str){
     return String(val).padStart(w)+str
 }
 
-
 class Display {
-   
+    
     constructor (){
         this.$svg_element = $("#svg_element");
         this.makeDefs($("#defs"))
+        this.allJumps = null
         this.board  = null // current board
     }
     
@@ -70,33 +70,77 @@ class Display {
        )
     }
     
+    // stubs for 
     makeBackground($backgroud){
         throw new Error("Display.makeBackground: should be redefined in a subclass")
     }
     
     setBoard(board){
-        throw new Error("Display.setBoard: should be redefined in a subclass")
+        this.makeBackground($("#background"),board.grid);
+        $("#pieces").empty();
+        this.allJumps = null;
+        this.board = board;
+        this.$svg_element.data({board:board,display:this});
+        for (const piece of board.pieces){
+            piece.draw()
+                .data({piece:piece})
+            $("#pieces").append(piece.drawing)
+        }
+        this.showPossibles()
     }
     
-    undo(jump){
-        throw new Error("Display.undo: should be redefined in a subclass")
+    showPossibles(arrowColor="blue"){
+        $(".arrow").remove()
+        const possibles = this.board.possibleJumps()
+        for (const jump of possibles){
+            $("#pieces").append(
+                jump.showArrow(arrowColor)
+                .on("pointerdown",this.pointerdown)
+            )
+        }
+        return possibles;
+    }
+
+    undo(){
+        $("#bravo").remove();
+        if (this.allJumps == null) return;
+        const jump = this.allJumps;
+        this.allJumps = this.allJumps.precedent;
+        this.board.undo(jump);
+        this.showPossibles()
     }
     
+    pointerdown(e){
+        $("#bravo").remove()
+        const $current = $(e.currentTarget);
+        const $svg_element = $("#svg_element");
+        let {board,display} = $svg_element.data();
+        const {jump} = $current.data();
+        board.play(jump)
+        display.allJumps = jump.extend(display.allJumps)   
+        if (board.isComplete()){
+            $(".arrow").remove()
+            const grid=board.grid
+            display.showBravo(display.allJumps,showMoves,grid.M,grid.N)
+        } else {
+            display.showPossibles()
+        }
+    }
+
     showBravo(allJumps,showMoves,M,N){
         if(allJumps==null)return;
         const [moves_w,jumps_w] = $("input[name='lang']:checked").val()=="fr" ? 
                             [" coups,"," sauts: "] : [" moves,"," jumps: "]; 
         $("#svg_element").append(
-                svg("g",{id:"bravo"},
-                    svg("rect",{width:4,height:2,x:(N-4)/2,y:(M-2)/2,rx:0.2,ry:0.22,fill:"white",stroke:"black","stroke-width":0.1,"fill-opacity":0.75}),
-                    cText("Bravo !",N/2,M/2,"black",1)
-                )
+            svg("g",{id:"bravo"},
+                svg("rect",{width:4,height:2,x:(N-4)/2,y:(M-2)/2,rx:0.2,ry:0.22,fill:"white",stroke:"black","stroke-width":0.1,"fill-opacity":0.75}),
+                cText("Bravo !",N/2,M/2,"black",1)
+            )
         )
         const [jumps,moves] = jumps2moves(allJumps);
         const movesShown = showMoves(moves)
         const nbMoves = movesShown.split(",").length
         const problemNo = $("input[name=state-no]:checked").val();
-        message(d(problemNo,2,":")+d(nbMoves,3,moves_w)+d(nbMoves,3,jumps_w)+movesShown+"\n===");
-        // message(d(problemNo,2,":")+d(moves.length,3,moves_w)+d(jumps.length,3,jumps_w)+showMoves(moves)+"\n===");   
-    }    
+        message(d(problemNo,2,":")+d(nbMoves,3,moves_w)+d(jumps.length,3,jumps_w)+movesShown+"\n===");
+    }
 }

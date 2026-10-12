@@ -12,7 +12,15 @@ class Piece {
         return `Piece(${this.id},${this.i},${this.j})`
     }
     
-    possibleJumps(grid){
+    toState(){  // returns a state representation
+        throw new Error("Piece.toState: should be redefined in a subclass")
+    }
+    
+    possibleJumps(grid){ // returns a list of instances of a subclass of Jump
+        throw new Error("Piece.possibleJumps: should be redefined in a subclass")
+    }
+    
+    draw(){  // creates this.drawing and returns it
         throw new Error("Piece.possibleJumps: should be redefined in a subclass")
     }
 }

@@ -19,4 +19,14 @@ class ExpressCourier_Jump extends Jump{
             return "!"+res;
         return res
     }
+    
+    moveToString(){
+        const res = this.arrow()
+        if (this.cargoMove)
+            return "*"+res
+        if (isExit(this.to.i,this.to.j,res))
+            return "!"+res;
+        return res
+        
+    }
 }

@@ -1,7 +1,8 @@
 import {Board} from "../Board.js"
 import {Grid} from "../Grid.js"
-import {Jump} from "../Jump.js"
+import { FlipIt_Jump } from "./FlipIt_jump.js"
 import {FlipIt_Piece} from "./FlipIt_Piece.js"
+import { translateSVG } from "../SVGtools.js"
 
 export {M,N,FlipIt_Board,ij2letter,showMoves}
 
@@ -69,7 +70,7 @@ class FlipIt_Board extends Board {
     }
     
     possibleJumps(){
-        return this.pieces.map(p=>p.possibleJumps(this.grid)).flat()
+        return this.pieces.flatMap(p=>p.possibleJumps(this.grid))
     }
     
     isComplete(){
@@ -90,6 +91,9 @@ class FlipIt_Board extends Board {
         grid.set(toI,toJ,piece);
         piece.i=toI;
         piece.j=toJ;
+        if (this.display !=null){
+            translateSVG(piece.drawing,toJ,toI)
+        }
         // flip jumped turtles
         if (fromI==toI){ // vertical
             if (fromJ>toJ)[fromJ,toJ]=[toJ,fromJ];
@@ -112,7 +116,7 @@ class FlipIt_Board extends Board {
     }
     
     undo(jump){ // play the reverse of the jump
-        this.play(new Jump(jump.to,jump.from))
+        this.play(new FlipIt_Jump([jump.to.i,jump.to.j],[jump.from.i,jump.from.j]))
     }
 
 }

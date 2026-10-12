@@ -16,6 +16,7 @@ const levels =[{"en":"Starter","fr":"Débutant","from":1,"to":12},
 // R: red
 // Y: yellow
 // B: black
+// F: flower
 // 'arrow': nut
 // . :free
 

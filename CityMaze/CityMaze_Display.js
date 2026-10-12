@@ -1,7 +1,6 @@
 import {svg,pts,translate,M,L,Q,A,getTranslateInfos,translateSVG_rel,rotateSVG,getPos} from "../SVGtools.js"
 import {Display,message,d} from "../Display.js"
 import {showMoves} from "./CityMaze_Board.js"
-import { C } from "../C.js";
 import { CM_Jump } from "./CM_Jump.js";
 import {Path, SimpleTurn, DoubleTurn,infosPiece} from "./CityMaze_Piece.js"
 import {M as nbLines, N,positionsReserve} from "./CityMaze_Board.js";
@@ -242,7 +241,7 @@ function pointerdown(e){
                     } else
                         throw new Error(`pas trouvé d'équivalent dans la réserve:${piece.kind},${piece.i},${piece.j}`)
                     piece.color = piece.color=="B"?"R":"B";
-                    const jump = new CM_Jump(new C(piece.i,piece.j),new C(piece.i,piece.j),piece.kind,piece.color,piece.dir);
+                    const jump = new CM_Jump([piece.i,piece.j],[piece.i,piece.j],piece.kind,piece.color,piece.dir);
                     allJumps = jump.extend(allJumps);
                     addToUndoList(piece);
                     piece.changeMyInfos(infosPiece[piece.kind+piece.color]);
@@ -253,7 +252,7 @@ function pointerdown(e){
                 }
             } else {
                 board.rotation(piece);
-                const jump = new CM_Jump(new C(piece.i,piece.j),new C(piece.i,piece.j),piece.kind,piece.color,piece.dir);
+                const jump = new CM_Jump([piece.i,piece.j],[piece.i,piece.j],piece.kind,piece.color,piece.dir);
                 allJumps = jump.extend(allJumps);
                 addToUndoList(piece)
             }
@@ -262,7 +261,7 @@ function pointerdown(e){
             const infos = getTranslateInfos($current);
             let newI = Math.round(infos.y);
             let newJ = Math.round(infos.x);
-            const jump = new CM_Jump(new C(piece.i,piece.j),new C(newI,newJ),piece.kind,piece.color,piece.dir);
+            const jump = new CM_Jump([piece.i,piece.j],[newI,newJ],piece.kind,piece.color,piece.dir);
             allJumps = jump.extend(allJumps);
             addToUndoList(piece);
             board.play(jump); 

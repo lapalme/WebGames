@@ -1,11 +1,8 @@
-import {svg,makePoints,translate,rotate,M as MM,L,A,Q,cText,translateSVG_rel,translateSVG,getPos} from "../SVGtools.js"
-import {Display,message,d} from "../Display.js"
-import {showMoves, holePositions,overHole,M,N} from "./SquirrelsGoNuts_Board.js"
-import { dir2rot,dirInv } from "../Jump.js";
+import {svg,translate,rotate,M,L,Q} from "../SVGtools.js"
+import {Display} from "../Display.js"
+import {holePositions} from "./SquirrelsGoNuts_Board.js"
 
 export {SquirrelsGoNuts_Display}
-
-let allJumps;
 
 
 // create a flower with 6 petals of radius r
@@ -14,7 +11,7 @@ function flower(r){
     const y=r/2,x = Math.sqrt(r*r-y*y); 
     // create the outline of a petal with a quadratic
     // adapted from  https://svg-tutorial.com/svg/quadratic-bezier
-    const petal = (rot)=>svg("path",{d:MM(0,0)+L(x,y)+Q(r*2,0,x,-y)+"Z",
+    const petal = (rot)=>svg("path",{d:M(0,0)+L(x,y)+Q(r*2,0,x,-y)+"Z",
                                       transform:rotate(rot,0,0),
                                       stroke:"white","stroke-width":0.02})
     let f = svg("g",{id:"flower"})
@@ -78,70 +75,5 @@ class SquirrelsGoNuts_Display extends Display {
                 svg("circle",{id:"hi"+k,cx:x,cy:y,r:0.075,fill:"white",class:"hi"})
             )
         }
-
     }
-    
-    setBoard(board){
-        this.makeBackground($("#background"),board.grid);
-        $("#pieces").empty();
-        $(".nut").remove();
-        $(".hi").show().attr("fill","white")
-        
-        allJumps = null;
-        this.board = board;
-        this.$svg_element.data({board:board,display:this});
-        for (const piece of board.pieces){
-            piece.draw()
-            piece.drawing.data({piece:piece})
-            $("#pieces").append(piece.drawing)
-            if (piece.id=="F"){ // hide the hole indicator
-                const idx=overHole(piece.i,piece.j);
-                $("#hi"+idx).hide()
-            }
-        }
-        this.showPossibles()
-    }
-    
-    showPossibles(){
-        $(".arrow").remove();
-        const possibles = this.board.possibleJumps();
-        for (const jump of possibles){
-            const piece = this.board.movable[this.board.movable.findIndex(p=>p.id==jump.id)];
-            const pieceRot = dir2rot[dirInv[piece.dir]][0]
-            const rot = jump.rotation()-pieceRot;
-            piece.drawing.append(
-                svg("use",{href:"#arrow-def",transform:rotate(rot,0.5,0.5),stroke:"blue",class:"arrow"})
-                        .data({jump:jump,piece:piece}).on("click",click)
-            )
-        }        
-    }
-    
-
-    
-    undo(){
-        $("#bravo").remove();
-        if (allJumps == null) return;
-        const jump = allJumps;
-        allJumps = allJumps.precedent;
-        this.board.undo(jump);
-        this.showPossibles()
-    }
-
-}
-
-function click(e){
-    $("#bravo").remove()
-    const $current = $(e.currentTarget);
-    const $svg_element = $("#svg_element");
-    let {board,display} = $svg_element.data();
-    const {jump,piece} = $current.data();
-    board.play(jump);
-    $("#pieces").append(piece.drawing);
-    allJumps = jump.extend(allJumps)
-    if (board.isComplete()){
-        display.showBravo(allJumps,showMoves,M,N)
-    }  else {
-        display.showPossibles()
-    }       
-
 }

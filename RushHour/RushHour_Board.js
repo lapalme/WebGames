@@ -1,7 +1,6 @@
 import {Board} from "../Board.js"
 import {Grid} from "../Grid.js"
-import {RH_Jump} from "./RH_Jump.js"
-import {C} from "../C.js"
+import {RushHour_Jump} from "./RushHour_Jump.js"
 import {RushHour_Piece} from "./RushHour_Piece.js"
 import { translateSVG } from "../SVGtools.js";
 
@@ -58,15 +57,15 @@ class RushHour_Board extends Board {
         let jumps = [];
         for (const tile of this.pieces){
             const i=tile.i,j=tile.j, id = tile.id;
-            const from = new C(i,j);
+            const from = [i,j];
             if (tile.isHoriz){
-                if (check(i,j-1)) jumps.push(new RH_Jump(from,new C(i,j-1),id))
+                if (check(i,j-1)) jumps.push(new RushHour_Jump(from,[i,j-1],id))
                 const j1=j+tile.length;
-                if (check(i,j1))  jumps.push(new RH_Jump(from,new C(i,j+1),id))
+                if (check(i,j1))  jumps.push(new RushHour_Jump(from,[i,j+1],id))
             } else {
-                if (check(i-1,j)) jumps.push(new RH_Jump(from,new C(i-1,j),id))
+                if (check(i-1,j)) jumps.push(new RushHour_Jump(from,[i-1,j],id))
                 const i1 = i+tile.length;
-                if (check(i1,j)) jumps.push(new RH_Jump(from, new C(i+1,j),id))
+                if (check(i1,j)) jumps.push(new RushHour_Jump(from, [i+1,j],id))
             }
         }
         // check if a move of a goal tile is winning, if so put it at the start
@@ -147,19 +146,20 @@ class RushHour_Board extends Board {
     }
 
     
-    undo(rhjump){
-        if (rhjump.to.j==N){// a tile was removed...
-            const tile = new RushHour_Piece(rhjump.id,rhjump.from.i,rhjump.from.j,"C");
+    undo(jump){
+        if (jump.to.j==N){// a tile was removed...
+            const tile = new RushHour_Piece(jump.id,jump.from.i,jump.from.j,"C");
             tile.draw();
             this.pieces.unshift(tile);
             this.goals.push(tile);
             for (let k=0;k<tile.length;k++)
-                this.grid.set(rhjump.from.i,rhjump.from.j+k,tile);
+                this.grid.set(jump.from.i,jump.from.j+k,tile);
             this.checkAllArrows();
             $("#pieces").append(tile.drawing);
             return tile;
         } else {
-            this.play(new RH_Jump(rhjump.to,rhjump.from,rhjump.id)) 
+            this.play(new RushHour_Jump([jump.to.i,jump.to.j],
+                                        [jump.from.i,jump.from.j],jump.id)) 
             return null;
         }       
     }

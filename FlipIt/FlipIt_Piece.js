@@ -1,8 +1,7 @@
 import {svg,translate} from "../SVGtools.js"
-import { C } from "../C.js";
 import {Piece} from "../Piece.js"
 import {ij2letter} from "./FlipIt_Board.js"
-import {Jump} from "../Jump.js"
+import { FlipIt_Jump } from "./FlipIt_jump.js"
 
 export {FlipIt_Piece}
 
@@ -41,7 +40,7 @@ class FlipIt_Piece extends Piece {
                             svg("use",{href:this.flipped ? "#turtle-flipped" : "#turtle"}),
                             svg("title",{},ij2letter[this.i][this.j])
                         )
-        return this;
+        return this.drawing;
     }
     
     possibleJumps(grid){
@@ -55,11 +54,11 @@ class FlipIt_Piece extends Piece {
                 if (grid.check(newI,newJ) && grid.get(newI,newJ) == null){
                     if (k==1){
                         if (grid.get(i+deltas[0][0],j+deltas[0][1]) != null)
-                            jumps.push(new Jump(new C(i,j), new C(newI,newJ)));
+                            jumps.push(new FlipIt_Jump([i,j], [newI,newJ]));
                     } else {
                         if (grid.get(i+deltas[0][0],j+deltas[0][1]) != null &&
                             grid.get(i+deltas[1][0],j+deltas[1][1]) != null)
-                            jumps.push(new Jump(new C(i,j), new C(newI,newJ)));
+                            jumps.push(new FlipIt_Jump([i,j], [newI,newJ]));
                     }
                 }
             }

@@ -1,5 +1,6 @@
 import {Jump,dirInv} from "../Jump.js"
 import { Piece } from "../Piece.js"
+import { translateSVG_rel } from "../SVGtools.js"
 
 export {AntiVirus_Jump}
 class AntiVirus_Jump extends Jump {
@@ -11,6 +12,19 @@ class AntiVirus_Jump extends Jump {
     toString(){
         return this.ps.join()+this.arrow();
     }
+    
+    moveToString(){
+        return this.arrow()
+    }
+    
+    // HACK: shift arrow for an "unknown" reason...
+    showArrow(stroke){
+        const svg = super.showArrow(stroke)
+        return translateSVG_rel(svg,0.5,-0.5)
+    }
+
+
+    
     // specialised arrow for AntiVirus
     arrow(){
         const [di,dj] = this.direction()

@@ -1,7 +1,6 @@
 import {svg,translate,animateTransform} from "../SVGtools.js"
-import { C } from "../C.js";
 import {Piece} from "../Piece.js"
-import {Jump} from "../Jump.js"
+import {SnowProblem_Jump} from "./SnowProblem_Jump.js"
 
 export {SnowProblem_Piece}
 
@@ -68,7 +67,7 @@ class SnowProblem_Piece extends Piece {
                         const voisin = grid.get(i1,j1);
                         if (voisin!=null && voisin.kind=="lm")
                             // res.push([dir,i+di,j+dj])
-                            res.push(new Jump(new C(this.i,this.j),new C(i+di,j+dj)))
+                            res.push(new SnowProblem_Jump([this.i,this.j],[i+di,j+dj]))
                     }
                 }
                 return res;    
@@ -80,11 +79,9 @@ class SnowProblem_Piece extends Piece {
                         const c = grid.get(i1,j1);
                         if (c!= null){
                             if (k==0 && this.kind=="m" && c.kind=="l"){
-                                // res.push([dir,i1,j1])
-                                res.push(new Jump(new C(this.i,this.j),new C(i1,j1)))
+                                res.push(new SnowProblem_Jump([this.i,this.j],[i1,j1]))
                             } else if (k>0) { // doit avancer au moins de un
-                                // res.push([dir,i1-di,j1-dj])
-                                res.push(new Jump(new C(this.i,this.j),new C(i1-di,j1-dj)))
+                                res.push(new SnowProblem_Jump([this.i,this.j],[i1-di,j1-dj]))
                             }
                             break;
                         }

@@ -1,6 +1,6 @@
 import {startStates} from "./Problems.js"
 import {solveAll} from "../Solver.js"
-import {HotSpot_Board,showMoves} from "./HotSpot_Board.js"
+import {HotSpot_Board} from "./HotSpot_Board.js"
 
 // let hsb = new HotSpot_Board(30,startStates[30]);
 // console.log(hsb.toString())
@@ -13,4 +13,4 @@ import {HotSpot_Board,showMoves} from "./HotSpot_Board.js"
 //     hsb = new HotSpot_Board(30,startStates[30]);
 // }
 
-solveAll({15:startStates[15]},HotSpot_Board,showMoves)
+solveAll(startStates,HotSpot_Board)

@@ -1,6 +1,4 @@
 import {svg,translate,rotate,M,L,rotateSVG} from "../SVGtools.js"
-import { C } from "../C.js";
-import { Grid } from "../Grid.js";
 import {Piece} from "../Piece.js"
 import {CatsNBoxes_Jump} from "./CatsNBoxes_Jump.js"
 import { piecePos, allOris } from "./Problems.js";

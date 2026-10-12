@@ -1,11 +1,10 @@
 import { translateSVG } from "../SVGtools.js"
 import {Board} from "../Board.js"
 import {Grid} from "../Grid.js"
-import {Jump} from "../Jump.js"
 import {TempleTrap_Piece} from "./TempleTrap_Piece.js"
 import { TempleTrap_Jump } from "./TempleTrap_Jump.js"
 
-export {TempleTrap_Board,showMoves}
+export {TempleTrap_Board, showMoves}
 
 function showMoves(jumpsList){ 
     let res = [];
@@ -147,7 +146,7 @@ class TempleTrap_Board extends Board {
         if (jump.id=="!" && jump.to.i==0 && jump.to.j==-1){
             this.hasEscaped=false;
         } else 
-            this.play(new TempleTrap_Jump(jump.id,jump.to,jump.from))
+            this.play(new TempleTrap_Jump(jump.id,[jump.to.i,jump.to.j],[jump.from.i,jump.from.j]))
     }
     
 }

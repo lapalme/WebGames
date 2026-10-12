@@ -1,12 +1,8 @@
 import {svg,makePoints,translate,rotate,cText,translateSVG_rel,translateSVG,getPos,M as MV,L,Q} from "../SVGtools.js"
 import {Display,message,d} from "../Display.js"
-import {showMoves,isHole} from "./JumpIn_Board.js"
-import { jumps2moves,dir2rot,dirInv } from "../Jump.js";
-
-import {M,N} from "./JumpIn_Board.js";
+import {isHole} from "./JumpIn_Board.js"
 export {JumpIn_Display}
 
-let allJumps;
 const radian = Math.PI/180
 
 class JumpIn_Display extends Display {
@@ -26,7 +22,8 @@ class JumpIn_Display extends Display {
                           0.75,1.25, 0.6,1.4, 0.5,1.7];
         let foxLeft =[]
         for (let k=foxRight.length-2;k>=0;k-=2){
-            foxLeft.push([1.0-foxRight[k],foxRight[k+1]])
+            foxLeft.push(1.0-foxRight[k])
+            foxLeft.push(foxRight[k+1])
         }
         $defs.append(
             svg("g",{id:"rabbit"},
@@ -83,60 +80,4 @@ class JumpIn_Display extends Display {
             )
         })
     }
-    
-    setBoard(board){
-        this.makeBackground($("#background"),board.grid)
-        $("#pieces").empty();
-        allJumps = null;
-        this.board = board;
-        this.$svg_element.data({board:board,display:this});
-        for (const piece of board.pieces){
-            piece.draw()
-                .data({piece:piece})
-            $("#pieces").append(piece.drawing);
-        }
-        board.possibleJumps()
-    }
-    
-    showPossible(jumps){
-        $("#bravo,.arrow").remove();
-        for (const jump of jumps){
-            $("#svg_element").append(
-                svg("use",{href:"#arrow-def",class:"arrow",stroke:"blue",
-                    transform:translate(jump.from.j,jump.from.i)
-                    +rotate(dir2rot[dirInv[jump.arrow()]][0],0.5,0.5)})
-                .data("jump",jump)
-                .on("click",click)
-            )
-        }       
-    }
-    
-    undo(){
-        if (allJumps == null) return;
-        $("#bravo,.arrow").remove();
-        const jump = allJumps;
-        allJumps = allJumps.precedent;
-        const i = jump.from.i, j=jump.from.j;
-        this.board.undo(jump);
-        const $drawing = this.board.grid.get(i,j).drawing
-        translateSVG($drawing,j,i);
-        this.board.possibleJumps();        
-    }
-
-}
-
-function click(e){
-    $("#bravo").remove()
-    const $current = $(e.currentTarget);
-    const $svg_element = $("#svg_element");
-    let {board,display} = $svg_element.data();
-    const jump = $current.data("jump")
-    board.play(jump);
-    allJumps = jump.extend(allJumps);
-    if (board.isComplete()){
-        $(".arrow").remove()
-        display.showBravo(allJumps,showMoves,M,N)
-    } else {
-        board.possibleJumps();
-    }        
 }

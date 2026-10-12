@@ -1,6 +1,5 @@
 import {svg,M,L,C,translate,rotate,cText} from "../SVGtools.js"
 import {Display} from "../Display.js"
-import {showMoves} from "./CannibalMonsters_Board.js"
 
 export {CannibalMonsters_Display}
 
@@ -51,50 +50,17 @@ class CannibalMonsters_Display extends Display {
                 .data({piece:piece});
             $("#pieces").append(piece.drawing)
         }
-        this.board.possibleJumps();
+        this.showPossibles();
     }
     
-    showPossible(jumps){
-        $(".arrow,#impasse").remove()
-        if (jumps.length==0){
+    showPossibles(){
+        const possibles = super.showPossibles()
+        $("#impasse").remove()
+        if (possibles.length==0){
             if (this.board.pieces.length>1)
                 $("#svg_element").append(
                     cText("Impasse",2,-0.75,"black",1).attr("id","impasse")
                 )
-            return
         }
-        for(const jump of jumps){
-            const piece = this.board.grid.get(jump.from.i,jump.from.j)
-            if (piece==null) debugger;
-            $("#svg_element").append(
-                svg("use",{href:"#arrow-def",class:"arrow",stroke:"magenta",
-                            transform:translate(piece.j,piece.i)+rotate(jump.rotation(),0.5,0.5)
-                            }).data({jump:jump}).on("click",click)
-            )
-        }
-    }
-    
-    undo(){
-        if (allJumps == null) return;
-        $("#bravo,.arrow,#impasse").remove();
-        const jump = allJumps;
-        allJumps = allJumps.precedent;
-        this.board.undo(jump);        
-    }
-}
-
-function click(e){
-    $("#bravo").remove()
-    const $current = $(e.currentTarget);
-    const $svg_element = $("#svg_element");
-    let {board,display} = $svg_element.data();
-    const jump=$current.data("jump")
-    board.play(jump);
-    allJumps = jump.extend(allJumps);
-    if (board.isComplete()){
-        $(".arrow").remove()
-        display.showBravo(allJumps,showMoves,0,board.grid.N)
-    } else {
-        board.possibleJumps()
     }
 }

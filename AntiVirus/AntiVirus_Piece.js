@@ -124,5 +124,6 @@ class AntiVirus_Piece extends Piece {
                 svg("circle",{r:r2-0.1,cx:j,cy:i,fill:fill})
             )
         }
+        return this.drawing
     }
 }

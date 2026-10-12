@@ -13,4 +13,8 @@ class JumpIn_Jump extends Jump{
             return this.kind+"🦊"+this.arrow()
         return this.kind+this.arrow();
     }
+    
+    moveToString(){
+        return this.arrow()
+    }
 }

@@ -114,5 +114,6 @@ class SquirrelsGoNuts_Piece extends Piece {
         }
         if (this.id !="F") 
             this.drawing.append(cText(this.id,0.15,1.85,"black",0.15).attr("transform",rotate(-rot,0.15,1.85)))
+        return this.drawing;
     }
 }

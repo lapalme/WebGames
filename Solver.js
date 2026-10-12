@@ -1,4 +1,4 @@
-import { jumps2moves } from "./Jump.js";
+import { jumps2moves, showMoves } from "./Jump.js";
 import {message,d} from "./Display.js";
 export {solve,solveAll,solveWeb};
 
@@ -19,7 +19,7 @@ function reorder(possibles,lastJump){
     }    
 }
 
-function solve(no,state,Board,showMoves,TRACE=false){
+function solve(no,state,Board,TRACE=false){
     let done = new Set();    // already examined states
     let to_do = new Map();   // states to explore
     let lastJump = null;
@@ -61,7 +61,7 @@ function solve(no,state,Board,showMoves,TRACE=false){
     return null;
 }
 
-function solveAll(problems,Board,showMoves,TRACE=false){
+function solveAll(problems,Board,TRACE=false){
     let totalTime=0, nb=0;
     for (const key in problems){
         console.log("**",key,"**");
@@ -69,10 +69,10 @@ function solveAll(problems,Board,showMoves,TRACE=false){
         const board = new Board(key,state); 
         console.log(board.toString()); // only for the display...
         const startTime = performance.now()
-        const solution = solve(key,board.toState(),Board,showMoves,TRACE)
+        const solution = solve(key,board.toState(),Board,TRACE)
         const solutionTime = performance.now()-startTime;
         totalTime+=solutionTime;
-        console.log(`${key}: Solving time: ${fmt(Math.trunc(solutionTime))} milliseconds`);
+        console.log(`${key}: Solving time: ${fmt(Math.round(solutionTime))} milliseconds`);
         if (solution!=null) {
             const [solutionState,jumps_inv] = solution;
             console.log(solutionState.toString());
@@ -83,12 +83,12 @@ function solveAll(problems,Board,showMoves,TRACE=false){
             console.log("%d: No solution found!",key)
         }
     }
-    console.log("Total time:%s milliseconds for %d problems: average: %s",fmt(Math.trunc(totalTime)),nb,fmt(Math.trunc(totalTime/nb)))    
+    console.log("Total time:%s milliseconds for %d problems: average: %s milliseconds",fmt(Math.round(totalTime)),nb,fmt(Math.round(totalTime/nb)))    
 }
 
-function solveWeb(no,state,Board,display,showMoves){
+function solveWeb(no,state,Board,display){
     // this should display the "wait-cursor" during a "long" computation
-    // but does not seem to always work in Chrome... at least during developement, seems to work in Safari/Friefox though  
+    // but does not seem to always work in Chrome... at least during developement, seems to work in Safari/Firefox though  
     $("body").addClass("wait-cursor");
     setTimeout(()=>{ 
         const result = solve(no,state,Board,showMoves);

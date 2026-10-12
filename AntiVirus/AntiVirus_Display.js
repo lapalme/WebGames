@@ -5,7 +5,7 @@ import {showMoves,M, N} from "./AntiVirus_Board.js"
 
 export {AntiVirus_Display}
 
-let allJumps;
+// let allJumps;
 
 const nbCells = [2,4,6,8,8,6,4,2]
 
@@ -59,64 +59,10 @@ class AntiVirus_Display extends Display {
     pieceFromId(id){
         return this.board.pieces.find(p=>p.id == id);
     }
-    
-    showPossibles(){
-        $(".arrow").remove();
-       const possibles = this.board.possibleJumps();
-        for (const jump of possibles){
-            const piece = this.pieceFromId(jump.ps[0]);
-            const rot = jump.rotation();
-            piece.drawing.append(
-                svg("use",{href:"#arrow-def",
-                           transform:rotate(rot,0,0)+translate(-0.5,-0.5),
-                           class:"arrow",stroke:"blue"})
-                    .data({jump:jump}).on("click",click)
-            )
-        }        
-    }
-
+        
     setBoard(board){
-        this.makeBackground($("#background"));
-        $("#pieces").empty();
-        allJumps = null;
-        this.board = board;
-        this.$svg_element.data({board:board,display:this});
-        for (const piece of board.pieces){
-            piece.draw()
-            piece.drawing.data({piece:piece})
-            $("#pieces").append(piece.drawing)
-        }
-        $(".display-coord").hide(); // hidden hack... documented in problems.js
-        this.showPossibles()
         $("#pieces").attr("transform",rotate(-45,N/2,M/2))
-    }
-    
-    undo(){
-        $("#bravo,.arrow").remove();
-        if (allJumps != null){
-            const jump = allJumps;
-            allJumps = allJumps.precedent;
-            this.board.undo(jump);
-        }
-        this.showPossibles();      
-    }
-}
-
-function click(e){
-    $("#bravo").remove()
-    const $current = $(e.currentTarget);
-    const $svg_element = $("#svg_element");
-    let {board,display} = $svg_element.data();
-    const {jump} = $current.data();
-    board.play(jump)
-    allJumps = jump.extend(allJumps);
-    const [di,dj] = jump.direction();
-    for (const pid of jump.ps){
-        translateSVG_rel(display.pieceFromId(pid).drawing,dj,di);
-    }
-    if (board.isComplete()){
-        display.showBravo(allJumps,showMoves,M,N+1)
-    } else {
-        display.showPossibles()
+        super.setBoard(board);
+        $(".display-coord").hide(); // hidden hack... documented in problems.js
     }
 }

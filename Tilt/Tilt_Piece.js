@@ -1,5 +1,4 @@
 import {svg,translate,isSafari} from "../SVGtools.js"
-import { C } from "../C.js";
 import {Piece} from "../Piece.js"
 import {Jump} from "../Jump.js"
 

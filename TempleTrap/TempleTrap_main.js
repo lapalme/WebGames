@@ -1,5 +1,5 @@
 import {svg,setSVGfactors} from "../SVGtools.js";
-import {TempleTrap_Board,showMoves} from "./TempleTrap_Board.js";
+import {TempleTrap_Board} from "./TempleTrap_Board.js";
 import {TempleTrap_Display} from "./TempleTrap_Display.js";
 import {solveWeb} from "../Solver.js"
 import { buildProblemSelection,setLang,initLanguageHandlers } from "../Main.js";

@@ -1,6 +1,6 @@
 import {startStates} from "./Problems.js"
 import {solveAll} from "../Solver.js"
-import {JumpIn_Board,showMoves} from "./JumpIn_Board.js"
+import {JumpIn_Board} from "./JumpIn_Board.js"
 
 // const no=53
 // let jib = new JumpIn_Board(no,startStates[no]);
@@ -17,4 +17,4 @@ import {JumpIn_Board,showMoves} from "./JumpIn_Board.js"
 
 // solveAll({56:startStates[56]},JumpIn_Board,showMoves)
 
-solveAll(startStates,JumpIn_Board,showMoves)
+solveAll(startStates,JumpIn_Board)

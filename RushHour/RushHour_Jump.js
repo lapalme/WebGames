@@ -1,7 +1,7 @@
 import {Jump} from "../Jump.js"
-export {RH_Jump}
+export {RushHour_Jump}
 
-class RH_Jump extends Jump{
+class RushHour_Jump extends Jump{
     constructor(from,to,id){
         super(from,to);
         this.id = id;
@@ -9,5 +9,9 @@ class RH_Jump extends Jump{
 
     toString(){
         return this.id+this.arrow()
+    }
+    
+    moveToString(){
+        return this.arrow()
     }
 }

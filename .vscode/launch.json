@@ -52,15 +52,6 @@
             "webRoot": "${workspaceFolder}",
             "url": "http://127.0.0.1:8080/AsteroidEscape/AsteroidEscape.html"
         },
-       {
-            "name": "AsteroidEscape batch",
-            "program": "${workspaceFolder}/AsteroidEscape/AsteroidEscape_batch",
-            "request": "launch",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "type": "node"
-        },
         {
             "type": "chrome",
             "name": "BendIt HTML",
@@ -188,6 +179,22 @@
             "url": "http://127.0.0.1:8080/GrizzlyGears/GrizzlyGears.html"
         },
         {
+            "name": "Hansel_Gretel batch",
+            "program": "${workspaceFolder}/Hansel_Gretel/Hansel_Gretel_batch.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "Hansel_Gretel HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/Hansel_Gretel/Hansel_Gretel.html"
+        },
+        {
             "name": "HotSpot batch",
             "program": "${workspaceFolder}/HotSpot/HotSpot_batch.js",
             "request": "launch",
@@ -230,10 +237,26 @@
         },
         {
             "type": "chrome",
-            "name": "RiverCrossing HTML",
+            "name": "LaserMaze HTML",
             "request": "launch",
             "webRoot": "${workspaceFolder}",
-            "url": "http://127.0.0.1:8080/RiverCrossing/RiverCrossing.html"
+            "url": "http://127.0.0.1:8080/LaserMaze/LaserMaze.html"
+        },
+        {
+            "name": "LunarLockout batch",
+            "program": "${workspaceFolder}/LunarLockout/LunarLockout_batch.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "LunarLockout HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/LunarLockout/LunarLockout.html"
         },
         {
             "name": "RiverCrossing batch",
@@ -246,10 +269,10 @@
         },
         {
             "type": "chrome",
-            "name": "LaserMaze HTML",
+            "name": "RiverCrossing HTML",
             "request": "launch",
             "webRoot": "${workspaceFolder}",
-            "url": "http://127.0.0.1:8080/LaserMaze/LaserMaze.html"
+            "url": "http://127.0.0.1:8080/RiverCrossing/RiverCrossing.html"
         },
         {
             "name": "RushHour batch",

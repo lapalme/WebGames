@@ -1,6 +1,6 @@
 import {startStates} from "./Problems.js"
 import {solveAll} from "../Solver.js"
-import {ExpressCourier_Board,showMoves} from "./ExpressCourier_Board.js"
+import {ExpressCourier_Board} from "./ExpressCourier_Board.js"
 
 const no=80
 const state = startStates[no]
@@ -15,6 +15,6 @@ const state = startStates[no]
 //     console.log(ecb.show())
 //     ecb = new ExpressCourier_Board(no,startStates[no])
 // }
-let states={}
-states[no]=state
-solveAll(states,ExpressCourier_Board,showMoves,false)
+// let states={}
+// states[no]=state
+solveAll(startStates,ExpressCourier_Board,false)

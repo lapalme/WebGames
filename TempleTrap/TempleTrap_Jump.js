@@ -17,4 +17,8 @@ class TempleTrap_Jump extends Jump{
             return sym+this.arrow()
         }
     }
+    
+    moveToString(){
+        return this.arrow()
+    }
 }

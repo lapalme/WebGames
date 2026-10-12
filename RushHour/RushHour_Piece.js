@@ -83,7 +83,7 @@ class RushHour_Piece extends Piece {
             svg("use",{href:"#arrow-def", id:this.id+"r", class:"arrow",stroke:"black", 
                         transform:translate(l-0.1,0)+rotate(90,0,0)})
         )
-        this.drawing.data("piece",this);   
+        return this.drawing 
     }
     
 }

@@ -3,12 +3,15 @@
 games=(\
        AntiVirus \
        AsteroidEscape \
+       BendIt \
        CannibalMonsters \
        CatsNBoxes \
        CityMaze \
+       ExpressCourier \
        FlipIt \
        GraveYardShift \
        GrizzlyGears \
+       Hansel_Gretel \
        HotSpot \
        JumpIn \
        LaserMaze \
@@ -20,6 +23,7 @@ games=(\
        Tilt \
        TipOver \
        Titanic \
+       ToadsNFrogs \
        )
 
 ## open all games in default browser on macOS with Safari 

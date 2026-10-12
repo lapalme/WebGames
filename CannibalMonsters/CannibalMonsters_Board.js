@@ -36,9 +36,7 @@ class CannibalMonsters_Board extends Board {
     }
     
     possibleJumps(){
-        const allJumps = this.pieces.flatMap(p=>p.possibleJumps(this.grid));
-        if (this.display)this.display.showPossible(allJumps);
-        return allJumps
+        return this.pieces.flatMap(p=>p.possibleJumps(this.grid));
     }
     
     isComplete(){

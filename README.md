@@ -1,9 +1,7 @@
 ---
-​---
 title: Web games
 description: Web version of single-player board puzzles
 author: Guy Lapalme
-​---
 ---
 
 # Web versions of single-player board puzzles 
@@ -38,6 +36,7 @@ Here are the games currently available (in alphabetical order):
 | <img src="./images/HotSpot.jpg" width="125px" /> | [Hot Spot](./HotSpot/HotSpot.html) | Make the red circle jump to the top left spot |
 | <img src="./images/JumpIn.jpg" width="125px" /> | [Jump In](./JumpIn/JumpIn.html) | Make the rabbits find their hole |
 | <img src="./images/LaserMaze.jpg" width="125px" /> | [Laser Maze](./LaserMaze/LaserMaze.html) | Make the laser touch all pieces and hit all targets |
+| <img src="./images/LunarLockout.jpg" width="125px" /> | [Lunar Lockout](LunarLockout.html) | Slide the red piece to the center of the board |
 | <img src="./images/RiverCrossing.jpg" width="125px" /> | [River Crossing](./RiverCrossing/RiverCrossing.html) | Make a hiker traverse go to the other side of the river |
 | <img src="./images/RushHour.jpg" width="125px" /> | [Rush Hour](./RushHour/RushHour.html) | Exit the red car |
 | <img src="./images/SnowProblem.jpg" width="125px" /> | [Snow Problem](./SnowProblem/SnowProblem.html) | Build snowmen by rolling balls |
@@ -67,6 +66,5 @@ Here are the games currently available (in alphabetical order):
 * Auxiliary files
   * [Web page global organization](./body.html)
   * [Stylesheet](./Common.css)
-  * [Coordinates i,j](./C.js)
   * [Launch all batch solvers](./Test_batch_all.zsh)
   * [Launch all games in a browser](./test_html_all.zsh)

@@ -3,6 +3,7 @@ import {Grid} from "../Grid.js"
 import {Jump} from "../Jump.js"
 import {HotSpot_Piece} from "./HotSpot_Piece.js"
 import { HotSpot_Jump } from "./HotSpot_Jump.js"
+import { translateSVG } from "../SVGtools.js"
 
 
 export {HotSpot_Board,showMoves}
@@ -25,7 +26,7 @@ class HotSpot_Board extends Board {
         super(no,state,display);
         const stateP = JSON.parse(state);
         this.grid = new Grid(4,4)
-        this.pieces = Array.from({length:10},()=>null);
+        this.pieces = []
         let k=0;
         for (let i=0;i<4;i++)
             for (let j=0;j<4;j++){
@@ -33,7 +34,7 @@ class HotSpot_Board extends Board {
                 if (v>=0){
                     const piece = new HotSpot_Piece(v,i,j);
                     this.grid.set(i,j,piece);
-                    this.pieces[v] = piece;
+                    this.pieces.push(piece);
                 }
             }
         if (display != null) // this call must come after pieces have been added
@@ -51,11 +52,13 @@ class HotSpot_Board extends Board {
     }
         
     possibleJumps(){
-        return this.pieces.filter(p=>p!=null).flatMap(p=>p.possibleJumps(this.grid))
+        return this.pieces.flatMap(p=>p.possibleJumps(this.grid))
     }
     
     isComplete(){
-        return this.pieces[0].i==0 && this.pieces[0].j==0
+        const p00 = this.grid.get(0,0)
+        return p00 != null && p00.id==0
+        // return this.pieces[0].i==0 && this.pieces[0].j==0
     }
     
     play(jump){
@@ -67,10 +70,12 @@ class HotSpot_Board extends Board {
         piece.i=toI;
         piece.j=toJ;
         this.grid.set(toI,toJ,piece);
+        if (this.display != null)
+            translateSVG(piece.drawing,piece.j,piece.i)
     }
     
     undo(jump){
-        this.play(new HotSpot_Jump(jump.to,jump.from,jump.pid))
+        this.play(new HotSpot_Jump([jump.to.i,jump.to.j],[jump.from.i,jump.from.j],jump.pid))
     }
     
 }

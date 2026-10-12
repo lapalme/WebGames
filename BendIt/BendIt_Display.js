@@ -67,12 +67,13 @@ class BendIt_Display extends Display {
         }
         
         // add button to the background (their need access to the board)
-        function makeButton(message,char,fsize,i,j,action,board){
+        function makeButton(message,char,fsize,i,j,action){
             return svg("g",{transform:translate(j,i)},
+                    svg("rect",{width:0.9,height:0.9,fill:"transparent"}),// to ensure that click is detected
                     svg("title",{},message),
                     cText(char,0.5,0.5,"magenta",fsize)
                 ).on("pointerdown",e=>{
-                    const piece = $(".current").data("piece")
+                    const piece = $(".current").data("piece");
                     if (piece != null && piece.inFoldArea()){
                         piece.segments = action(piece);
                         piece.moveTo(piece.i,piece.j)
@@ -82,11 +83,11 @@ class BendIt_Display extends Display {
          // add buttons
         const $background = $("#background")
         $background.append(makeButton("rotation 90°",
-                                      "⤾",1.5,5.9,7.5,p=>p.rotate90(),board)),
+                                      "⤾",1.5,5.9,7.5,p=>p.rotate90())),
         $background.append(makeButton("flip horizontal",
-                                      "↕",1,6,9.5,p=>p.flip("H"),board)),
+                                      "↕",1,6,9.5,p=>p.flip("H"))),
         $background.append(makeButton("flip vertical",
-                                      "↔",1,5.9,11.5,p=>p.flip("V"),board))
+                                      "↔",1,5.9,11.5,p=>p.flip("V")))
     }
     
     undo(){

@@ -1,27 +1,24 @@
-import {translate} from "../SVGtools.js"
 import {Board} from "../Board.js"
 import {Grid} from "../Grid.js"
 import {SnowProblem_Piece} from "./SnowProblem_Piece.js"
-import {Jump} from "../Jump.js"
-export {M,N,SnowProblem_Board,showMoves}
+import { SnowProblem_Jump } from "./SnowProblem_Jump.js"
+export {SnowProblem_Board}
 
-const M=4, N=5;
-
-function showMoves(jumpsList){
-    let moves=[]
-    for (const jumps of jumpsList){
-        let res = jumps[0].from.toString()+jumps[0].arrow()
-        for (let k=1;k<jumps.length;k++)
-            res+=jumps[k].arrow();
-        moves.push(res)
-    }
-    return moves.join(", ");
-}
+// function showMoves(jumpsList){
+//     let moves=[]
+//     for (const jumps of jumpsList){
+//         let res = jumps[0].from.toString()+jumps[0].arrow()
+//         for (let k=1;k<jumps.length;k++)
+//             res+=jumps[k].arrow();
+//         moves.push(res)
+//     }
+//     return moves.join(", ");
+// }
 
 class SnowProblem_Board extends Board {
     constructor (no,state,display){
         super(no,state,display);
-        this.grid = new Grid(M,N) 
+        this.grid = new Grid(4,5) 
         this.pieces = []
         let pNo=1;
         for (const pc of state.split(" ")){
@@ -90,7 +87,7 @@ class SnowProblem_Board extends Board {
         if (piece==null) debugger;
         if (piece.kind=="l" || piece.kind=="m"){
             // play the reverse of the jump
-            this.play(new Jump(jump.to,jump.from))
+            this.play(new SnowProblem_Jump([jump.to.i,jump.to.j],[jump.from.i,jump.from.j]))
         } else { // must unstack pieces...
             const i=piece.i,j=piece.j;
             // unstack and create new pieces...

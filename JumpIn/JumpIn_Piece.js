@@ -1,9 +1,7 @@
 import {svg,translate,rotate,isSafari} from "../SVGtools.js"
-import { C } from "../C.js";
 import {Piece} from "../Piece.js"
-import {Jump,dir2rot,allDirs,dirInv} from "../Jump.js";
+import {dir2rot,allDirs,dirInv} from "../Jump.js";
 import {JumpIn_Jump} from "./JumpIn_Jump.js";
-import { isHole } from "./JumpIn_Board.js";
 
 export {JumpIn_Piece}
 

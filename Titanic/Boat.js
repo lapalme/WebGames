@@ -1,5 +1,4 @@
 import {svg,isSafari,translate,rotate,cText} from "../SVGtools.js"
-import { C } from "../C.js";
 import {Piece} from "../Piece.js"
 import {Person} from "./Person.js"
 import {Boarding} from "./Boarding.js"
@@ -123,12 +122,12 @@ class Boat extends Piece {
         let jumps = []
         let i=this.i, j=this.j, dir=this.dir, l=this.length; // to simplify notation
         const free = l==1 ? freeShort[this.dir] : freeLong[this.dir];
-        const from= new C(i,j); // possible start of jump
+        const from= [i,j]; // possible start of jump
         for (const d of allDirs){
             if (free[d].every(([di,dj])=>check(i+di,j+dj))){
                 const [_,di,dj] = dir2rot[d];
                 const i1=i-di,j1=j-dj;
-                const to = new C(i1,j1);
+                const to = [i1,j1];
                 if (l==1){
                     const brd = this.people[0]==null ? board(0,i1,j1,boardShort[dir]) : []
                     if (brd.length==0) {

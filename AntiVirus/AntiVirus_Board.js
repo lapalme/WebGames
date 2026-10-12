@@ -3,6 +3,7 @@ import {Grid} from "../Grid.js"
 import {dir2rot,allDirs,dirInv,Jump} from "../Jump.js"
 import {AntiVirus_Piece} from "./AntiVirus_Piece.js"
 import { AntiVirus_Jump } from "./AntiVirus_jump.js"
+import { translateSVG } from "../SVGtools.js"
 
 export {AntiVirus_Board,showMoves,M,N,NBCOLS,DECS}
 
@@ -88,11 +89,13 @@ class AntiVirus_Board extends Board {
             piece.j+=dj;
             for (const [i,j] of piece.pos())
                 this.grid.set(i,j,piece);
+            if (this.display!=null)
+                translateSVG(piece.drawing,piece.j+1,piece.i)
         }
     }
     
     undo(jump){
-        this.play(new AntiVirus_Jump(jump.to,jump.from,jump.ps))     
+        this.play(new AntiVirus_Jump([jump.to.i,jump.to.j],[jump.from.i,jump.from.j],jump.ps))     
     }
     
 }

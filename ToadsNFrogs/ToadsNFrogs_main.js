@@ -1,5 +1,5 @@
 import {svg,setSVGfactors} from "../SVGtools.js";
-import {ToadsNFrogs_Board,showMoves} from "./ToadsNFrogs_Board.js";
+import {ToadsNFrogs_Board} from "./ToadsNFrogs_Board.js";
 import {ToadsNFrogs_Display} from "./ToadsNFrogs_Display.js";
 import {solveWeb} from "../Solver.js"
 import { buildProblemSelection,setLang,initLanguageHandlers } from "../Main.js";
@@ -24,7 +24,7 @@ function initEventHandlers() {
             play(problemNo,startStates[problemNo]) 
         })
         $("#solve").on("mousedown",()=>
-            solveWeb(problemNo,startStates[problemNo],ToadsNFrogs_Board,display,showMoves));
+            solveWeb(problemNo,startStates[problemNo],ToadsNFrogs_Board,display));
         $("#reset").append(
             svg("use",{href:"#reset-def"})
         ).on("mousedown",()=>play(problemNo,startStates[problemNo]));

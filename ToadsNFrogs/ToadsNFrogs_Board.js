@@ -4,11 +4,11 @@ import {Jump} from "../Jump.js"
 import {ToadsNFrogs_Piece} from "./ToadsNFrogs_Piece.js"
 import { ToadsNFrogs_Jump } from "./ToadsNFrogs_Jump.js"
 
-export {ToadsNFrogs_Board,showMoves}
+export {ToadsNFrogs_Board}
 
-function showMoves(jumpsList){    
-    return jumpsList.join();// TODO: change if needed
-}
+// function showMoves(jumpsList){    
+//     return jumpsList.join();// TODO: change if needed
+// }
 
 class ToadsNFrogs_Board extends Board {
     constructor (no,state,display){
@@ -65,7 +65,7 @@ class ToadsNFrogs_Board extends Board {
     }
     
     undo(jump){
-        this.play(new ToadsNFrogs_Jump(jump.to,jump.from))
+        this.play(new ToadsNFrogs_Jump([jump.to.i,jump.to.j],[jump.from.i,jump.from.j]))
     }
     
 }

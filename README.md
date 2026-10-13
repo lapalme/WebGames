@@ -5,7 +5,7 @@ author: Guy Lapalme
 ---
 
 # Web versions of single-player board puzzles 
-[En français](./LISEZMOI.html)
+[En français](./LISEZMOI.md)
 
 This directory provides the source files of web versions of single-player puzzle games published by [Smart Games](https://en.wikipedia.org/wiki/SmartGames) or [Think Fun](https://en.wikipedia.org/wiki/ThinkFun). These games present a situation with pieces that must be placed or slid onto the board to reach a “winning” position. The starting positions are categorized by difficulty level for reaching the final position.
 
@@ -20,7 +20,6 @@ I decided to reprogram some of these games so they can be played in a web browse
 
 # Available Games
 
-Here are the games currently available (in alphabetical order):
 |     | Link for play | Goal of the game |
 | --- | --- | --- |
 | <img src="./images/AntiVirus.jpg" width="125px" /> | [Anti-Virus](./AntiVirus/AntiVirus.html) | Exit the red *virus* |
@@ -41,7 +40,7 @@ Here are the games currently available (in alphabetical order):
 | <img src="./images/RushHour.jpg" width="125px" /> | [Rush Hour](./RushHour/RushHour.html) | Exit the red car |
 | <img src="./images/SnowProblem.jpg" width="125px" /> | [Snow Problem](./SnowProblem/SnowProblem.html) | Build snowmen by rolling balls |
 | <img src="./images/SquirrelsGoNuts.jpg" width="125px" /> | [Squirrels Go Nuts](./SquirrelsGoNuts/SquirrelsGoNuts.html) | Make all  the squirrels hide their nut |
-| <img src="./images/TempleTrap.jpg" width="125px" /> | [Tipover](./TempleTrap/TempleTrap.html) | Exit the adventurer by sliding labyrinth pieces |
+| <img src="./images/TempleTrap.jpg" width="125px" /> | [Temple Trap](./TempleTrap/TempleTrap.html) | Exit the adventurer by sliding labyrinth pieces |
 | <img src="./images/Tilt.jpg" width="125px" /> | [Tilt](./Tilt/Tilt.html) | Push green button in the hole by *tilting* the board |
 | <img src="./images/TipOver.jpg" width="125px" /> | [Tipover](./TipOver/TipOver.html) | Move a tipper across piles of crates |
 | <img src="./images/Titanic.jpg" width="125px" /> | [Titanic](./Titanic/Titanic.html) | Board all shipwrecked people |
@@ -49,7 +48,7 @@ Here are the games currently available (in alphabetical order):
 
 # Other documents
 
-* [Document explaining the organization of the programs](./Organization.md). This is still in draft form!
+* [Document explaining the organization of the programs](./Organization.md). 
 * [Web page to help develop SVG `path` expressions](./SVG_Path_Playground/SVG_PP.html) 
 * [Initialization script for starting a new game](./buildFromTemplate.js)
   * [Directory of templates for starting a new game](./Template)
@@ -66,5 +65,5 @@ Here are the games currently available (in alphabetical order):
 * Auxiliary files
   * [Web page global organization](./body.html)
   * [Stylesheet](./Common.css)
-  * [Launch all batch solvers](./Test_batch_all.zsh)
+  * [Launch all batch solvers](./test_batch_all.zsh)
   * [Launch all games in a browser](./test_html_all.zsh)

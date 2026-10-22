@@ -15,7 +15,6 @@ In all these computer versions, the program finds a solution using the minimum n
 
 I decided to reprogram some of these games so they can be played in a web browser on a computer or phone. The code is written in JavaScript, and the display uses SVG, so it adapts to the screen. These games share a set of functions and classes to standardize their use and programming.
 
-
 **Note**: These games have primarily been tested on a computer screen; their behavior is not guaranteed on a phone or tablet when you need to _swipe_ pieces to move them rather than tapping an arrow.
 
 # Available Games
@@ -35,9 +34,10 @@ I decided to reprogram some of these games so they can be played in a web browse
 | <img src="./images/HotSpot.jpg" width="125px" /> | [Hot Spot](./HotSpot/HotSpot.html) | Make the red circle jump to the top left spot |
 | <img src="./images/JumpIn.jpg" width="125px" /> | [Jump In](./JumpIn/JumpIn.html) | Make the rabbits find their hole |
 | <img src="./images/LaserMaze.jpg" width="125px" /> | [Laser Maze](./LaserMaze/LaserMaze.html) | Make the laser touch all pieces and hit all targets |
-| <img src="./images/LunarLockout.jpg" width="125px" /> | [Lunar Lockout](LunarLockout.html) | Slide the red piece to the center of the board |
+| <img src="./images/LunarLockout.jpg" width="125px" /> | [Lunar Lockout](./LunarLockout/LunarLockout.html) | Slide the red piece to the center of the board |
 | <img src="./images/RiverCrossing.jpg" width="125px" /> | [River Crossing](./RiverCrossing/RiverCrossing.html) | Make a hiker traverse go to the other side of the river |
 | <img src="./images/RushHour.jpg" width="125px" /> | [Rush Hour](./RushHour/RushHour.html) | Exit the red car |
+| <img src="./images/SettingSun.jpg" width="125px" /> | [Setting Sun](./SettingSun/SettingSun.html) | Exit the piece with the red dot |
 | <img src="./images/SnowProblem.jpg" width="125px" /> | [Snow Problem](./SnowProblem/SnowProblem.html) | Build snowmen by rolling balls |
 | <img src="./images/SquirrelsGoNuts.jpg" width="125px" /> | [Squirrels Go Nuts](./SquirrelsGoNuts/SquirrelsGoNuts.html) | Make all  the squirrels hide their nut |
 | <img src="./images/TempleTrap.jpg" width="125px" /> | [Temple Trap](./TempleTrap/TempleTrap.html) | Exit the adventurer by sliding labyrinth pieces |
@@ -67,3 +67,6 @@ I decided to reprogram some of these games so they can be played in a web browse
   * [Stylesheet](./Common.css)
   * [Launch all batch solvers](./test_batch_all.zsh)
   * [Launch all games in a browser](./test_html_all.zsh)
+* [GitHub Directory](https://github.com/lapalme/WebGames) 
+
+[Guy Lapalme](mailto:lapalme@iro.umontreal.ca)

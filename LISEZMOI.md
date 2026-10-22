@@ -35,9 +35,10 @@ Voici la liste alphabétique des jeux actuellement disponibles, correspondant à
 | <img src="./images/HotSpot.jpg" width="125px" /> | [Hot Spot](./HotSpot/HotSpot.html) | Amener le jeton rouge en haut à gauche |
 | <img src="./images/JumpIn.jpg" width="125px" /> | [Jump In](./JumpIn/JumpIn.html) | Faire sauter les lapins dans les terriers |
 | <img src="./images/LaserMaze.jpg" width="125px" /> | [Laser Maze](./LaserMaze/LaserMaze.html) | Tourner toutes les tortues |
-| <img src="./images/LunarLockout.jpg" width="125px" /> | [Lunar Lockout](./LunarLockout/LaserMaze.html) | Amener la tuile rouge au centre du jeu |
+| <img src="./images/LunarLockout.jpg" width="125px" /> | [Lunar Lockout](./LunarLockout/LunarLockout.html) | Amener la tuile rouge au centre du jeu |
 | <img src="./images/RiverCrossing.jpg" width="125px" /> | [River Crossing](./RiverCrossing/RiverCrossing.html) | Faire traverser la rivière au randonneur |
 | <img src="./images/RushHour.jpg" width="125px" /> | [Rush Hour](./RushHour/RushHour.html) | Faire sortir la voiture rouge |
+| <img src="./images/SettingSun.jpg" width="125px" /> | [L'Âne Rouge](./SettingSun/SettingSun.html) | Faire sortir la pîèce avec le point rouge |
 | <img src="./images/SnowProblem.jpg" width="125px" /> | [Je voudrais un bonhomme de neige](./SnowProblem/SnowProblem.html) | Monter des bonhommes de neige en faisant rouler des boules |
 | <img src="./images/SquirrelsGoNuts.jpg" width="125px" /> | [Cache Noisettes](./SquirrelsGoNuts/SquirrelsGoNuts.html) | Déplacer les écureuils pour qu'ils cachent leur noisette dans un des trous. |
 | <img src="./images/TempleTrap.jpg" width="125px" /> | [l'Aventurier](./TempleTrap/TempleTrap.html) | Sortir l'aventurier en glissant des pièces du labyrinthe |
@@ -66,5 +67,6 @@ Voici la liste alphabétique des jeux actuellement disponibles, correspondant à
   * [Feuille de style](./Common.css)
   * [Lancer toutes les résolutions en lot](./test_batch_all.zsh)
   * [Lancer toutes les exécutions dans un navigateur](./test_html_all.zsh)
+* [Répertoire GitHub](https://github.com/lapalme/WebGames) 
 
 [Guy Lapalme](mailto:lapalme@iro.umontreal.ca)

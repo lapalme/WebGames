@@ -34,16 +34,14 @@ Games can be categorized according to the fact that:
 
 In some games, pieces can change during the game\. This can happen through superposition or by flipping, resulting in different movement possibilities\.
 
-<center>Table 1: Twenty-three games that are available in this directory: <br/>typical configuration, link to an <i>official description</i>,  goal and characteristics.<br/> 
+<center>Table 1: Twenty-four games available in this directory: <br/>typical configuration, link to an <i>official description</i>,  goal and characteristics.<br/> 
   <b>J</b>: jumping, <b>S</b>: sliding, <b>P</b>: placing, <b>CP</b>: changing pieces</center>
-
-
-
 
 |                                                              | Name                                                         | Goal                                                         | J    | S    | P    | CP   |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- | ---- | ---- | ---- |
 | <img src="./images/HotSpot.jpg" style="width:200px;" />      | [HotSpot](https://theplayfulotter.blogspot.com/2018/08/hotspot.html) | Make the red circle jump to the top left spot                | ✓    |      |      |      |
 | <img src="./images/RushHour.jpg" style="width:200px;" />     | [Rush Hour](https://www.ravensburger.us/en-US/products/games/thinkfun/rush-hour-76582) | Exit the red car                                             |      | ✓    |      |      |
+| <img src="./images/SettingSun.jpg" style="width:200px;" />   | [Setting Sun<br/>Klotski](https://en.wikipedia.org/wiki/Klotski) | Exit the piece with the red dot                              |      | ✓    |      |      |
 | <img src="./images/AntiVirus.jpg" style="width:200px;" />    | [Anti-Virus](https://www.smartgames.eu/uk/one-player-games/anti-virus) | Exit the red *virus*                                         |      | ✓    |      |      |
 | <img src="./images/AsteroidEscape.jpg" style="width:200px;" /> | [Asteroid Escape](https://www.smartgames.eu/uk/one-player-games/asteroid-escape-0) | Exit the plane avoiding asteroids                            |      | ✓    |      |      |
 | <img src="./images/GraveYardShift.jpg" style="width:200px;" /> | [Graveyard Shift](https://www.smartgamesandpuzzles.com/graveyard-shift.html) | Exit the pink piece by sliding pieces.                       |      | ✓    |      |      |
@@ -72,6 +70,7 @@ Some details about these games:
   - *Hot Spot*: pieces must jump over others, but bigger pieces cannot land one besides another
 - **Sliding**:
   - *Rush Hour*: the movements of pieces depend on the positions of others. In certain arrangements, there are two vehicles to leave, so when the first one departs, it is removed from the board.
+  - *Setting Sun / Klotski*:  different forms of pieces that cannot go in all directions depending on the others.
   - *Anti-Virus*: pieces are positioned at the intersections of the lines of the grid. The board is tilted, and the pieces are tangled, meaning that moving one piece can also affect others. 
   - *Asteroid Escape*:  as some pieces overlap on the positions of other pieces, they can interfere with their movements.
   - *Graveyard Shift*: pieces of different polygonal shapes slide but as other pieces outstretch on the exterior, so they  can block the movement of other pieces. 
@@ -512,7 +511,7 @@ class FlipIt_Display extends Display {
 }
 ```
 
-This framework is used verbatim for 12 sliding or jumping games : *AntiVirus, Cannibal Monsters, Express Courier, Flip It, Hansel & Gretel, Hot Spot, Jump In, Lunar Lockout, Rush Hour, Snow Problem, Squirrel Go Nuts, Toads and Frogs*.There was no need to add anything to go from the batch system to the web application outside of defining how to draw a piece. The GUI programming was thus greatly simplified.
+This framework is used verbatim for 12 sliding or jumping games : *AntiVirus, Cannibal Monsters, Express Courier, Flip It, Hansel & Gretel, Hot Spot, Jump In, Lunar Lockout, Rush Hour, Setting Sun, Snow Problem, Squirrel Go Nuts, Toads and Frogs*.There was no need to add anything to go from the batch system to the web application outside of defining how to draw a piece. The GUI programming was thus greatly simplified.
 
 ### Special display for some games
 

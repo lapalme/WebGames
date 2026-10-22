@@ -15,6 +15,8 @@ const problems = {
 
 // if some state transformation is needed
 export {levels, startStates}
+let startStates={}
+
 for (const no in problems){
     const problem = problems[no];
     // implement validation rules

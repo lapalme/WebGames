@@ -291,6 +291,22 @@
             "url": "http://127.0.0.1:8080/RushHour/RushHour.html"
         },
         {
+            "name": "SettingSun batch",
+            "program": "${workspaceFolder}/SettingSun/SettingSun_batch.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "chrome",
+            "name": "SettingSun HTML",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "url": "http://127.0.0.1:8080/SettingSun/SettingSun.html"
+        },
+        {
             "name": "SnowProblem batch",
             "program": "${workspaceFolder}/SnowProblem/SnowProblem_batch.js",
             "request": "launch",

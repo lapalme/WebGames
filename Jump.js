@@ -90,7 +90,10 @@ class Jump {
             rotate(this.rotation(),0.5,0.5)})
             .data({jump:this})
     }
-
+    
+    nbPrecedents(){
+        return this.precedent==null ? 0 : (1+this.precedent.nbPrecedents())
+    }
 }
 
 // combine jumps to moves
